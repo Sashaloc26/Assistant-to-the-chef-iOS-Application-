@@ -9,21 +9,45 @@
 /* Begin PBXBuildFile section */
 		572A28142B5C567D00B99711 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572A28132B5C567D00B99711 /* AppDelegate.swift */; };
 		572A28162B5C567D00B99711 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572A28152B5C567D00B99711 /* SceneDelegate.swift */; };
-		572A28182B5C567D00B99711 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572A28172B5C567D00B99711 /* ViewController.swift */; };
-		572A281B2B5C567D00B99711 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 572A28192B5C567D00B99711 /* Main.storyboard */; };
 		572A281D2B5C567E00B99711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 572A281C2B5C567E00B99711 /* Assets.xcassets */; };
 		572A28202B5C567E00B99711 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 572A281E2B5C567E00B99711 /* LaunchScreen.storyboard */; };
+		576725A72B6191D100C3C30E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725A62B6191D100C3C30E /* TabBarViewController.swift */; };
+		576725A92B61979A00C3C30E /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725A82B61979A00C3C30E /* NavigationViewController.swift */; };
+		576725AB2B62E7A500C3C30E /* SoupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725AA2B62E7A500C3C30E /* SoupsViewController.swift */; };
+		576725AD2B62E7D600C3C30E /* HotDishesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725AC2B62E7D600C3C30E /* HotDishesViewController.swift */; };
+		576725AF2B62E7F400C3C30E /* SaladsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725AE2B62E7F400C3C30E /* SaladsViewController.swift */; };
+		576725B12B62E80A00C3C30E /* SnacksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725B02B62E80A00C3C30E /* SnacksViewController.swift */; };
+		576725B32B62E82300C3C30E /* DessertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725B22B62E82300C3C30E /* DessertViewController.swift */; };
+		576725B52B62E83600C3C30E /* BeveragesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725B42B62E83600C3C30E /* BeveragesViewController.swift */; };
+		576725B72B62E85C00C3C30E /* SoupsVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725B62B62E85C00C3C30E /* SoupsVIewModel.swift */; };
+		576725B92B62E87300C3C30E /* HotDishesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725B82B62E87300C3C30E /* HotDishesViewModel.swift */; };
+		576725BD2B62E89700C3C30E /* SaladsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725BC2B62E89700C3C30E /* SaladsViewModel.swift */; };
+		576725BF2B62E8AD00C3C30E /* SnacksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725BE2B62E8AD00C3C30E /* SnacksViewModel.swift */; };
+		576725C12B62E8BF00C3C30E /* DessertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725C02B62E8BF00C3C30E /* DessertViewModel.swift */; };
+		576725C32B62E8D400C3C30E /* BeveragesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725C22B62E8D400C3C30E /* BeveragesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		572A28102B5C567D00B99711 /* Kitchen Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kitchen Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		572A28132B5C567D00B99711 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		572A28152B5C567D00B99711 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		572A28172B5C567D00B99711 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		572A281A2B5C567D00B99711 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		572A281C2B5C567E00B99711 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		572A281F2B5C567E00B99711 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		572A28212B5C567E00B99711 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		576725A62B6191D100C3C30E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		576725A82B61979A00C3C30E /* NavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		576725AA2B62E7A500C3C30E /* SoupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoupsViewController.swift; sourceTree = "<group>"; };
+		576725AC2B62E7D600C3C30E /* HotDishesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotDishesViewController.swift; sourceTree = "<group>"; };
+		576725AE2B62E7F400C3C30E /* SaladsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaladsViewController.swift; sourceTree = "<group>"; };
+		576725B02B62E80A00C3C30E /* SnacksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnacksViewController.swift; sourceTree = "<group>"; };
+		576725B22B62E82300C3C30E /* DessertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertViewController.swift; sourceTree = "<group>"; };
+		576725B42B62E83600C3C30E /* BeveragesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeveragesViewController.swift; sourceTree = "<group>"; };
+		576725B62B62E85C00C3C30E /* SoupsVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoupsVIewModel.swift; sourceTree = "<group>"; };
+		576725B82B62E87300C3C30E /* HotDishesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotDishesViewModel.swift; sourceTree = "<group>"; };
+		576725BC2B62E89700C3C30E /* SaladsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaladsViewModel.swift; sourceTree = "<group>"; };
+		576725BE2B62E8AD00C3C30E /* SnacksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnacksViewModel.swift; sourceTree = "<group>"; };
+		576725C02B62E8BF00C3C30E /* DessertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertViewModel.swift; sourceTree = "<group>"; };
+		576725C22B62E8D400C3C30E /* BeveragesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeveragesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +80,67 @@
 		572A28122B5C567D00B99711 /* Kitchen Helper */ = {
 			isa = PBXGroup;
 			children = (
-				572A28132B5C567D00B99711 /* AppDelegate.swift */,
-				572A28152B5C567D00B99711 /* SceneDelegate.swift */,
-				572A28172B5C567D00B99711 /* ViewController.swift */,
-				572A28192B5C567D00B99711 /* Main.storyboard */,
-				572A281C2B5C567E00B99711 /* Assets.xcassets */,
-				572A281E2B5C567E00B99711 /* LaunchScreen.storyboard */,
-				572A28212B5C567E00B99711 /* Info.plist */,
+				576725A52B618DEE00C3C30E /* ViewsModels */,
+				576725A42B618DE300C3C30E /* Views */,
+				576725A12B618DB000C3C30E /* Models */,
+				5767259C2B618D0F00C3C30E /* Others */,
+				5767259B2B618CFE00C3C30E /* Application */,
 			);
 			path = "Kitchen Helper";
+			sourceTree = "<group>";
+		};
+		5767259B2B618CFE00C3C30E /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				572A28152B5C567D00B99711 /* SceneDelegate.swift */,
+				572A28132B5C567D00B99711 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		5767259C2B618D0F00C3C30E /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				572A281E2B5C567E00B99711 /* LaunchScreen.storyboard */,
+				572A28212B5C567E00B99711 /* Info.plist */,
+				572A281C2B5C567E00B99711 /* Assets.xcassets */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		576725A12B618DB000C3C30E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		576725A42B618DE300C3C30E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				576725A62B6191D100C3C30E /* TabBarViewController.swift */,
+				576725A82B61979A00C3C30E /* NavigationViewController.swift */,
+				576725AA2B62E7A500C3C30E /* SoupsViewController.swift */,
+				576725AC2B62E7D600C3C30E /* HotDishesViewController.swift */,
+				576725AE2B62E7F400C3C30E /* SaladsViewController.swift */,
+				576725B02B62E80A00C3C30E /* SnacksViewController.swift */,
+				576725B22B62E82300C3C30E /* DessertViewController.swift */,
+				576725B42B62E83600C3C30E /* BeveragesViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		576725A52B618DEE00C3C30E /* ViewsModels */ = {
+			isa = PBXGroup;
+			children = (
+				576725B62B62E85C00C3C30E /* SoupsVIewModel.swift */,
+				576725B82B62E87300C3C30E /* HotDishesViewModel.swift */,
+				576725BC2B62E89700C3C30E /* SaladsViewModel.swift */,
+				576725BE2B62E8AD00C3C30E /* SnacksViewModel.swift */,
+				576725C02B62E8BF00C3C30E /* DessertViewModel.swift */,
+				576725C22B62E8D400C3C30E /* BeveragesViewModel.swift */,
+			);
+			path = ViewsModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +203,6 @@
 			files = (
 				572A28202B5C567E00B99711 /* LaunchScreen.storyboard in Resources */,
 				572A281D2B5C567E00B99711 /* Assets.xcassets in Resources */,
-				572A281B2B5C567D00B99711 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +213,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				572A28182B5C567D00B99711 /* ViewController.swift in Sources */,
+				576725AD2B62E7D600C3C30E /* HotDishesViewController.swift in Sources */,
+				576725C12B62E8BF00C3C30E /* DessertViewModel.swift in Sources */,
+				576725B52B62E83600C3C30E /* BeveragesViewController.swift in Sources */,
+				576725C32B62E8D400C3C30E /* BeveragesViewModel.swift in Sources */,
+				576725B92B62E87300C3C30E /* HotDishesViewModel.swift in Sources */,
+				576725A92B61979A00C3C30E /* NavigationViewController.swift in Sources */,
+				576725B32B62E82300C3C30E /* DessertViewController.swift in Sources */,
+				576725AF2B62E7F400C3C30E /* SaladsViewController.swift in Sources */,
 				572A28142B5C567D00B99711 /* AppDelegate.swift in Sources */,
+				576725AB2B62E7A500C3C30E /* SoupsViewController.swift in Sources */,
+				576725B72B62E85C00C3C30E /* SoupsVIewModel.swift in Sources */,
+				576725A72B6191D100C3C30E /* TabBarViewController.swift in Sources */,
+				576725BD2B62E89700C3C30E /* SaladsViewModel.swift in Sources */,
+				576725BF2B62E8AD00C3C30E /* SnacksViewModel.swift in Sources */,
 				572A28162B5C567D00B99711 /* SceneDelegate.swift in Sources */,
+				576725B12B62E80A00C3C30E /* SnacksViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		572A28192B5C567D00B99711 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				572A281A2B5C567D00B99711 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		572A281E2B5C567E00B99711 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -293,10 +373,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Kitchen Helper/Info.plist";
+				INFOPLIST_FILE = "Kitchen Helper/Others/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,10 +399,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Kitchen Helper/Info.plist";
+				INFOPLIST_FILE = "Kitchen Helper/Others/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
