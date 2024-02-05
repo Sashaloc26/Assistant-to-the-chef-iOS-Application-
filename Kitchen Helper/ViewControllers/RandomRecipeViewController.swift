@@ -1,18 +1,19 @@
 //
-//  DessertViewController.swift
+//  RandomRecipeViewController.swift
 //  Kitchen Helper
 //
-//  Created by Саша Тихонов on 25/01/2024.
+//  Created by Саша Тихонов on 02/02/2024.
 //
 
 import UIKit
 
-class DessertViewController: UIViewController {
+class RandomRecipeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemBlue
+        
     }
     
 
