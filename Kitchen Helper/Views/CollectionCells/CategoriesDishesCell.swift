@@ -1,5 +1,5 @@
 //
-//  CategoriesCollectionCell.swift
+//  CategoriesDishesCell.swift
 //  Kitchen Helper
 //
 //  Created by Саша Тихонов on 30/01/2024.
@@ -8,12 +8,11 @@
 import UIKit
 import SnapKit
 
-class CategoriesCollectionCell: UICollectionViewCell {
-    
+class CategoriesDishesCell: UICollectionViewCell {
     let categoryNameLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(red: 0.96, green: 0.25, blue: 0.44, alpha: 0.6)
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = Fonts.montserratFont(with: 12, weight: .semibold)
         label.textAlignment = .center
         return label
     }()
