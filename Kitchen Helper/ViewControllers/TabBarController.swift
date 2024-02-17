@@ -2,15 +2,21 @@ import UIKit
 
 class TabBarController: UITabBarController {
     
-    let homeController = HomeViewController()
-    let favouritesController = FavouritesViewController()
-    let listController = ListViewController()
-    let randomRecipeController = RandomRecipeViewController()
+    let homeController = UINavigationController(rootViewController: HomeViewController())
+    let favouritesController = UINavigationController(rootViewController: FavouritesViewController())
+    let listController = UINavigationController(rootViewController: ListViewController())
+    let randomRecipeController = UINavigationController(rootViewController: RandomRecipeViewController())
     
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        homeController.navigationBar.isHidden = true
+        favouritesController.navigationBar.isHidden = true
+        listController.navigationBar.isHidden = true
+        randomRecipeController.navigationBar.isHidden = true
+
 
         tabBar.isTranslucent = false
         tabBar.backgroundColor = .white
@@ -23,12 +29,12 @@ class TabBarController: UITabBarController {
         tabBar.layer.shadowOpacity = 0.3
         tabBar.layer.shadowOffset = CGSize(width: 0, height: -3)
         tabBar.layer.shadowRadius = 6
-        
+                
         viewControllers = [
             homeController,
             favouritesController,
             listController,
-            randomRecipeController
+            randomRecipeController,
         ]
         
         homeController.tabBarItem = UITabBarItem(
@@ -50,5 +56,7 @@ class TabBarController: UITabBarController {
             title: "Cлучайный рецепт",
             image: UIImage(systemName: "dice"),
             tag: 2)
+
+        
     }
 }

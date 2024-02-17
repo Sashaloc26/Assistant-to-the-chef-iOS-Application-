@@ -26,20 +26,19 @@ class HomeViewController: BaseViewController {
     let mainNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Chef's Assistant"
-        label.font = UIFont.systemFont(ofSize: 30)
+        label.font = Fonts.montserratFont(with: 30, weight: .semibold)
         label.textAlignment = .center
         label.textColor = .white
         return label
     }()
     
-//    let searchButton: UIButton = {
-//        let button = UIButton()
-//        button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-//        button.tintColor = .white
-//        return button
-//    }()
+    let searchButton = SearchButton()
     
-      let searchButton = SearchButton()
+    let controllersArray = [
+        SoupsViewController(), HotDishesViewController(),
+        SaladsViewController(), SnacksViewController(),
+        DessertViewController(), BeveragesViewController()
+        ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,10 +57,10 @@ class HomeViewController: BaseViewController {
         super.setupViews()
         
         categoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        categoryCollectionView.register(CategoriesCollectionCell.self, forCellWithReuseIdentifier: "CategoriesCollectionCell")
+        categoryCollectionView.register(CategoriesDishesCell.self, forCellWithReuseIdentifier: "CategoriesCollectionCell")
         categoryCollectionView.dataSource = self
         categoryCollectionView.delegate = self
-        categoryCollectionView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
+        categoryCollectionView.backgroundColor = .clear
         
         gradientLayer.frame = view.bounds
         gradientLayer.colors = [UIColor(red: 250/255, green: 173/255, blue: 91/255, alpha: 1.0).cgColor,
@@ -115,7 +114,7 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesCollectionCell", for: indexPath) as? CategoriesCollectionCell else {
+        guard let cell = categoryCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesCollectionCell", for: indexPath) as? CategoriesDishesCell else {
             fatalError("Unable to dequeue CategoriesCollectionCell")
         }
         let content = categoryContents[indexPath.item]
@@ -138,8 +137,17 @@ extension HomeViewController: UICollectionViewDataSource {
 }
 
 extension HomeViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard indexPath.item < controllersArray.count else {
+            return
+        }
+        
+        let selectedViewController = controllersArray[indexPath.item]        
+        navigationController?.pushViewController(selectedViewController, animated: true)
+    }
 }
+
+
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
