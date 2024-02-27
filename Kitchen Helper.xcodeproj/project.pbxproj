@@ -24,12 +24,16 @@
 		576725B12B62E80A00C3C30E /* SnacksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725B02B62E80A00C3C30E /* SnacksViewController.swift */; };
 		576725B32B62E82300C3C30E /* DessertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725B22B62E82300C3C30E /* DessertViewController.swift */; };
 		576725B52B62E83600C3C30E /* BeveragesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725B42B62E83600C3C30E /* BeveragesViewController.swift */; };
-		576725B72B62E85C00C3C30E /* SoupsVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725B62B62E85C00C3C30E /* SoupsVIewModel.swift */; };
+		576725B72B62E85C00C3C30E /* SoupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725B62B62E85C00C3C30E /* SoupsViewModel.swift */; };
 		576725B92B62E87300C3C30E /* HotDishesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725B82B62E87300C3C30E /* HotDishesViewModel.swift */; };
 		576725BD2B62E89700C3C30E /* SaladsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725BC2B62E89700C3C30E /* SaladsViewModel.swift */; };
 		576725BF2B62E8AD00C3C30E /* SnacksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725BE2B62E8AD00C3C30E /* SnacksViewModel.swift */; };
 		576725C12B62E8BF00C3C30E /* DessertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725C02B62E8BF00C3C30E /* DessertViewModel.swift */; };
 		576725C32B62E8D400C3C30E /* BeveragesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725C22B62E8D400C3C30E /* BeveragesViewModel.swift */; };
+		57957F062B80C05E0027D234 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 57957F052B80C05E0027D234 /* Realm */; };
+		57957F082B80C05E0027D234 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57957F072B80C05E0027D234 /* RealmSwift */; };
+		57957F0A2B80C1710027D234 /* RecipesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57957F092B80C1710027D234 /* RecipesModel.swift */; };
+		57957F0C2B80C3D50027D234 /* RecipesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57957F0B2B80C3D50027D234 /* RecipesManager.swift */; };
 		57A5526E2B681BFB00FCF08D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5526D2B681BFB00FCF08D /* HomeViewController.swift */; };
 		57A552702B681C1C00FCF08D /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5526F2B681C1C00FCF08D /* FavouritesViewController.swift */; };
 		57A552722B681C4800FCF08D /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A552712B681C4800FCF08D /* ListViewController.swift */; };
@@ -39,6 +43,8 @@
 		57A5527C2B69804700FCF08D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5527B2B69804700FCF08D /* TabBarController.swift */; };
 		57A5527E2B69887900FCF08D /* CategoriesDishesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5527D2B69887900FCF08D /* CategoriesDishesCell.swift */; };
 		57A886182B7A9A1A00F42679 /* CatalogRecipesCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A886172B7A9A1A00F42679 /* CatalogRecipesCollectionCell.swift */; };
+		57FEBF2C2B8BAE490098A10F /* FullInfoRecipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FEBF2B2B8BAE490098A10F /* FullInfoRecipeController.swift */; };
+		57FEBF2E2B8BC5130098A10F /* RecipeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FEBF2D2B8BC5130098A10F /* RecipeTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,12 +67,14 @@
 		576725B02B62E80A00C3C30E /* SnacksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnacksViewController.swift; sourceTree = "<group>"; };
 		576725B22B62E82300C3C30E /* DessertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertViewController.swift; sourceTree = "<group>"; };
 		576725B42B62E83600C3C30E /* BeveragesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeveragesViewController.swift; sourceTree = "<group>"; };
-		576725B62B62E85C00C3C30E /* SoupsVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoupsVIewModel.swift; sourceTree = "<group>"; };
+		576725B62B62E85C00C3C30E /* SoupsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoupsViewModel.swift; sourceTree = "<group>"; };
 		576725B82B62E87300C3C30E /* HotDishesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotDishesViewModel.swift; sourceTree = "<group>"; };
 		576725BC2B62E89700C3C30E /* SaladsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaladsViewModel.swift; sourceTree = "<group>"; };
 		576725BE2B62E8AD00C3C30E /* SnacksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnacksViewModel.swift; sourceTree = "<group>"; };
 		576725C02B62E8BF00C3C30E /* DessertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertViewModel.swift; sourceTree = "<group>"; };
 		576725C22B62E8D400C3C30E /* BeveragesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeveragesViewModel.swift; sourceTree = "<group>"; };
+		57957F092B80C1710027D234 /* RecipesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesModel.swift; sourceTree = "<group>"; };
+		57957F0B2B80C3D50027D234 /* RecipesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesManager.swift; sourceTree = "<group>"; };
 		57A5526D2B681BFB00FCF08D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		57A5526F2B681C1C00FCF08D /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
 		57A552712B681C4800FCF08D /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +82,8 @@
 		57A5527B2B69804700FCF08D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		57A5527D2B69887900FCF08D /* CategoriesDishesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDishesCell.swift; sourceTree = "<group>"; };
 		57A886172B7A9A1A00F42679 /* CatalogRecipesCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogRecipesCollectionCell.swift; sourceTree = "<group>"; };
+		57FEBF2B2B8BAE490098A10F /* FullInfoRecipeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullInfoRecipeController.swift; sourceTree = "<group>"; };
+		57FEBF2D2B8BC5130098A10F /* RecipeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +91,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57957F082B80C05E0027D234 /* RealmSwift in Frameworks */,
+				57957F062B80C05E0027D234 /* Realm in Frameworks */,
 				57A552772B6836E200FCF08D /* SnapKit in Frameworks */,
 				57A552792B6836E200FCF08D /* SnapKit-Dynamic in Frameworks */,
 			);
@@ -108,13 +120,13 @@
 		572A28122B5C567D00B99711 /* Kitchen Helper */ = {
 			isa = PBXGroup;
 			children = (
+				5767259B2B618CFE00C3C30E /* Application */,
 				5738637B2B6CFF3C00A944C9 /* Resources */,
 				57A5527A2B69781400FCF08D /* Views */,
 				576725A52B618DEE00C3C30E /* ViewsModels */,
 				576725A42B618DE300C3C30E /* ViewControllers */,
 				576725A12B618DB000C3C30E /* Models */,
 				5767259C2B618D0F00C3C30E /* Others */,
-				5767259B2B618CFE00C3C30E /* Application */,
 			);
 			path = "Kitchen Helper";
 			sourceTree = "<group>";
@@ -138,14 +150,15 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
-		573C868D2B72AF0E00177AA8 /* CollectionCells */ = {
+		573C868D2B72AF0E00177AA8 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				57A5527D2B69887900FCF08D /* CategoriesDishesCell.swift */,
 				573C86902B74018400177AA8 /* CategoriesProductsCell.swift */,
 				57A886172B7A9A1A00F42679 /* CatalogRecipesCollectionCell.swift */,
+				57FEBF2D2B8BC5130098A10F /* RecipeTableCell.swift */,
 			);
-			path = CollectionCells;
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		5767259B2B618CFE00C3C30E /* Application */ = {
@@ -170,6 +183,8 @@
 		576725A12B618DB000C3C30E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				57957F0B2B80C3D50027D234 /* RecipesManager.swift */,
+				57957F092B80C1710027D234 /* RecipesModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -189,6 +204,7 @@
 				57A552732B6832D200FCF08D /* BaseViewController.swift */,
 				57A5527B2B69804700FCF08D /* TabBarController.swift */,
 				5738637E2B6D1D3200A944C9 /* RandomRecipeViewController.swift */,
+				57FEBF2B2B8BAE490098A10F /* FullInfoRecipeController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -196,7 +212,7 @@
 		576725A52B618DEE00C3C30E /* ViewsModels */ = {
 			isa = PBXGroup;
 			children = (
-				576725B62B62E85C00C3C30E /* SoupsVIewModel.swift */,
+				576725B62B62E85C00C3C30E /* SoupsViewModel.swift */,
 				576725B82B62E87300C3C30E /* HotDishesViewModel.swift */,
 				576725BC2B62E89700C3C30E /* SaladsViewModel.swift */,
 				576725BE2B62E8AD00C3C30E /* SnacksViewModel.swift */,
@@ -209,7 +225,7 @@
 		57A5527A2B69781400FCF08D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				573C868D2B72AF0E00177AA8 /* CollectionCells */,
+				573C868D2B72AF0E00177AA8 /* Cells */,
 				573C868C2B72AF0400177AA8 /* Buttons */,
 			);
 			path = Views;
@@ -234,6 +250,8 @@
 			packageProductDependencies = (
 				57A552762B6836E200FCF08D /* SnapKit */,
 				57A552782B6836E200FCF08D /* SnapKit-Dynamic */,
+				57957F052B80C05E0027D234 /* Realm */,
+				57957F072B80C05E0027D234 /* RealmSwift */,
 			);
 			productName = "Kitchen Helper";
 			productReference = 572A28102B5C567D00B99711 /* Kitchen Helper.app */;
@@ -265,6 +283,7 @@
 			mainGroup = 572A28072B5C567D00B99711;
 			packageReferences = (
 				57A552752B6836E200FCF08D /* XCRemoteSwiftPackageReference "SnapKit" */,
+				57957F042B80C05E0027D234 /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 572A28112B5C567D00B99711 /* Products */;
 			projectDirPath = "";
@@ -292,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57FEBF2E2B8BC5130098A10F /* RecipeTableCell.swift in Sources */,
 				57A552702B681C1C00FCF08D /* FavouritesViewController.swift in Sources */,
 				5738637F2B6D1D3200A944C9 /* RandomRecipeViewController.swift in Sources */,
 				576725AD2B62E7D600C3C30E /* HotDishesViewController.swift in Sources */,
@@ -299,21 +319,24 @@
 				57A5527E2B69887900FCF08D /* CategoriesDishesCell.swift in Sources */,
 				573C86892B715F7E00177AA8 /* SearchButton.swift in Sources */,
 				576725B52B62E83600C3C30E /* BeveragesViewController.swift in Sources */,
+				57957F0C2B80C3D50027D234 /* RecipesManager.swift in Sources */,
 				57A552742B6832D200FCF08D /* BaseViewController.swift in Sources */,
 				573C868B2B72AEF700177AA8 /* BackButton.swift in Sources */,
+				57957F0A2B80C1710027D234 /* RecipesModel.swift in Sources */,
 				57A5526E2B681BFB00FCF08D /* HomeViewController.swift in Sources */,
 				576725C32B62E8D400C3C30E /* BeveragesViewModel.swift in Sources */,
 				576725B92B62E87300C3C30E /* HotDishesViewModel.swift in Sources */,
 				57A552722B681C4800FCF08D /* ListViewController.swift in Sources */,
 				576725B32B62E82300C3C30E /* DessertViewController.swift in Sources */,
 				5738637D2B6CFF6100A944C9 /* Categorylabel + image.swift in Sources */,
+				57FEBF2C2B8BAE490098A10F /* FullInfoRecipeController.swift in Sources */,
 				576725AF2B62E7F400C3C30E /* SaladsViewController.swift in Sources */,
 				572A28142B5C567D00B99711 /* AppDelegate.swift in Sources */,
 				57A5527C2B69804700FCF08D /* TabBarController.swift in Sources */,
 				576725AB2B62E7A500C3C30E /* SoupsViewController.swift in Sources */,
 				573C86932B7566B000177AA8 /* CategoryProducts.swift in Sources */,
 				573C86912B74018400177AA8 /* CategoriesProductsCell.swift in Sources */,
-				576725B72B62E85C00C3C30E /* SoupsVIewModel.swift in Sources */,
+				576725B72B62E85C00C3C30E /* SoupsViewModel.swift in Sources */,
 				576725BD2B62E89700C3C30E /* SaladsViewModel.swift in Sources */,
 				57A886182B7A9A1A00F42679 /* CatalogRecipesCollectionCell.swift in Sources */,
 				576725BF2B62E8AD00C3C30E /* SnacksViewModel.swift in Sources */,
@@ -532,6 +555,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		57957F042B80C05E0027D234 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		57A552752B6836E200FCF08D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -543,6 +574,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		57957F052B80C05E0027D234 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57957F042B80C05E0027D234 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		57957F072B80C05E0027D234 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57957F042B80C05E0027D234 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		57A552762B6836E200FCF08D /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 57A552752B6836E200FCF08D /* XCRemoteSwiftPackageReference "SnapKit" */;

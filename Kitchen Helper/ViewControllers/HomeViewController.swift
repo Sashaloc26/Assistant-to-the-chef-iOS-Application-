@@ -21,7 +21,7 @@ class HomeViewController: BaseViewController {
     let layout = UICollectionViewFlowLayout()
     var categoryCollectionView: UICollectionView!
     
-    var categoryContents: [CategoryContent] = []
+    var categoryContents: [CategoryContent] = CategoryContent.allCategoryContents()
     
     let mainNameLabel: UILabel = {
         let label = UILabel()
@@ -45,7 +45,6 @@ class HomeViewController: BaseViewController {
         
         setupViews()
         makeConstraints()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -72,7 +71,6 @@ class HomeViewController: BaseViewController {
         whiteView.layer.cornerRadius = 100
         whiteView.layer.maskedCorners = [.layerMinXMinYCorner]
         
-        categoryContents = CategoryContent.allCategoryContents()
         
         view.layer.addSublayer(gradientLayer)
         view.addSubview(whiteView)

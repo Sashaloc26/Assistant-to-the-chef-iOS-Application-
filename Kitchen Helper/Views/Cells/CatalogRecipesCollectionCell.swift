@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class CatalogRecipesCollectionCell: UICollectionViewCell {
     var catalogAvatarRecipeImageView: UIImageView = {
@@ -17,21 +18,14 @@ class CatalogRecipesCollectionCell: UICollectionViewCell {
     
     let containerView: UIView = {
         let view = UIView()
-        let shadowPathRect = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
         view.backgroundColor = .white
-        view.layer.shadowPath = UIBezierPath(rect: shadowPathRect).cgPath
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 4.0, height: 2.0)
-        view.layer.shadowOpacity = 0.8
-        view.layer.shadowRadius = 5.0
-        view.layer.masksToBounds = false
         return view
     }()
     
     let titleRecipeLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.font = Fonts.montserratFont(with: 18, weight: .semibold)
+        label.font = Fonts.montserratFont(with: 16, weight: .semibold)
         label.text = "Суп из тыквы"
         return label
     }()
@@ -48,37 +42,22 @@ class CatalogRecipesCollectionCell: UICollectionViewCell {
     
     let caloriesRecipeLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "234\nкКал")
-        attributedText.addAttribute(.foregroundColor, value: UIColor(red: 0.96, green: 0.25, blue: 0.44, alpha: 0.6), range: NSRange(location: 0, length: 3))
-        attributedText.addAttribute(.foregroundColor, value: UIColor.lightGray, range: NSRange(location: 4, length: 4))
-        attributedText.addAttribute(.font, value: Fonts.montserratFont(with: 10, weight: .semibold), range: NSRange(location: 0, length: 8))
-        label.attributedText = attributedText
+        label.font = Fonts.montserratFont(with: 10, weight: .semibold)
         label.numberOfLines = 2
-        label.textAlignment = .justified
         return label
     }()
     
     let cookingTimeRecipeLabel: UILabel = {
         let label = UILabel()
-        let attributedText = NSMutableAttributedString(string: "30\nмин")
-        attributedText.addAttribute(.foregroundColor, value: UIColor(red: 0.96, green: 0.25, blue: 0.44, alpha: 0.6), range: NSRange(location: 0, length: 2))
-        attributedText.addAttribute(.foregroundColor, value: UIColor.lightGray, range: NSRange(location: 3, length: 3))
-        attributedText.addAttribute(.font, value: Fonts.montserratFont(with: 10, weight: .semibold), range: NSRange(location: 0, length: 6))
-        label.attributedText = attributedText
+        label.font = Fonts.montserratFont(with: 10, weight: .semibold)
         label.numberOfLines = 2
         return label
     }()
     
     let heartButton: UIButton = {
         let button = UIButton()
-        let shadowPathRect = CGRect(x: 0, y: 0, width: button.bounds.width, height: button.bounds.height)
         button.layer.cornerRadius = 25
         button.backgroundColor = .lightGray
-        button.layer.shadowPath = UIBezierPath(rect: shadowPathRect).cgPath
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 0, height: 2)
-        button.layer.shadowOpacity = 0.5
-        button.layer.shadowRadius = 4
         return button
     }()
     
@@ -88,18 +67,24 @@ class CatalogRecipesCollectionCell: UICollectionViewCell {
         imageView.tintColor = .white
         return imageView
     }()
-    
+        
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        applyShadow()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
         makeConstraints()
+        applyShadow()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupViews()
         makeConstraints()
+        applyShadow()
     }
     
     func setupViews() {
@@ -128,7 +113,7 @@ class CatalogRecipesCollectionCell: UICollectionViewCell {
             make.top.equalTo(contentView.snp.top).offset(10)
             make.bottom.equalTo(contentView.snp.bottom).offset(-10)
         }
-        
+
         titleRecipeLabel.snp.makeConstraints { make in
             make.leading.equalTo(containerView.snp.leading).offset(15)
             make.top.equalTo(containerView.snp.top).offset(10)
@@ -137,7 +122,7 @@ class CatalogRecipesCollectionCell: UICollectionViewCell {
         
         descriptionRecipe.snp.makeConstraints { make in
             make.leading.equalTo(titleRecipeLabel.snp.leading)
-            make.trailing.equalTo(containerView.snp.trailing).offset(5)
+            make.trailing.equalTo(containerView.snp.trailing)
             make.top.equalTo(titleRecipeLabel.snp.bottom).offset(5)
             make.height.equalTo(35)
         }
@@ -168,10 +153,31 @@ class CatalogRecipesCollectionCell: UICollectionViewCell {
             make.centerY.equalTo(heartButton)
             make.width.height.equalTo(30)
         }
+    }
+    
+    func applyShadow() {
+//        let shadowPathRect = CGRect(x: 0, y: 0, width: contentView.bounds.width, height: contentView.bounds.height)
+//        containerView.layer.shadowPath = UIBezierPath(rect: shadowPathRect).cgPath
+        containerView.layer.shadowColor = UIColor.black.cgColor
+        containerView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        containerView.layer.shadowOpacity = 0.3
+        containerView.layer.shadowRadius = 4.0
+        containerView.layer.masksToBounds = false
         
+        heartButton.layer.shadowColor = UIColor.black.cgColor
+        heartButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        heartButton.layer.shadowOpacity = 0.3
+        heartButton.layer.shadowRadius = 4
+        heartImage.layer.masksToBounds = false
+    }
+    
+    func configure(title: String, image: UIImage, description: List<String>, calories: String, time: String) {
         
-        func configure(title: String, image: UIImage?) {
-            
-        }
+        let descriptionArray = Array(description)
+        catalogAvatarRecipeImageView.image = image
+        titleRecipeLabel.text = title
+        descriptionRecipe.text = descriptionArray.joined(separator: "\n")
+        caloriesRecipeLabel.text = calories
+        cookingTimeRecipeLabel.text = time
     }
 }

@@ -12,15 +12,13 @@ import UIKit
 struct CategoryProducts {
     let categoryProductsImage: UIImage
     
-    // УТОЧНИТЬ ПОЧНМУ С ТОЧНО ТАКОЙ ЖЕ РЕАЛИЗАЦИЕЙ НЕ ПЕРЕДАЛИСЬ ДАННЫЕ 
-//
-//    static func allCategoryProductsContents() -> [CategoryProducts] {
-//        return [
-//            CategoryProducts(categoryProductsImage: UIImage(named: "soup")!),
-//            CategoryProducts(categoryProductsImage: UIImage(named: "second_dish")!),
-//            CategoryProducts(categoryProductsImage: UIImage(named: "salad")!),
-//            CategoryProducts(categoryProductsImage: UIImage(named: "snacks")!),
-//            CategoryProducts(categoryProductsImage: UIImage(named: "dessert")!)
-//        ]
-//    }
+    static func allCategoryProductsContents() -> [CategoryProducts] {
+        return [
+            CategoryProducts(categoryProductsImage: UIImage(named: "pig")!),
+            CategoryProducts(categoryProductsImage: UIImage(named: "fish")!),
+            CategoryProducts(categoryProductsImage: UIImage(named: "chicken")!),
+            CategoryProducts(categoryProductsImage: UIImage(named: "vegetables")!),
+            CategoryProducts(categoryProductsImage: UIImage(named: "mushrooms")!)
+        ]
+    }
 }

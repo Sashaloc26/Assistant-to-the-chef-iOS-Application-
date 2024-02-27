@@ -8,5 +8,10 @@
 import Foundation
 
 class DessertViewModel {
+    var recipesDesserts: [Recipe] = []
     
+    func getDessertsRecipes(categoryName: String, completion: @escaping () -> Void) {
+        self.recipesDesserts = RecipeManager.shared.getRecipesForCategory(categoryName)
+        completion()
+    }
 }
