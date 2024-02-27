@@ -67,24 +67,17 @@ class CatalogRecipesCollectionCell: UICollectionViewCell {
         imageView.tintColor = .white
         return imageView
     }()
-        
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        applyShadow()
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
         makeConstraints()
-        applyShadow()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupViews()
         makeConstraints()
-        applyShadow()
     }
     
     func setupViews() {
@@ -156,19 +149,22 @@ class CatalogRecipesCollectionCell: UICollectionViewCell {
     }
     
     func applyShadow() {
-//        let shadowPathRect = CGRect(x: 0, y: 0, width: contentView.bounds.width, height: contentView.bounds.height)
-//        containerView.layer.shadowPath = UIBezierPath(rect: shadowPathRect).cgPath
+        let shadowPathRect = CGRect(x: 0, y: 0, width: containerView.bounds.width, height: containerView.bounds.height)
+        containerView.layer.shadowPath = UIBezierPath(rect: shadowPathRect).cgPath
         containerView.layer.shadowColor = UIColor.black.cgColor
         containerView.layer.shadowOffset = CGSize(width: 0, height: 1)
         containerView.layer.shadowOpacity = 0.3
         containerView.layer.shadowRadius = 4.0
         containerView.layer.masksToBounds = false
         
+        
+        let circlePath = UIBezierPath(roundedRect: heartButton.bounds, cornerRadius: heartButton.bounds.size.width / 2.0)
+        heartButton.layer.shadowPath = circlePath.cgPath
         heartButton.layer.shadowColor = UIColor.black.cgColor
         heartButton.layer.shadowOffset = CGSize(width: 0, height: 1)
         heartButton.layer.shadowOpacity = 0.3
         heartButton.layer.shadowRadius = 4
-        heartImage.layer.masksToBounds = false
+        heartButton.layer.masksToBounds = false
     }
     
     func configure(title: String, image: UIImage, description: List<String>, calories: String, time: String) {
