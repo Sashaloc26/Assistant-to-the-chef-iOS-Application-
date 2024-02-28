@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import SnapKit
+import RealmSwift
 
 class DessertViewController: BaseViewController {
+    let viewModelDesserts = DessertViewModel()
+
     let gradientLayer = CAGradientLayer()
     
     let searchButton = SearchButton()
@@ -15,7 +19,7 @@ class DessertViewController: BaseViewController {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Первые блюда"
+        label.text = "Дессерты"
         label.textColor = .white
         label.textAlignment = .center
         label.font = Fonts.montserratFont(with: 20, weight: .semibold)
@@ -33,7 +37,7 @@ class DessertViewController: BaseViewController {
     
     let collectionTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Первые блюда"
+        label.text = "Дессерты"
         label.textColor = .black
         label.textAlignment = .center
         label.font = Fonts.montserratFont(with: 20, weight: .semibold)
@@ -43,13 +47,7 @@ class DessertViewController: BaseViewController {
     let layout = UICollectionViewFlowLayout()
     var categoryProductsCollectionView: UICollectionView!
     
-    var categoryProductsContents: [CategoryProducts] = [
-        .init(categoryProductsImage: UIImage(named: "pig")!),
-        .init(categoryProductsImage: UIImage(named: "chicken")!),
-        .init(categoryProductsImage: UIImage(named: "fish")!),
-        .init(categoryProductsImage: UIImage(named: "vegetables")!),
-        .init(categoryProductsImage: UIImage(named: "mushrooms")!)
-        ]
+    var categoryProductsContents: [CategoryProducts] = CategoryProducts.allCategoryProductsContents()
     
     let lineView: UIView = {
         let view = UIView()
@@ -65,7 +63,14 @@ class DessertViewController: BaseViewController {
         super.viewDidLoad()
         setupViews()
         makeConstraints()
-        
+        viewModelDesserts.getDessertsRecipes(categoryName: "Десерты") {
+            DispatchQueue.main.async {
+                self.catalogRecipeCollectionView.reloadData()
+            }
+        }
+        categoryProductsCollectionView.reloadData()
+        catalogRecipeCollectionView.reloadData()
+
     }
     
     override func setupViews() {
@@ -150,7 +155,7 @@ class DessertViewController: BaseViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-10)
         }
     }
-    
+
     @objc func backButtonAction() {
         navigationController?.popViewController(animated: true)
     }
@@ -163,7 +168,7 @@ extension DessertViewController: UICollectionViewDataSource {
             return categoryProductsContents.count
             
         } else if collectionView == catalogRecipeCollectionView {
-            return 5
+            return viewModelDesserts.recipesDesserts.count
         }
         return 0
     }
@@ -194,6 +199,19 @@ extension DessertViewController: UICollectionViewDataSource {
             guard let cell = catalogRecipeCollectionView.dequeueReusableCell(withReuseIdentifier: "CatalogRecipesCollectionCell", for: indexPath) as? CatalogRecipesCollectionCell else {
                 fatalError("Unable to dequeue CategoriesProductsCell")
             }
+            
+            let recipe = viewModelDesserts.recipesDesserts[indexPath.item]
+            
+            if let photoName = recipe.photo, let avatar = UIImage(named: photoName) {
+                let title = recipe.name
+                let description = recipe.ingredients
+                let calories = recipe.calories
+                let time = recipe.cookingTime
+                
+                cell.configure(title: title, image: avatar, description: description, calories: calories, time: time)
+            }
+            cell.applyShadow()
+
             return cell
         }
         fatalError("Unexpected collection view")
@@ -235,3 +253,5 @@ extension DessertViewController: UICollectionViewDelegateFlowLayout {
         return 0
     }
 }
+
+

@@ -6,7 +6,15 @@
 //
 
 import Foundation
+import RealmSwift
 
 class HotDishesViewModel {
+    
+    var recipesHotDishes: [Recipe] = []
+    
+    func getHotDishesRecipes(categoryName: String, completion: @escaping () -> Void) {
+        self.recipesHotDishes = RecipeManager.shared.getRecipesForCategory(categoryName)
+        completion()
+    }
     
 }

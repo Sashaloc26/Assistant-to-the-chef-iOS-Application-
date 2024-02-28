@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import SnapKit
+import RealmSwift
 
 class HotDishesViewController: BaseViewController {
+    let viewModelHot = HotDishesViewModel()
+
     let gradientLayer = CAGradientLayer()
     
     let searchButton = SearchButton()
@@ -15,7 +19,7 @@ class HotDishesViewController: BaseViewController {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Первые блюда"
+        label.text = "Вторые блюда"
         label.textColor = .white
         label.textAlignment = .center
         label.font = Fonts.montserratFont(with: 20, weight: .semibold)
@@ -33,7 +37,7 @@ class HotDishesViewController: BaseViewController {
     
     let collectionTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Первые блюда"
+        label.text = "Вторые блюда"
         label.textColor = .black
         label.textAlignment = .center
         label.font = Fonts.montserratFont(with: 20, weight: .semibold)
@@ -43,13 +47,7 @@ class HotDishesViewController: BaseViewController {
     let layout = UICollectionViewFlowLayout()
     var categoryProductsCollectionView: UICollectionView!
     
-    var categoryProductsContents: [CategoryProducts] = [
-        .init(categoryProductsImage: UIImage(named: "pig")!),
-        .init(categoryProductsImage: UIImage(named: "chicken")!),
-        .init(categoryProductsImage: UIImage(named: "fish")!),
-        .init(categoryProductsImage: UIImage(named: "vegetables")!),
-        .init(categoryProductsImage: UIImage(named: "mushrooms")!)
-        ]
+    var categoryProductsContents: [CategoryProducts] = CategoryProducts.allCategoryProductsContents()
     
     let lineView: UIView = {
         let view = UIView()
@@ -65,7 +63,13 @@ class HotDishesViewController: BaseViewController {
         super.viewDidLoad()
         setupViews()
         makeConstraints()
-        
+        viewModelHot.getHotDishesRecipes(categoryName: "Горячее") {
+            DispatchQueue.main.async {
+                self.catalogRecipeCollectionView.reloadData()
+            }
+        }
+        categoryProductsCollectionView.reloadData()
+        catalogRecipeCollectionView.reloadData()
     }
     
     override func setupViews() {
@@ -150,7 +154,7 @@ class HotDishesViewController: BaseViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-10)
         }
     }
-    
+
     @objc func backButtonAction() {
         navigationController?.popViewController(animated: true)
     }
@@ -163,7 +167,7 @@ extension HotDishesViewController: UICollectionViewDataSource {
             return categoryProductsContents.count
             
         } else if collectionView == catalogRecipeCollectionView {
-            return 5
+            return viewModelHot.recipesHotDishes.count
         }
         return 0
     }
@@ -194,6 +198,19 @@ extension HotDishesViewController: UICollectionViewDataSource {
             guard let cell = catalogRecipeCollectionView.dequeueReusableCell(withReuseIdentifier: "CatalogRecipesCollectionCell", for: indexPath) as? CatalogRecipesCollectionCell else {
                 fatalError("Unable to dequeue CategoriesProductsCell")
             }
+            
+            let recipe = viewModelHot.recipesHotDishes[indexPath.item]
+            
+            if let photoName = recipe.photo, let avatar = UIImage(named: photoName) {
+                let title = recipe.name
+                let description = recipe.ingredients
+                let calories = recipe.calories
+                let time = recipe.cookingTime
+                
+                cell.configure(title: title, image: avatar, description: description, calories: calories, time: time)
+            }
+            cell.applyShadow()
+            
             return cell
         }
         fatalError("Unexpected collection view")
@@ -235,3 +252,5 @@ extension HotDishesViewController: UICollectionViewDelegateFlowLayout {
         return 0
     }
 }
+
+
