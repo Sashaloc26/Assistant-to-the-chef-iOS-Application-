@@ -210,6 +210,8 @@ extension SnacksViewController: UICollectionViewDataSource {
                 
                 cell.configure(title: title, image: avatar, description: description, calories: calories, time: time)
             }
+            cell.applyShadow()
+
             return cell
         }
         fatalError("Unexpected collection view")
