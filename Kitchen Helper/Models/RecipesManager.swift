@@ -6,9 +6,9 @@ class RecipeManager {
     
     private init() {
         let config = Realm.Configuration(
-            schemaVersion: 5,
+            schemaVersion: 6,
             migrationBlock: { migration, oldSchemaVersion in
-                if oldSchemaVersion < 5 {
+                if oldSchemaVersion < 6 {
                     
                 }
             }
@@ -121,6 +121,37 @@ class RecipeManager {
             }
         } catch {
             print("Error deleting recipe: \(error.localizedDescription)")
+        }
+    }
+    
+    func toggleFavourite(for recipe: Recipe) {
+        do {
+            try realm.write {
+                recipe.favourites.toggle() 
+            }
+        } catch {
+            print("Error toggling favourite: \(error.localizedDescription)")
+        }
+    }
+    
+    func deleteFavourites(for recipe: Recipe) {
+        do {
+            try realm.write {
+                recipe.favourites = false
+            }
+        } catch {
+            print("Error toggling favourite: \(error.localizedDescription)")
+        }
+    }
+    
+    func getFavouriteRecipes() -> [Recipe] {
+        do {
+            let realm = try Realm()
+            let favouriteRecipes = realm.objects(Recipe.self).filter("favourites == true")
+            return Array(favouriteRecipes)
+        } catch {
+            print("Ошибка при получении избранных рецептов: \(error.localizedDescription)")
+            return []
         }
     }
 }

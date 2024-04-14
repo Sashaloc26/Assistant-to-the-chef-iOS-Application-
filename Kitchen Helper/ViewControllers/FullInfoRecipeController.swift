@@ -8,9 +8,12 @@
 import UIKit
 import SnapKit
 
-class FullInfoRecipeController: BaseViewController {
+class FullInfoRecipeController: BaseViewController, RecipeTableCellDelegate {
+    let viewModel = FullInfoRecipeViewModel()
     
     let gradientLayer = CAGradientLayer()
+    
+    var recipe: Recipe?
     
     let backButton = BackButton()
     let searchButton = SearchButton()
@@ -48,7 +51,6 @@ class FullInfoRecipeController: BaseViewController {
     let heartButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 30
-        button.backgroundColor = .lightGray
         return button
     }()
     
@@ -59,13 +61,14 @@ class FullInfoRecipeController: BaseViewController {
         return imageView
     }()
     
+    var isHeartButtonSelected = false
+    
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         makeConstraints()
-        
     }
     
     override func setupViews() {
@@ -78,7 +81,8 @@ class FullInfoRecipeController: BaseViewController {
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0.6, y: 0.6)
         
-        backButton.addTarget(self, action: #selector(backButtonAction) , for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
+        heartButton.addTarget(self, action: #selector(heartButtonAction), for: .touchUpInside)
         
         avatarImageView.contentMode = .scaleToFill
         
@@ -86,9 +90,21 @@ class FullInfoRecipeController: BaseViewController {
         whiteView.layer.maskedCorners = [.layerMinXMinYCorner]
         
         tableView.register(RecipeTableCell.self, forCellReuseIdentifier: "RecipeTableCell")
+        tableView.register(RecipeDescriptionCell.self, forCellReuseIdentifier: "RecipeDescriptionCell")
+        tableView.register(LineTableCell.self, forCellReuseIdentifier: "LineTableCell")
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        
+        avatarImageView.image = UIImage(named: recipe?.photo ?? "")
+        nameReciepLabel.text = recipe?.name 
+        
+        if recipe?.favourites == true {
+            heartButton.backgroundColor = UIColor(red: 0.96, green: 0.25, blue: 0.44, alpha: 1)
+        } else {
+            heartButton.backgroundColor = .lightGray
+        }
         
         view.layer.addSublayer(gradientLayer)
         view.addSubview(backButton)
@@ -121,7 +137,7 @@ class FullInfoRecipeController: BaseViewController {
         }
         
         avatarImageView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(29)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(28)
             make.bottom.equalTo(view.snp.centerY).offset(-16)
             make.leading.trailing.equalToSuperview()
         }
@@ -150,28 +166,79 @@ class FullInfoRecipeController: BaseViewController {
         }
         
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(nameReciepLabel.snp.bottom).offset(30)
-            make.leading.equalTo(nameReciepLabel.snp.leading)
-            make.trailing.equalTo(view.snp.trailing).offset(30)
-            make.bottom.equalTo((view.safeAreaLayoutGuide))
+            make.top.equalTo(nameReciepLabel.snp.bottom)
+            make.leading.equalTo(backButton.snp.leading)
+            make.trailing.equalTo(view.snp.trailing).offset(-20)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
     @objc func backButtonAction() {
         navigationController?.popViewController(animated: true)
     }
+    
+    @objc func heartButtonAction(sender: UIButton) {
+        if sender.backgroundColor == .lightGray {
+            viewModel.addToFavourites(recipe: recipe)
+            sender.backgroundColor = UIColor(red: 0.96, green: 0.25, blue: 0.44, alpha: 1)
+        } else {
+            viewModel.deleteFromFavourites(recipe: recipe)
+            sender.backgroundColor = .lightGray
+        }
+    }
+    
+    func didTapPlusButton(in cell: RecipeTableCell) {
+        guard tableView.indexPath(for: cell) != nil else { return }
+    }
 }
 
 extension FullInfoRecipeController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return 40
+        } else if indexPath.section == 1 {
+            return 3
+        } else {
+            return 500
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        20
+        if section == 0 {
+            return recipe?.ingredients.count ?? 0
+        } else if section == 1 {
+            return 1
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeTableCell", for: indexPath) as? RecipeTableCell else {
-            fatalError("Unable to dequeue RecipeTableCell")
+        if indexPath.section == 0 {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeTableCell", for: indexPath) as? RecipeTableCell {
+                if let ingredient = recipe?.ingredients[indexPath.row] {
+                    cell.configure(with: ingredient)
+                } else {
+                    cell.configure(with: "")
+                }
+                cell.delegate = self
+                return cell
+            } else {
+                return UITableViewCell()
+            }
+            
+        } else if indexPath.section == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "LineTableCell", for: indexPath) as? LineTableCell
+            return cell ?? UITableViewCell()
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "RecipeDescriptionCell", for: indexPath) as? RecipeDescriptionCell
+            cell?.configure(description: recipe?.instructions ?? "")
+            return cell ?? UITableViewCell()
         }
-        return cell
     }
 }
 

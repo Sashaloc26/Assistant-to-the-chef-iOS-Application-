@@ -5,7 +5,6 @@ class TabBarController: UITabBarController {
     let homeController = UINavigationController(rootViewController: HomeViewController())
     let favouritesController = UINavigationController(rootViewController: FavouritesViewController())
     let listController = UINavigationController(rootViewController: ListViewController())
-    let randomRecipeController = UINavigationController(rootViewController: RandomRecipeViewController())
     
 
 
@@ -15,7 +14,6 @@ class TabBarController: UITabBarController {
         homeController.navigationBar.isHidden = true
         favouritesController.navigationBar.isHidden = true
         listController.navigationBar.isHidden = true
-        randomRecipeController.navigationBar.isHidden = true
 
 
         tabBar.isTranslucent = false
@@ -34,7 +32,6 @@ class TabBarController: UITabBarController {
             homeController,
             favouritesController,
             listController,
-            randomRecipeController,
         ]
         
         homeController.tabBarItem = UITabBarItem(
@@ -51,12 +48,6 @@ class TabBarController: UITabBarController {
             title: "Список",
             image: UIImage(systemName: "list.bullet.rectangle.portrait"),
             tag: 2)
-        
-        randomRecipeController.tabBarItem = UITabBarItem(
-            title: "Cлучайный рецепт",
-            image: UIImage(systemName: "dice"),
-            tag: 2)
-
         
     }
 }

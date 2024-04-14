@@ -14,4 +14,10 @@ class SaladsViewModel {
         self.recipesSalads = RecipeManager.shared.getRecipesForCategory(categoryName)
         completion()
     }
+    
+    func filterRecipesByIngredient(_ ingredient: String) {
+        recipesSalads = recipesSalads.filter { recipe in
+            return recipe.ingredients.contains(ingredient)
+        }
+    }
 }

@@ -58,19 +58,26 @@ class SaladsViewController: BaseViewController {
     var catalogRecipeCollectionView: UICollectionView!
     let catalogLayout = UICollectionViewFlowLayout()
 
+    var isFiltered = true
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         makeConstraints()
+       
+        categoryProductsCollectionView.reloadData()
+        catalogRecipeCollectionView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         viewModelSalads.getSaladsRecipes(categoryName: "Салаты") {
             DispatchQueue.main.async {
                 self.catalogRecipeCollectionView.reloadData()
             }
         }
-        categoryProductsCollectionView.reloadData()
-        catalogRecipeCollectionView.reloadData()
-
     }
     
     override func setupViews() {
@@ -207,8 +214,9 @@ extension SaladsViewController: UICollectionViewDataSource {
                 let description = recipe.ingredients
                 let calories = recipe.calories
                 let time = recipe.cookingTime
+                let isFavourite = recipe.favourites
                 
-                cell.configure(title: title, image: avatar, description: description, calories: calories, time: time)
+                cell.configure(title: title, image: avatar, description: description, calories: calories, time: time, isFavourite: isFavourite)
             }
             cell.applyShadow()
 
@@ -219,8 +227,61 @@ extension SaladsViewController: UICollectionViewDataSource {
 }
 
 extension SaladsViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
+        if collectionView == categoryProductsCollectionView {
+            if indexPath.item == 0 {
+                if isFiltered {
+                    isFiltered = false
+                    viewModelSalads.filterRecipesByIngredient("Свинина")
+                } else {
+                    isFiltered = true
+                    viewModelSalads.getSaladsRecipes(categoryName: "Салаты") {}
+                }
+            } else if indexPath.item == 1{
+                if isFiltered {
+                    isFiltered = false
+                    viewModelSalads.filterRecipesByIngredient("Рыба")
+                } else {
+                    isFiltered = true
+                    viewModelSalads.getSaladsRecipes(categoryName: "Салаты") {}
+                }
+            } else if indexPath.item == 2 {
+                if isFiltered {
+                    isFiltered = false
+                    viewModelSalads.filterRecipesByIngredient("Курица")
+                } else {
+                    isFiltered = true
+                    viewModelSalads.getSaladsRecipes(categoryName: "Салаты") {}
+                }
+            } else if indexPath.item == 3 {
+                if isFiltered {
+                    isFiltered = false
+                    viewModelSalads.filterRecipesByIngredient("Овощи")
+                } else {
+                    isFiltered = true
+                    viewModelSalads.getSaladsRecipes(categoryName: "Салаты") {}
+                }
+            } else if indexPath.item == 4 {
+                if isFiltered {
+                    isFiltered = false
+                    viewModelSalads.filterRecipesByIngredient("Грибы")
+                } else {
+                    isFiltered = true
+                    viewModelSalads.getSaladsRecipes(categoryName: "Салаты") {}
+                }
+            }
+            
+            self.catalogRecipeCollectionView.reloadData()
+            
+        } else if collectionView ==  catalogRecipeCollectionView  {
+            let soupRecipe = viewModelSalads.recipesSalads[indexPath.row]
+            let nextController = FullInfoRecipeController()
+            nextController.recipe = soupRecipe
+            navigationController?.pushViewController(nextController, animated: true)
+        }
+    }
 }
+
 
 extension SaladsViewController: UICollectionViewDelegateFlowLayout {
     

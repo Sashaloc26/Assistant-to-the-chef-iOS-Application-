@@ -9,7 +9,6 @@ import Foundation
 import RealmSwift
 
 class HotDishesViewModel {
-    
     var recipesHotDishes: [Recipe] = []
     
     func getHotDishesRecipes(categoryName: String, completion: @escaping () -> Void) {
@@ -17,4 +16,9 @@ class HotDishesViewModel {
         completion()
     }
     
+    func filterRecipesByIngredient(_ ingredient: String) {
+        recipesHotDishes = recipesHotDishes.filter { recipe in
+            return recipe.ingredients.contains(ingredient)
+        }
+    }
 }
