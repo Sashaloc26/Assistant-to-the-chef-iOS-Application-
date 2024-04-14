@@ -57,22 +57,28 @@ class SoupsViewController: BaseViewController {
     
     var catalogRecipeCollectionView: UICollectionView!
     let catalogLayout = UICollectionViewFlowLayout()
-
+    
+    var isFiltered = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         makeConstraints()
+        
+        categoryProductsCollectionView.reloadData()
+        catalogRecipeCollectionView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         viewModelSoup.getSoupRecipes(categoryName: "Супы") {
             DispatchQueue.main.async {
                 self.catalogRecipeCollectionView.reloadData()
             }
         }
-        
-        categoryProductsCollectionView.reloadData()
-        catalogRecipeCollectionView.reloadData()
-
     }
+
     
     override func setupViews() {
         super.setupViews()
@@ -201,14 +207,15 @@ extension SoupsViewController: UICollectionViewDataSource {
                 fatalError("Unable to dequeue CategoriesProductsCell")
             }
             
-            let recipe = viewModelSoup.soupsRecipes[indexPath.item]
-            if let photoName = recipe.photo, let avatar = UIImage(named: photoName) {
+                let recipe = viewModelSoup.soupsRecipes[indexPath.item]
+                if let photoName = recipe.photo, let avatar = UIImage(named: photoName) {
                 let title = recipe.name
                 let description = recipe.ingredients
                 let calories = recipe.calories
                 let time = recipe.cookingTime
+                let isFavourite = recipe.favourites
                 
-                cell.configure(title: title, image: avatar, description: description, calories: calories, time: time)
+                cell.configure(title: title, image: avatar, description: description, calories: calories, time: time, isFavourite: isFavourite)
             }
             cell.applyShadow()
             
@@ -220,8 +227,57 @@ extension SoupsViewController: UICollectionViewDataSource {
 
 extension SoupsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let nextController = FullInfoRecipeController()
-        navigationController?.pushViewController(nextController, animated: true)
+        if collectionView == categoryProductsCollectionView {
+            if indexPath.item == 0 {
+                if isFiltered {
+                    isFiltered = false
+                    viewModelSoup.filterRecipesByIngredient("Свинина")
+                } else {
+                    isFiltered = true
+                    viewModelSoup.getSoupRecipes(categoryName: "Супы") {}
+                }
+            } else if indexPath.item == 1{
+                if isFiltered {
+                    isFiltered = false
+                    viewModelSoup.filterRecipesByIngredient("Рыба")
+                } else {
+                    isFiltered = true
+                    viewModelSoup.getSoupRecipes(categoryName: "Супы") {}
+                }
+            } else if indexPath.item == 2 {
+                if isFiltered {
+                    isFiltered = false
+                    viewModelSoup.filterRecipesByIngredient("Курица")
+                } else {
+                    isFiltered = true
+                    viewModelSoup.getSoupRecipes(categoryName: "Супы") {}
+                }
+            } else if indexPath.item == 3 {
+                if isFiltered {
+                    isFiltered = false
+                    viewModelSoup.filterRecipesByIngredient("Овощи")
+                } else {
+                    isFiltered = true
+                    viewModelSoup.getSoupRecipes(categoryName: "Супы") {}
+                }
+            } else if indexPath.item == 4 {
+                if isFiltered {
+                    isFiltered = false
+                    viewModelSoup.filterRecipesByIngredient("Грибы")
+                } else {
+                    isFiltered = true
+                    viewModelSoup.getSoupRecipes(categoryName: "Супы") {}
+                }
+            }
+            
+            self.catalogRecipeCollectionView.reloadData()
+            
+        } else if collectionView ==  catalogRecipeCollectionView  {
+            let soupRecipe = viewModelSoup.soupsRecipes[indexPath.row]
+            let nextController = FullInfoRecipeController()
+            nextController.recipe = soupRecipe
+            navigationController?.pushViewController(nextController, animated: true)
+        }
     }
 }
 

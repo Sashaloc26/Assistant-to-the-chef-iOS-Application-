@@ -167,7 +167,7 @@ class CatalogRecipesCollectionCell: UICollectionViewCell {
         heartButton.layer.masksToBounds = false
     }
     
-    func configure(title: String, image: UIImage, description: List<String>, calories: String, time: String) {
+    func configure(title: String, image: UIImage, description: List<String>, calories: String, time: String, isFavourite: Bool) {
         
         let descriptionArray = Array(description)
         catalogAvatarRecipeImageView.image = image
@@ -175,5 +175,6 @@ class CatalogRecipesCollectionCell: UICollectionViewCell {
         descriptionRecipe.text = descriptionArray.joined(separator: "\n")
         caloriesRecipeLabel.text = calories
         cookingTimeRecipeLabel.text = time
+        heartButton.backgroundColor = isFavourite ? UIColor(red: 0.96, green: 0.25, blue: 0.44, alpha: 1) : .lightGray
     }
 }

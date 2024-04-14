@@ -14,4 +14,10 @@ class SnacksViewModel {
         self.recipesSnacks = RecipeManager.shared.getRecipesForCategory(categoryName)
         completion()
     }
+    
+    func filterRecipesByIngredient(_ ingredient: String) {
+        recipesSnacks = recipesSnacks.filter { recipe in
+            return recipe.ingredients.contains(ingredient)
+        }
+    }
 }

@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "Depositphotos_317072004_l-2015_1574144770-e1574144841571-630x315.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

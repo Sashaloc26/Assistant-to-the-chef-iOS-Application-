@@ -57,20 +57,29 @@ class DessertViewController: BaseViewController {
     
     var catalogRecipeCollectionView: UICollectionView!
     let catalogLayout = UICollectionViewFlowLayout()
+    
+    var isFiltered = true
+
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         makeConstraints()
+        
+        categoryProductsCollectionView.reloadData()
+        catalogRecipeCollectionView.reloadData()
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         viewModelDesserts.getDessertsRecipes(categoryName: "Десерты") {
             DispatchQueue.main.async {
                 self.catalogRecipeCollectionView.reloadData()
             }
         }
-        categoryProductsCollectionView.reloadData()
-        catalogRecipeCollectionView.reloadData()
-
     }
     
     override func setupViews() {
@@ -127,31 +136,14 @@ class DessertViewController: BaseViewController {
             make.centerX.equalToSuperview()
         }
         
-        ingredientsLabel.snp.makeConstraints { make in
-            make.top.equalTo(backButton.snp.bottom).offset(45)
-            make.leading.equalToSuperview().offset(20)
-        }
-        
-        categoryProductsCollectionView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(10)
-            make.top.equalTo(ingredientsLabel.snp.bottom).offset(20)
-            make.height.equalTo(50)
-        }
-        
-        lineView.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.top.equalTo(categoryProductsCollectionView.snp.bottom).offset(20)
-            make.height.equalTo(4)
-        }
-        
         collectionTitleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(ingredientsLabel.snp.leading)
-            make.top.equalTo(lineView.snp.bottom).offset(30)
+            make.leading.equalToSuperview().offset(20)
+            make.top.equalTo(titleLabel.snp.bottom).offset(30)
         }
         
         catalogRecipeCollectionView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(25)
-            make.top.equalTo(collectionTitleLabel.snp.bottom).offset(20)
+            make.top.equalTo(view.safeAreaLayoutGuide).offset(100)
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-10)
         }
     }
@@ -164,93 +156,57 @@ class DessertViewController: BaseViewController {
 
 extension DessertViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == categoryProductsCollectionView {
-            return categoryProductsContents.count
-            
-        } else if collectionView == catalogRecipeCollectionView {
-            return viewModelDesserts.recipesDesserts.count
-        }
-        return 0
+        return viewModelDesserts.recipesDesserts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == categoryProductsCollectionView {
-            guard let cell = categoryProductsCollectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesProductsCell", for: indexPath) as? CategoriesProductsCell else {
-                fatalError("Unable to dequeue CategoriesProductsCell")
-            }
-            
-            let content = categoryProductsContents[indexPath.item]
-            cell.configure(image: content.categoryProductsImage)
-            
-            let shadowPathRect = CGRect(x: 0, y: 0, width: cell.bounds.width, height: cell.bounds.height)
-            
-            cell.layer.borderWidth = 0.3
-            cell.layer.borderColor = UIColor.lightGray.cgColor
-            cell.layer.shadowPath = UIBezierPath(rect: shadowPathRect).cgPath
-            cell.layer.shadowColor = UIColor.black.cgColor
-            cell.layer.shadowOffset = CGSize.zero
-            cell.layer.shadowOpacity = 0.2
-            cell.layer.shadowRadius = 5.0
-            cell.layer.masksToBounds = false
-            
-            return cell
-            
-        } else if collectionView == catalogRecipeCollectionView {
-            guard let cell = catalogRecipeCollectionView.dequeueReusableCell(withReuseIdentifier: "CatalogRecipesCollectionCell", for: indexPath) as? CatalogRecipesCollectionCell else {
-                fatalError("Unable to dequeue CategoriesProductsCell")
-            }
-            
-            let recipe = viewModelDesserts.recipesDesserts[indexPath.item]
-            
-            if let photoName = recipe.photo, let avatar = UIImage(named: photoName) {
-                let title = recipe.name
-                let description = recipe.ingredients
-                let calories = recipe.calories
-                let time = recipe.cookingTime
-                
-                cell.configure(title: title, image: avatar, description: description, calories: calories, time: time)
-            }
-            cell.applyShadow()
-
-            return cell
+        guard let cell = catalogRecipeCollectionView.dequeueReusableCell(withReuseIdentifier: "CatalogRecipesCollectionCell", for: indexPath) as? CatalogRecipesCollectionCell else {
+            fatalError("Unable to dequeue CategoriesProductsCell")
         }
-        fatalError("Unexpected collection view")
+        
+        let recipe = viewModelDesserts.recipesDesserts[indexPath.item]
+        
+        if let photoName = recipe.photo, let avatar = UIImage(named: photoName) {
+            let title = recipe.name
+            let description = recipe.ingredients
+            let calories = recipe.calories
+            let time = recipe.cookingTime
+            let isFavourite = recipe.favourites
+            
+            cell.configure(title: title, image: avatar, description: description, calories: calories, time: time, isFavourite: isFavourite)
+        }
+        cell.applyShadow()
+        
+        return cell
     }
 }
 
+
+
 extension DessertViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let soupRecipe = viewModelDesserts.recipesDesserts[indexPath.row]
+        let nextController = FullInfoRecipeController()
+        nextController.recipe = soupRecipe
+        navigationController?.pushViewController(nextController, animated: true)
+    }
 }
 
+
 extension DessertViewController: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
             return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == categoryProductsCollectionView {
-            categoryProductsCollectionView.superview?.setNeedsLayout()
-            categoryProductsCollectionView.superview?.layoutIfNeeded()
-            
-            return CGSize(width: categoryProductsCollectionView.bounds.width * 0.15, height: categoryProductsCollectionView.bounds.height)
-            
-        } else if collectionView == catalogRecipeCollectionView && UIScreen.main.bounds.height <= 568 {
             catalogRecipeCollectionView.superview?.setNeedsLayout()
             catalogRecipeCollectionView.superview?.layoutIfNeeded()
-            
-            return CGSize(width: catalogRecipeCollectionView.bounds.width, height: catalogRecipeCollectionView.bounds.height * 0.6)
-            
-        } else {
-            return CGSize(width: catalogRecipeCollectionView.bounds.width, height: catalogRecipeCollectionView.bounds.height * 0.35)
+                        
+        return CGSize(width: catalogRecipeCollectionView.bounds.width, height: catalogRecipeCollectionView.bounds.height * 0.25)
         }
-    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        if collectionView == catalogRecipeCollectionView {
             return 30
-        }
-        return 0
     }
 }
 

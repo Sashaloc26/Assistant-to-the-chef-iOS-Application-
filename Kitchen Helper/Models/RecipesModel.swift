@@ -27,3 +27,8 @@ class RecipeCategory: Object {
     let recipes = List<Recipe>()
 }
 
+class Purchase: Object {
+    @Persisted(primaryKey: true) var id: String = UUID().uuidString
+    @Persisted var name: String = ""
+}
+
