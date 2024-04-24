@@ -19,9 +19,7 @@ class PurchaseListManager {
         }
     }()
     
-    func addPurchase(_ purchase: String) {
-        let allPurchases = getAllPurchases()
-        
+    func addPurchase(_ purchase: String) {        
         let newPurchaseList = Purchase()
         newPurchaseList.name = purchase
         

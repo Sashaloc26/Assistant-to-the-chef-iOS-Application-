@@ -17,7 +17,7 @@ class FavouritesViewController: BaseViewController {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Избранные"
+        label.text = "Favorites"
         label.textColor = .white
         label.textAlignment = .center
         label.font = Fonts.montserratFont(with: 20, weight: .semibold)
@@ -26,8 +26,8 @@ class FavouritesViewController: BaseViewController {
     
     var catalogRecipeCollectionView: UICollectionView!
     let catalogLayout = UICollectionViewFlowLayout()
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -43,7 +43,7 @@ class FavouritesViewController: BaseViewController {
             }
         }
     }
-
+    
     override func setupViews() {
         super.setupViews()
         
@@ -54,6 +54,7 @@ class FavouritesViewController: BaseViewController {
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0.6, y: 0.6)
         
+        searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
         
         catalogRecipeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: catalogLayout)
         catalogRecipeCollectionView.register(CatalogRecipesCollectionCell.self, forCellWithReuseIdentifier: "CatalogRecipesCollectionCell")
@@ -91,6 +92,11 @@ class FavouritesViewController: BaseViewController {
     @objc func backButtonAction() {
         navigationController?.popViewController(animated: true)
     }
+    
+    @objc func searchAction() {
+        let searchController = SeacrhViewController()
+        navigationController?.pushViewController(searchController, animated: true)
+    }
 }
 
 extension FavouritesViewController: UICollectionViewDataSource {
@@ -99,26 +105,26 @@ extension FavouritesViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            
-            guard let cell = catalogRecipeCollectionView.dequeueReusableCell(withReuseIdentifier: "CatalogRecipesCollectionCell", for: indexPath) as? CatalogRecipesCollectionCell else {
-                fatalError("Unable to dequeue CategoriesProductsCell")
-            }
-            
-            let recipe = viewModel.favouritesRecipes[indexPath.item]
-            if let photoName = recipe.photo, let avatar = UIImage(named: photoName) {
-                let title = recipe.name
-                let description = recipe.ingredients
-                let calories = recipe.calories
-                let time = recipe.cookingTime
-                let isFavourite = recipe.favourites
-                
-                cell.configure(title: title, image: avatar, description: description, calories: calories, time: time, isFavourite: isFavourite)
-            }
-            cell.applyShadow()
-            
-            return cell
+        
+        guard let cell = catalogRecipeCollectionView.dequeueReusableCell(withReuseIdentifier: "CatalogRecipesCollectionCell", for: indexPath) as? CatalogRecipesCollectionCell else {
+            fatalError("Unable to dequeue CategoriesProductsCell")
         }
+        
+        let recipe = viewModel.favouritesRecipes[indexPath.item]
+        if let photoName = recipe.photo, let avatar = UIImage(named: photoName) {
+            let title = recipe.name
+            let description = recipe.ingredients
+            let calories = recipe.calories
+            let time = recipe.cookingTime
+            let isFavourite = recipe.favourites
+            
+            cell.configure(title: title, image: avatar, description: description, calories: calories, time: time, isFavourite: isFavourite)
+        }
+        cell.applyShadow()
+        
+        return cell
     }
+}
 
 extension FavouritesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

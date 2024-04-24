@@ -26,7 +26,6 @@ class CatalogRecipesCollectionCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .black
         label.font = Fonts.montserratFont(with: 16, weight: .semibold)
-        label.text = "Суп из тыквы"
         return label
     }()
     
@@ -35,7 +34,6 @@ class CatalogRecipesCollectionCell: UICollectionViewCell {
         label.textColor = .lightGray
         label.font = Fonts.montserratFont(with: 14, weight: .medium)
         label.numberOfLines = 0
-        label.text = "Бураки, говядина, картошка, капуста"
         label.textAlignment = .natural
         return label
     }()
@@ -132,7 +130,6 @@ class CatalogRecipesCollectionCell: UICollectionViewCell {
             make.top.equalTo(descriptionRecipe.snp.bottom)
             make.bottom.equalTo(containerView.snp.bottom)
             make.width.equalTo(30)
-            
         }
         
         heartButton.snp.makeConstraints { make in
@@ -157,7 +154,6 @@ class CatalogRecipesCollectionCell: UICollectionViewCell {
         containerView.layer.shadowRadius = 4.0
         containerView.layer.masksToBounds = false
         
-        
         let circlePath = UIBezierPath(roundedRect: heartButton.bounds, cornerRadius: heartButton.bounds.size.width / 2.0)
         heartButton.layer.shadowPath = circlePath.cgPath
         heartButton.layer.shadowColor = UIColor.black.cgColor
@@ -168,7 +164,6 @@ class CatalogRecipesCollectionCell: UICollectionViewCell {
     }
     
     func configure(title: String, image: UIImage, description: List<String>, calories: String, time: String, isFavourite: Bool) {
-        
         let descriptionArray = Array(description)
         catalogAvatarRecipeImageView.image = image
         titleRecipeLabel.text = title

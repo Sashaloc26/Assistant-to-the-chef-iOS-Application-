@@ -10,12 +10,10 @@ import RealmSwift
 
 
 class ListViewModel {
-    
     var purchaseList: [Purchase] = []
     
     func getPurchaseList(completion: @escaping () -> Void) {
         self.purchaseList = PurchaseListManager.shared.getAllPurchases()
-        print(purchaseList.count)
         completion()
     }
     

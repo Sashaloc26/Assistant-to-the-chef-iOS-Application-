@@ -11,7 +11,7 @@ import RealmSwift
 
 class SnacksViewController: BaseViewController {
     let viewModelSnacks = SnacksViewModel()
-
+    
     let gradientLayer = CAGradientLayer()
     
     let searchButton = SearchButton()
@@ -19,7 +19,7 @@ class SnacksViewController: BaseViewController {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Закуски"
+        label.text = "Snacks"
         label.textColor = .white
         label.textAlignment = .center
         label.font = Fonts.montserratFont(with: 20, weight: .semibold)
@@ -28,7 +28,7 @@ class SnacksViewController: BaseViewController {
     
     let ingredientsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Ингрeдиенты"
+        label.text = "Ingredients"
         label.textColor = .black
         label.textAlignment = .center
         label.font = Fonts.montserratFont(with: 20, weight: .semibold)
@@ -37,7 +37,7 @@ class SnacksViewController: BaseViewController {
     
     let collectionTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Закуски"
+        label.text = "Snacks"
         label.textColor = .black
         label.textAlignment = .center
         label.font = Fonts.montserratFont(with: 20, weight: .semibold)
@@ -57,23 +57,23 @@ class SnacksViewController: BaseViewController {
     
     var catalogRecipeCollectionView: UICollectionView!
     let catalogLayout = UICollectionViewFlowLayout()
-
+    
     var isFiltered = true
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         makeConstraints()
-                categoryProductsCollectionView.reloadData()
+        categoryProductsCollectionView.reloadData()
         catalogRecipeCollectionView.reloadData()
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModelSnacks.getSnacksRecipes(categoryName: "Закуски") {
+        viewModelSnacks.getSnacksRecipes(categoryName: "Snacks") {
             DispatchQueue.main.async {
                 self.catalogRecipeCollectionView.reloadData()
             }
@@ -89,9 +89,10 @@ class SnacksViewController: BaseViewController {
                                 UIColor(red: 247/255, green: 65/255, blue: 114/255, alpha: 1.0).cgColor]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0.6, y: 0.6)
-
+        
         
         backButton.addTarget(self, action: #selector(backButtonAction) , for: .touchUpInside)
+        searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
         
         categoryProductsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         categoryProductsCollectionView.register(CategoriesProductsCell.self, forCellWithReuseIdentifier: "CategoriesProductsCell")
@@ -162,12 +163,16 @@ class SnacksViewController: BaseViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-10)
         }
     }
-
+    
     @objc func backButtonAction() {
         navigationController?.popViewController(animated: true)
     }
+    
+    @objc func searchAction() {
+        let searchController = SeacrhViewController()
+        navigationController?.pushViewController(searchController, animated: true)
+    }
 }
-
 
 extension SnacksViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -219,7 +224,7 @@ extension SnacksViewController: UICollectionViewDataSource {
                 cell.configure(title: title, image: avatar, description: description, calories: calories, time: time, isFavourite: isFavourite)
             }
             cell.applyShadow()
-
+            
             return cell
         }
         fatalError("Unexpected collection view")
@@ -227,47 +232,47 @@ extension SnacksViewController: UICollectionViewDataSource {
 }
 
 extension SnacksViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == categoryProductsCollectionView {
             if indexPath.item == 0 {
                 if isFiltered {
                     isFiltered = false
-                    viewModelSnacks.filterRecipesByIngredient("Свинина")
+                    viewModelSnacks.filterRecipesByIngredient("Pork")
                 } else {
                     isFiltered = true
-                    viewModelSnacks.getSnacksRecipes(categoryName: "Закуски") {}
+                    viewModelSnacks.getSnacksRecipes(categoryName: "Snacks") {}
                 }
             } else if indexPath.item == 1{
                 if isFiltered {
                     isFiltered = false
-                    viewModelSnacks.filterRecipesByIngredient("Рыба")
+                    viewModelSnacks.filterRecipesByIngredient("Fish")
                 } else {
                     isFiltered = true
-                    viewModelSnacks.getSnacksRecipes(categoryName: "Закуски") {}
+                    viewModelSnacks.getSnacksRecipes(categoryName: "Snacks") {}
                 }
             } else if indexPath.item == 2 {
                 if isFiltered {
                     isFiltered = false
-                    viewModelSnacks.filterRecipesByIngredient("Курица")
+                    viewModelSnacks.filterRecipesByIngredient("Chicken")
                 } else {
                     isFiltered = true
-                    viewModelSnacks.getSnacksRecipes(categoryName: "Закуски") {}
+                    viewModelSnacks.getSnacksRecipes(categoryName: "Snacks") {}
                 }
             } else if indexPath.item == 3 {
                 if isFiltered {
                     isFiltered = false
-                    viewModelSnacks.filterRecipesByIngredient("Овощи")
+                    viewModelSnacks.filterRecipesByIngredient("Vegetables")
                 } else {
                     isFiltered = true
-                    viewModelSnacks.getSnacksRecipes(categoryName: "Закуски") {}
+                    viewModelSnacks.getSnacksRecipes(categoryName: "Snacks") {}
                 }
             } else if indexPath.item == 4 {
                 if isFiltered {
                     isFiltered = false
-                    viewModelSnacks.filterRecipesByIngredient("Грибы")
+                    viewModelSnacks.filterRecipesByIngredient("Mushrooms")
                 } else {
                     isFiltered = true
-                    viewModelSnacks.getSnacksRecipes(categoryName: "Закуски") {}
+                    viewModelSnacks.getSnacksRecipes(categoryName: "Snacks") {}
                 }
             }
             
@@ -283,9 +288,8 @@ extension SnacksViewController: UICollectionViewDelegate {
 }
 
 extension SnacksViewController: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

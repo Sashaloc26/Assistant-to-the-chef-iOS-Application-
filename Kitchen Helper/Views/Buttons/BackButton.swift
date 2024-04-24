@@ -8,7 +8,6 @@
 import UIKit
 
 class BackButton: UIButton {
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupButton()
