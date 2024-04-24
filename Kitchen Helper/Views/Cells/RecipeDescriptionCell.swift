@@ -16,7 +16,7 @@ class RecipeDescriptionCell: UITableViewCell {
         textView.font = Fonts.montserratFont(with: 16, weight: .regular)
         return textView
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
@@ -27,7 +27,6 @@ class RecipeDescriptionCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
 
 extension RecipeDescriptionCell {
     func setupViews () {

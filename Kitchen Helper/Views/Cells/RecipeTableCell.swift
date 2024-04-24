@@ -13,9 +13,8 @@ protocol RecipeTableCellDelegate: AnyObject {
 }
 
 class RecipeTableCell: UITableViewCell {
-    
     weak var delegate: RecipeTableCellDelegate?
-
+    
     private let dotView: UIView = {
         let view = UIView()
         view.backgroundColor = .lightGray
@@ -39,25 +38,25 @@ class RecipeTableCell: UITableViewCell {
     }()
     
     private let minusImage: UIImageView = {
-            let imageView = UIImageView()
-            imageView.image = UIImage(systemName: "minus")
-            imageView.tintColor = UIColor(red: 0.96, green: 0.25, blue: 0.44, alpha: 0.7)
-            return imageView
-        }()
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "minus")
+        imageView.tintColor = UIColor(red: 0.96, green: 0.25, blue: 0.44, alpha: 0.7)
+        return imageView
+    }()
     
     var isPlusButtonTapped: Bool = false {
-          didSet {
-              if isPlusButtonTapped {
-                  plusImage.image = UIImage(systemName: "minus")
-                  plusImage.tintColor = .lightGray
-                  plusButton.layer.borderColor = UIColor.lightGray.cgColor
-              } else {
-                  plusImage.image = UIImage(systemName: "plus")
-                  plusImage.tintColor = UIColor(red: 0.96, green: 0.25, blue: 0.44, alpha: 1)
-                  plusButton.layer.borderColor = UIColor(red: 0.96, green: 0.25, blue: 0.44, alpha: 1).cgColor
-              }
-          }
-      }
+        didSet {
+            if isPlusButtonTapped {
+                plusImage.image = UIImage(systemName: "minus")
+                plusImage.tintColor = .lightGray
+                plusButton.layer.borderColor = UIColor.lightGray.cgColor
+            } else {
+                plusImage.image = UIImage(systemName: "plus")
+                plusImage.tintColor = UIColor(red: 0.96, green: 0.25, blue: 0.44, alpha: 1)
+                plusButton.layer.borderColor = UIColor(red: 0.96, green: 0.25, blue: 0.44, alpha: 1).cgColor
+            }
+        }
+    }
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -118,7 +117,7 @@ extension RecipeTableCell {
     }
     
     @objc private func plusButtonTapped() {
-            isPlusButtonTapped.toggle()
-            delegate?.didTapPlusButton(in: self)
-        }
+        isPlusButtonTapped.toggle()
+        delegate?.didTapPlusButton(in: self)
+    }
 }

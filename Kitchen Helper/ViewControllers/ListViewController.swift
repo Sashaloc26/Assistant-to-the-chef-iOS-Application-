@@ -14,7 +14,7 @@ class ListViewController: BaseViewController{
     let gradientLayer = CAGradientLayer()
     
     let searchButton = SearchButton()
-
+    
     let whiteView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -23,13 +23,13 @@ class ListViewController: BaseViewController{
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Список покупок"
+        label.text = "Shopping list"
         label.textColor = .white
         label.textAlignment = .center
         label.font = Fonts.montserratFont(with: 20, weight: .semibold)
         return label
     }()
-
+    
     let tableView = UITableView(frame: .zero, style: .insetGrouped)
     
     let plusButton: UIButton = {
@@ -55,7 +55,7 @@ class ListViewController: BaseViewController{
         }
         setupViews()
         makeConstraints()
-
+        
     }
     
     override func makeConstraints() {
@@ -93,9 +93,8 @@ class ListViewController: BaseViewController{
             make.centerY.equalTo(plusButton)
             make.width.height.equalTo(45)
         }
-        
     }
-
+    
     override func setupViews() {
         super.setupViews()
         view.backgroundColor = UIColor(red: 0.90, green: 0.90, blue: 0.90, alpha: 1)
@@ -109,9 +108,9 @@ class ListViewController: BaseViewController{
         whiteView.layer.cornerRadius = 100
         whiteView.layer.maskedCorners = [.layerMinXMinYCorner]
         
-
+        searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
+        
         tableView.dataSource = self
-        tableView.delegate = self
         tableView.register(ListTableViewCell.self, forCellReuseIdentifier: "ListTableViewCell")
         tableView.backgroundColor = .white
         tableView.layer.shadowColor = UIColor.black.cgColor
@@ -130,6 +129,11 @@ class ListViewController: BaseViewController{
         view.addSubview(tableView)
         view.addSubview(plusButton)
         plusButton.addSubview(plusImage)
+    }
+    
+    @objc func searchAction() {
+        let searchController = SeacrhViewController()
+        navigationController?.pushViewController(searchController, animated: true)
     }
     
     @objc func addPurchase() {
@@ -161,7 +165,7 @@ extension ListViewController: UITableViewDataSource {
         }
         
         let purchase = viewModel.purchaseList[indexPath.row]
-                
+        
         cell.configure(with: purchase.name)
         
         cell.trashButton.tag = indexPath.row
@@ -169,12 +173,10 @@ extension ListViewController: UITableViewDataSource {
         
         return cell
     }
-
+    
     @objc func deleteButtonTapped(_ sender: UIButton) {
         let index = sender.tag
-        
         let purchaseList = viewModel.purchaseList
-        
         let purchase = purchaseList[index]
         
         PurchaseListManager.shared.deletePurchase(purchase)
@@ -188,6 +190,3 @@ extension ListViewController: UITableViewDataSource {
     }
 }
 
-extension ListViewController: UITableViewDelegate {
-    
-}

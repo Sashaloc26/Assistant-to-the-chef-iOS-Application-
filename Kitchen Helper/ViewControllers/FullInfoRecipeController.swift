@@ -20,7 +20,6 @@ class FullInfoRecipeController: BaseViewController, RecipeTableCellDelegate {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Первые блюда"
         label.textColor = .white
         label.textAlignment = .center
         label.font = Fonts.montserratFont(with: 20, weight: .semibold)
@@ -29,7 +28,6 @@ class FullInfoRecipeController: BaseViewController, RecipeTableCellDelegate {
     
     let nameReciepLabel: UILabel = {
         let label = UILabel()
-        label.text = "Борщ"
         label.textColor = .black
         label.textAlignment = .center
         label.font = Fonts.montserratFont(with: 20, weight: .semibold)
@@ -83,6 +81,7 @@ class FullInfoRecipeController: BaseViewController, RecipeTableCellDelegate {
         
         backButton.addTarget(self, action: #selector(backButtonAction), for: .touchUpInside)
         heartButton.addTarget(self, action: #selector(heartButtonAction), for: .touchUpInside)
+        searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
         
         avatarImageView.contentMode = .scaleToFill
         
@@ -93,12 +92,12 @@ class FullInfoRecipeController: BaseViewController, RecipeTableCellDelegate {
         tableView.register(RecipeDescriptionCell.self, forCellReuseIdentifier: "RecipeDescriptionCell")
         tableView.register(LineTableCell.self, forCellReuseIdentifier: "LineTableCell")
         tableView.dataSource = self
-        tableView.delegate = self
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         
         avatarImageView.image = UIImage(named: recipe?.photo ?? "")
-        nameReciepLabel.text = recipe?.name 
+        nameReciepLabel.text = recipe?.name
+        titleLabel.text = recipe?.name
         
         if recipe?.favourites == true {
             heartButton.backgroundColor = UIColor(red: 0.96, green: 0.25, blue: 0.44, alpha: 1)
@@ -177,6 +176,11 @@ class FullInfoRecipeController: BaseViewController, RecipeTableCellDelegate {
         navigationController?.popViewController(animated: true)
     }
     
+    @objc func searchAction() {
+        let searchController = SeacrhViewController()
+        present(searchController, animated: true)
+    }
+    
     @objc func heartButtonAction(sender: UIButton) {
         if sender.backgroundColor == .lightGray {
             viewModel.addToFavourites(recipe: recipe)
@@ -240,8 +244,4 @@ extension FullInfoRecipeController: UITableViewDataSource {
             return cell ?? UITableViewCell()
         }
     }
-}
-
-extension FullInfoRecipeController: UITableViewDelegate {
-    
 }

@@ -15,12 +15,12 @@ struct CategoryContent {
     
     static func allCategoryContents() -> [CategoryContent] {
         return [
-            CategoryContent(categoryText: "Первые блюда", categoryImage: UIImage(named: "soup")!),
-            CategoryContent(categoryText: "Вторые блюда", categoryImage: UIImage(named: "second_dish")!),
-            CategoryContent(categoryText: "Салаты", categoryImage: UIImage(named: "salad")!),
-            CategoryContent(categoryText: "Закуски", categoryImage: UIImage(named: "snacks")!),
-            CategoryContent(categoryText: "Десерты", categoryImage: UIImage(named: "dessert")!),
-            CategoryContent(categoryText: "Напитки", categoryImage: UIImage(named: "beverages")!)
+            CategoryContent(categoryText: "Soups", categoryImage: UIImage(named: "soup")!),
+            CategoryContent(categoryText: "Hot dishes", categoryImage: UIImage(named: "second_dish")!),
+            CategoryContent(categoryText: "Salads", categoryImage: UIImage(named: "salad")!),
+            CategoryContent(categoryText: "Snacks", categoryImage: UIImage(named: "snacks")!),
+            CategoryContent(categoryText: "Dessert", categoryImage: UIImage(named: "dessert")!),
+            CategoryContent(categoryText: "Beverages", categoryImage: UIImage(named: "beverages")!)
         ]
     }
 }

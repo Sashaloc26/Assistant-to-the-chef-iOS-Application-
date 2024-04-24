@@ -19,6 +19,7 @@
 		573C868F2B72BE9E00177AA8 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573C868E2B72BE9E00177AA8 /* Resources.swift */; };
 		573C86912B74018400177AA8 /* CategoriesProductsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573C86902B74018400177AA8 /* CategoriesProductsCell.swift */; };
 		573C86932B7566B000177AA8 /* CategoryProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573C86922B7566B000177AA8 /* CategoryProducts.swift */; };
+		574AED4C2BD04BFA0055C6BA /* SeacrhViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AED4B2BD04BFA0055C6BA /* SeacrhViewController.swift */; };
 		574C7BC42BC4388E007B2493 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574C7BC32BC4388E007B2493 /* ListTableViewCell.swift */; };
 		574C7BC62BC486BA007B2493 /* PurchaseListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574C7BC52BC486BA007B2493 /* PurchaseListManager.swift */; };
 		5753E8AF2BBB35E7006AAB18 /* FullInfoRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753E8AE2BBB35E7006AAB18 /* FullInfoRecipeViewModel.swift */; };
@@ -36,19 +37,21 @@
 		576725BF2B62E8AD00C3C30E /* SnacksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725BE2B62E8AD00C3C30E /* SnacksViewModel.swift */; };
 		576725C12B62E8BF00C3C30E /* DessertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725C02B62E8BF00C3C30E /* DessertViewModel.swift */; };
 		576725C32B62E8D400C3C30E /* BeveragesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576725C22B62E8D400C3C30E /* BeveragesViewModel.swift */; };
-		57957F062B80C05E0027D234 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 57957F052B80C05E0027D234 /* Realm */; };
-		57957F082B80C05E0027D234 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57957F072B80C05E0027D234 /* RealmSwift */; };
+		577B60D52BCECFA4005A1B5E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 577B60D42BCECFA4005A1B5E /* SnapKit */; };
+		577B60D72BCECFA4005A1B5E /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 577B60D62BCECFA4005A1B5E /* SnapKit-Dynamic */; };
+		577B60DA2BCECFBE005A1B5E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 577B60D92BCECFBE005A1B5E /* Realm */; };
+		577B60DC2BCECFBE005A1B5E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 577B60DB2BCECFBE005A1B5E /* RealmSwift */; };
 		57957F0A2B80C1710027D234 /* RecipesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57957F092B80C1710027D234 /* RecipesModel.swift */; };
 		57957F0C2B80C3D50027D234 /* RecipesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57957F0B2B80C3D50027D234 /* RecipesManager.swift */; };
 		57A5526E2B681BFB00FCF08D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5526D2B681BFB00FCF08D /* HomeViewController.swift */; };
 		57A552702B681C1C00FCF08D /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5526F2B681C1C00FCF08D /* FavouritesViewController.swift */; };
 		57A552722B681C4800FCF08D /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A552712B681C4800FCF08D /* ListViewController.swift */; };
 		57A552742B6832D200FCF08D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A552732B6832D200FCF08D /* BaseViewController.swift */; };
-		57A552772B6836E200FCF08D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 57A552762B6836E200FCF08D /* SnapKit */; };
-		57A552792B6836E200FCF08D /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 57A552782B6836E200FCF08D /* SnapKit-Dynamic */; };
 		57A5527C2B69804700FCF08D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5527B2B69804700FCF08D /* TabBarController.swift */; };
 		57A5527E2B69887900FCF08D /* CategoriesDishesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A5527D2B69887900FCF08D /* CategoriesDishesCell.swift */; };
 		57A886182B7A9A1A00F42679 /* CatalogRecipesCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A886172B7A9A1A00F42679 /* CatalogRecipesCollectionCell.swift */; };
+		57EC794D2BD179B90097D205 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC794C2BD179B90097D205 /* SearchViewModel.swift */; };
+		57EC794F2BD17B290097D205 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC794E2BD17B290097D205 /* SearchTableViewCell.swift */; };
 		57FEBF2C2B8BAE490098A10F /* FullInfoRecipeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FEBF2B2B8BAE490098A10F /* FullInfoRecipeController.swift */; };
 		57FEBF2E2B8BC5130098A10F /* RecipeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57FEBF2D2B8BC5130098A10F /* RecipeTableCell.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +71,7 @@
 		573C868E2B72BE9E00177AA8 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		573C86902B74018400177AA8 /* CategoriesProductsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesProductsCell.swift; sourceTree = "<group>"; };
 		573C86922B7566B000177AA8 /* CategoryProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryProducts.swift; sourceTree = "<group>"; };
+		574AED4B2BD04BFA0055C6BA /* SeacrhViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeacrhViewController.swift; sourceTree = "<group>"; };
 		574C7BC32BC4388E007B2493 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		574C7BC52BC486BA007B2493 /* PurchaseListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseListManager.swift; sourceTree = "<group>"; };
 		5753E8AE2BBB35E7006AAB18 /* FullInfoRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullInfoRecipeViewModel.swift; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 		57A5527B2B69804700FCF08D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		57A5527D2B69887900FCF08D /* CategoriesDishesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesDishesCell.swift; sourceTree = "<group>"; };
 		57A886172B7A9A1A00F42679 /* CatalogRecipesCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogRecipesCollectionCell.swift; sourceTree = "<group>"; };
+		57EC794C2BD179B90097D205 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		57EC794E2BD17B290097D205 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		57FEBF2B2B8BAE490098A10F /* FullInfoRecipeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullInfoRecipeController.swift; sourceTree = "<group>"; };
 		57FEBF2D2B8BC5130098A10F /* RecipeTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,10 +109,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57957F082B80C05E0027D234 /* RealmSwift in Frameworks */,
-				57957F062B80C05E0027D234 /* Realm in Frameworks */,
-				57A552772B6836E200FCF08D /* SnapKit in Frameworks */,
-				57A552792B6836E200FCF08D /* SnapKit-Dynamic in Frameworks */,
+				577B60DC2BCECFBE005A1B5E /* RealmSwift in Frameworks */,
+				577B60DA2BCECFBE005A1B5E /* Realm in Frameworks */,
+				577B60D52BCECFA4005A1B5E /* SnapKit in Frameworks */,
+				577B60D72BCECFA4005A1B5E /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +178,7 @@
 				571023BA2B94CAF000E640B2 /* RecipeDescriptionCell.swift */,
 				571023BC2B96489700E640B2 /* LineTableCell.swift */,
 				574C7BC32BC4388E007B2493 /* ListTableViewCell.swift */,
+				57EC794E2BD17B290097D205 /* SearchTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -220,6 +227,7 @@
 				57A552732B6832D200FCF08D /* BaseViewController.swift */,
 				57A5527B2B69804700FCF08D /* TabBarController.swift */,
 				57FEBF2B2B8BAE490098A10F /* FullInfoRecipeController.swift */,
+				574AED4B2BD04BFA0055C6BA /* SeacrhViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -236,6 +244,7 @@
 				5753E8AE2BBB35E7006AAB18 /* FullInfoRecipeViewModel.swift */,
 				5753E8B02BBB4E33006AAB18 /* FavouritesViewModel.swift */,
 				575ACE012BC7080200599576 /* ListVIewModel.swift */,
+				57EC794C2BD179B90097D205 /* SearchViewModel.swift */,
 			);
 			path = ViewsModels;
 			sourceTree = "<group>";
@@ -266,10 +275,10 @@
 			);
 			name = "Kitchen Helper";
 			packageProductDependencies = (
-				57A552762B6836E200FCF08D /* SnapKit */,
-				57A552782B6836E200FCF08D /* SnapKit-Dynamic */,
-				57957F052B80C05E0027D234 /* Realm */,
-				57957F072B80C05E0027D234 /* RealmSwift */,
+				577B60D42BCECFA4005A1B5E /* SnapKit */,
+				577B60D62BCECFA4005A1B5E /* SnapKit-Dynamic */,
+				577B60D92BCECFBE005A1B5E /* Realm */,
+				577B60DB2BCECFBE005A1B5E /* RealmSwift */,
 			);
 			productName = "Kitchen Helper";
 			productReference = 572A28102B5C567D00B99711 /* Kitchen Helper.app */;
@@ -300,8 +309,9 @@
 			);
 			mainGroup = 572A28072B5C567D00B99711;
 			packageReferences = (
-				57A552752B6836E200FCF08D /* XCRemoteSwiftPackageReference "SnapKit" */,
-				57957F042B80C05E0027D234 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				577B60D32BCECFA4005A1B5E /* XCRemoteSwiftPackageReference "SnapKit" */,
+				577B60D82BCECFBE005A1B5E /* XCRemoteSwiftPackageReference "realm-swift" */,
+				570B87E82BD02B5E00EEFDBD /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = 572A28112B5C567D00B99711 /* Products */;
 			projectDirPath = "";
@@ -350,10 +360,13 @@
 				57A552722B681C4800FCF08D /* ListViewController.swift in Sources */,
 				576725B32B62E82300C3C30E /* DessertViewController.swift in Sources */,
 				571023BD2B96489700E640B2 /* LineTableCell.swift in Sources */,
+				57EC794F2BD17B290097D205 /* SearchTableViewCell.swift in Sources */,
 				5738637D2B6CFF6100A944C9 /* Categorylabel + image.swift in Sources */,
 				5753E8B12BBB4E33006AAB18 /* FavouritesViewModel.swift in Sources */,
+				574AED4C2BD04BFA0055C6BA /* SeacrhViewController.swift in Sources */,
 				57FEBF2C2B8BAE490098A10F /* FullInfoRecipeController.swift in Sources */,
 				576725AF2B62E7F400C3C30E /* SaladsViewController.swift in Sources */,
+				57EC794D2BD179B90097D205 /* SearchViewModel.swift in Sources */,
 				572A28142B5C567D00B99711 /* AppDelegate.swift in Sources */,
 				57A5527C2B69804700FCF08D /* TabBarController.swift in Sources */,
 				576725AB2B62E7A500C3C30E /* SoupsViewController.swift in Sources */,
@@ -516,6 +529,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -542,6 +556,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -579,7 +594,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		57957F042B80C05E0027D234 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+		570B87E82BD02B5E00EEFDBD /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.54.0;
+			};
+		};
+		577B60D32BCECFA4005A1B5E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		577B60D82BCECFBE005A1B5E /* XCRemoteSwiftPackageReference "realm-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-swift";
 			requirement = {
@@ -587,36 +618,28 @@
 				kind = branch;
 			};
 		};
-		57A552752B6836E200FCF08D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		57957F052B80C05E0027D234 /* Realm */ = {
+		577B60D42BCECFA4005A1B5E /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 57957F042B80C05E0027D234 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		57957F072B80C05E0027D234 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 57957F042B80C05E0027D234 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
-		};
-		57A552762B6836E200FCF08D /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 57A552752B6836E200FCF08D /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 577B60D32BCECFA4005A1B5E /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		57A552782B6836E200FCF08D /* SnapKit-Dynamic */ = {
+		577B60D62BCECFA4005A1B5E /* SnapKit-Dynamic */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 57A552752B6836E200FCF08D /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 577B60D32BCECFA4005A1B5E /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = "SnapKit-Dynamic";
+		};
+		577B60D92BCECFBE005A1B5E /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 577B60D82BCECFBE005A1B5E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		577B60DB2BCECFBE005A1B5E /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 577B60D82BCECFBE005A1B5E /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

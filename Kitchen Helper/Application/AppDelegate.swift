@@ -14,234 +14,234 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         RecipeManager.shared.addCategoriesIfNeeded()
         
-        let categorySoupName = "Супы"
+        let categorySoupName = "Soups"
         if let category = RecipeManager.shared.getCategoryByName(categorySoupName) {
             RecipeManager.shared.createRecipeIfNeeded(
-                name: "Куриный суп",
-                ingredients: ["Куриный бульон - 1½ л", "Лук - 1 штука", "Морковь - 1 штука", "Масло - для жарки", "Куриное филе - 100 г", "Картофель - 2 штуки", "Мука -⅔ стакана", "Яйцо - 2 штуки", "Соль - по вкусу", "Курица", "Овощи"],
-                instructions: "1. Подготовьте ингредиенты. Поставьте бульон закипать. Тем временем почистите овощи и нашинкуйте лук. Натрите на крупной тёрке морковь.\n\n2. Спассеруйте овощи в небольшом количестве масла до мягкости. Сгрузите в кастрюлю с закипевшим бульоном и убавьте огонь так, чтобы суп лениво булькал. Нарежьте курицу небольшими кусочками, быстро обжарьте до золотистой корочки и переложите в бульон.\n\n3. Картошку нашинкуйте кубиками и тоже отправьте в суп. Просейте муку в глубокую тарелку. В другой миске взбейте вилкой два яйца со щепоткой соли. Вымойте и обсушите руки — начинаем делать «затирушки»!\n\n4. Обмакните руки в яйцо, затем погрузите в муку. Потрите ладони друг о друга и счистите тесто с пальцев на чистый стол или разделочную доску. Если счищается плохо, потому что слишком липкое, зачерпните ещё немного муки. Повторяйте, пока не кончится яйцо. Аккуратно перемешайте получившиеся затирушки с мукой, чтобы они не слиплись, после чего переложите их в сито и отсейте лишнее.\n\n5. Проверьте, сварились ли курица и картошка. Если да, то всыпьте в кастрюлю «затирушки» и готовьте всё вместе ещё 3–5 минут. Подавайте куриный суп с «затирушками» горячим. Как и любое блюдо с лапшой, разогревать его многократно нежелательно, поэтому готовьте на один раз, чтобы съесть свежим.",
-                cookingTime: "30\nмин",
-                calories: "190\nкКал",
+                name: "Chicken soup",
+                ingredients: ["Chicken broth - 1½ l", "Onion - 1 piece", "Carrots - 1 piece", "Oil - for frying", "Chicken fillet - 100 g", "Potatoes - 2 pieces", "Flour - ⅔ cup" , "Egg - 2 pieces", "Salt - to taste", "Chicken", "Vegetables"],
+                instructions: "1. Prepare the ingredients. Bring the broth to a boil. Meanwhile, clean the vegetables and chop the onion. Grate the carrots using a coarse grater.\n\n2.Sauté the vegetables in a small amount of oil until soft. Transfer them to the pot with the boiling broth and reduce the heat so that the soup simmers lazily. Cut the chicken into small pieces, quickly fry until golden brown, and transfer to the broth.Dice the potatoes and add them to the soup. Sift the flour onto a deep plate. In another bowl, beat two eggs with a pinch of salt using a fork. Wash and dry your hands - it's time to make 'zatirushki'!Dip your hands in the egg, then dredge in the flour. Rub your palms together and scrape the dough off your fingers onto a clean table or cutting board. If it doesn't scrape off well because it's too sticky, add a little more flour. Repeat until you run out of egg.\n\n3. Gently mix the resulting 'zatirushki' with the flour so they don't stick together, then transfer them to a sieve and sift off the excess.Check if the chicken and potatoes are cooked. If yes, add the 'zatirushki' to the pot and cook everything together for another 3-5 minutes. Serve the chicken soup with 'zatirushki' hot. Like any noodle dish, it's not advisable to reheat it multiple times, so prepare it to be eaten fresh.",
+                cookingTime: "30\nmin",
+                calories: "190\nkcal",
                 photo: "chicken_soup",
                 category: category
             )
         } else {
-            print("Категория '\(categorySoupName)' не найдена")
+            print("Category '\(categorySoupName)' not found")
         }
         
         if let category = RecipeManager.shared.getCategoryByName(categorySoupName) {
             RecipeManager.shared.createRecipeIfNeeded(
-                name: "Борщ",
-                ingredients: ["1½–2 л воды", "400–500 г говядины на кости", "2 небольшие свёклы", "1 средняя морковь", "3 средние луковицы", "4 ст. ложки растительного масла", "Щепотка лимонной кислоты", "Немного столового уксуса", "2 столовые ложки томатной пасты", "300 г свежей белокочанной капусты", "4 средние картофелины", "Соль — по вкусу", "1–2 сушёных лавровых листа", "Зелень — по вкусу", "1 зубчик чеснока", "Щепотка молотой гвоздики", "Щепотка молотого чёрного перцa", "Овощи"],
-                instructions: "1. Налейте в кастрюлю холодную воду, выложите мясо и поставьте на средний огонь. Бульон будет вкуснее, если использовать именно мясо на кости.Следите за бульоном, перед закипанием снимите пену.Когда жидкость закипит, накройте кастрюлю крышкой и варите на медленном огне час-полтора.\n\n2. Вымойте и почистите свёклу, морковь и лук. Свёклу натрите на крупной тёрке, а морковь — на средней. Лук нарежьте небольшими кубиками.Налейте масло в сковороду, включите средний огонь. Обжаривайте лук и морковь, помешивая, около 5 минут.Затем выложите свёклу. Добавьте к ней лимонную кислоту, уксус или сок лимона. Благодаря этому борщ будет по-настоящему красным и приобретёт приятную кислинку.Готовьте зажарку ещё 5 минут. После этого добавьте томатную пасту, перемешайте и оставьте на огне ещё на 5–7 минут.\n\n3. Когда бульон сварится, выньте из него мясо. Пока оно остывает, засыпьте в кастрюлю нашинкованную капусту. Через 5–10 минут добавьте нарезанный соломкой или кубиками картофель.Порядок закладки овощей можно менять. Если капуста молодая, её лучше добавить уже после картошки. Ну или одновременно, если ваш сорт картофеля разваривается быстро.Пока варится картофель, отделите мясо от кости и нарежьте кубиками. Верните его в суп. Посолите по вкусу.Добавьте зажарку и перемешайте.Закиньте лавровый лист и мелко порубленную зелень. Накройте кастрюлю крышкой и варите ещё 5–7 минут.Для аромата можно добавить в кастрюлю немного измельчённого чеснока, молотой гвоздики или чёрного перца. Оставьте борщ под крышкой настаиваться 5–10 минут.",
-                cookingTime: "50\nмин",
-                calories: "240\nкКал",
+                name: "Borsch",
+                ingredients: ["1½–2 liters of water", "400–500 g of beef on the bone", "2 small beets", "1 medium carrot", "3 medium onions", "4 tablespoons of vegetable oil", "A pinch of citric acid" , "A little table vinegar", "2 tablespoons of tomato paste", "300 g of fresh white cabbage", "4 medium potatoes", "Salt - to taste", "1-2 dried bay leaves", "Greens - to taste", "1 clove of garlic", "A pinch of ground cloves", "A pinch of ground black pepper", "Vegetables"],
+                instructions: "1. Pour cold water into a pot, add the meat, and place it over medium heat. The broth will be tastier if you use meat with bones. Watch the broth, remove any foam before it boils. Once the liquid boils, cover the pot with a lid and simmer over low heat for an hour to an hour and a half.\n\n2. Wash and peel the beets, carrots, and onion. Grate the beets coarsely and the carrots finely. Dice the onion into small cubes. Pour oil into a frying pan, set over medium heat. Sauté the onion and carrots, stirring, for about 5 minutes. Then add the beets. Add lemon juice, vinegar, or lemon juice to them. This will make the borscht truly red and give it a pleasant sourness. Cook the sauté for another 5 minutes. Then add the tomato paste, mix, and leave it on the heat for another 5-7 minutes.\n\n3. When the broth is ready, remove the meat from it. While it cools, add shredded cabbage to the pot. After 5-10 minutes, add thinly sliced or diced potatoes. The order of adding vegetables can be changed. If the cabbage is young, it's better to add it after the potatoes. Or add them simultaneously if your type of potatoes cooks quickly. While the potatoes are cooking, remove the meat from the bone and dice it. Return it to the soup. Salt to taste. Add the sauté and mix. Add the bay leaf and finely chopped herbs. Cover the pot with a lid and cook for another 5-7 minutes. For aroma, you can add a little minced garlic, ground cloves, or black pepper to the pot. Leave the borscht to infuse under the lid for 5-10 minutes.",
+                cookingTime: "50\nmin",
+                calories: "240\nkcal",
                 photo: "borsh",
                 category: category
             )
         } else {
-            print("Категория '\(categorySoupName)' не найдена")
+            print("Category '\(categorySoupName)' not found")
         }
         
         if let category = RecipeManager.shared.getCategoryByName(categorySoupName) {
             RecipeManager.shared.createRecipeIfNeeded(
-                name: "Сырный суп",
-                ingredients: ["Сыр твердый - 1 стакан", "Сыр Чеддер - 1 стакан", "Брокколи свежая - 350 г", "Перец болгарский красный - 1 стакан", "Картофель - 280 г", "Перец чили - 2-3 шт.", "Лук репчатый - 1 стакан", "Чеснок - 2 зубка", "Кумин молотый (зира) - 1/4 ч. л.", "Масло сливочное - 1/4 стакана", "Куриный бульон - 800 г", "Мука - 1/3 стакана", "Молоко - 1,5 стакана", "Сливки нежирные (10%) - 1 стакан", "Ветчина копченая - по вкусу", "Овощи", "Курица"],
-                instructions: "1. В большой чугунной кастрюле (казанке) на средне-сильном огне растопить сливочное масло, высыпать в казанок болгарский перец, лук, перец чили и чеснок, готовить, помешивая, около 4-5 минут, до мягкого состояния овощей. Затем выложить в кастрюлю картофель, насыпать кумин и готовить еще около 5 минут. Залить содержимое казанка бульоном, довести до кипения, накрыть, уменьшить огонь и готовить суп около 25 минут.\n\n2. В отдельной миске соединить муку, молоко и сливки, хорошо размешать венчиком или вилкой. Влить эту массу в казанок и готовить на средне-слабом огне, помешивая, до загустения, около 5 минут. Уменьшить огонь до минимального.\n\n3. Ввести в кастрюлю весь сыр и готовить суп до расплавления сыра, 3-5 минут.4. Соцветия брокколи выложить в миску, поместить в микроволновку на 3-4 минуты, до мягкого состояния. Осушить брокколи. Горячую капусту выложить в суп.\n\nПодавать сырный суп с брокколи в порционных тарелках с кусочками ветчины (по желанию).",
-                cookingTime: "45\nмин",
-                calories: "320\nкКал",
+                name: "Cheese soup",
+                ingredients: ["Hard cheese - 1 cup", "Cheddar cheese - 1 cup", "Fresh broccoli - 350 g", "Red bell pepper - 1 cup", "Potatoes - 280 g", "Red chili pepper - 2-3 pieces", "Yellow onion - 1 cup", "Garlic - 2 cloves", "Ground cumin (zira) - 1/4 tsp", "Butter - 1/4 cup", "Chicken broth - 800 g", "Flour - 1/3 cup", "Milk - 1.5 cups", "Low-fat cream (10%) - 1 cup", "Smoked ham - to taste", "Vegetables", "Chicken"],
+                instructions: "1. In a large cast iron pot (cauldron), melt the butter over medium-high heat, add the bell pepper, onion, chili pepper, and garlic to the pot, cook, stirring, for about 4-5 minutes until the vegetables are soft. Then add the potatoes to the pot, sprinkle with cumin, and cook for another 5 minutes. Pour the broth into the pot, bring to a boil, cover, reduce the heat, and cook the soup for about 25 minutes.\n\n2. In a separate bowl, combine the flour, milk, and cream, mix well with a whisk or fork. Pour this mixture into the pot and cook over medium-low heat, stirring, until thickened, about 5 minutes. Reduce the heat to low.\n\n3. Add all the cheese to the pot and cook the soup until the cheese is melted, 3-5 minutes.\n\n4. Place the broccoli florets in a bowl, place in the microwave for 3-4 minutes until tender. Drain the broccoli. Add the hot broccoli to the soup.Serve the cheesy broccoli soup in individual bowls with pieces of ham (if desired).",
+                cookingTime: "45\nmin",
+                calories: "320\nkcal",
                 photo: "cheese_soup",
                 category: category
             )
         } else {
-            print("Категория '\(categorySoupName)' не найдена")
+            print("Category '\(categorySoupName)' not found")
         }
         
         if let category = RecipeManager.shared.getCategoryByName(categorySoupName) {
             RecipeManager.shared.createRecipeIfNeeded(
-                name: "Фасолевый суп",
-                ingredients: ["Фасоль красная сухая - 1 стакан", "Вода или бульон -  2–3 литра", "Репчатый лук - 1 штука", "Морковь - 1 штука", "Растительное масло для жарки", "Картофель - 1–2 штуки", "Лавровый лист - 2–3 штуки", "Колбаса или копчёности - 100–150 г", "Хмели-сунели - 2 ч. ложки", "Паприка копчёная - 2–3 ч. ложки", "Зелень - 1 пучок", "Соль - по вкусу", "Перец Чёрный молотый - по вкусу", "Овощи", "Свинина"],
-                instructions: "1. Подготовьте ингредиенты. Фасоль перед варкой нужно замочить на 8–12 часов в прохладной воде.\n\n2. Слейте с набухшей фасоли жидкость и, промыв, залейте зёрна 1–1,5 л чистой воды. Доведите до кипения и варите на медленном огне под крышкой до мягкости. Это будет долго. Насколько долго — зависит от конкретной фасоли. Запаситесь терпением часа на два и при необходимости восполняйте уровень воды.\n\n3. Когда фасоль будет почти готова, можно приступать к приготовлению зажарки. Нарежьте лук и морковь кубиками. Спассеруйте овощи в разогретом растительном масле до мягкости.\n\n4. Когда фасоль сварится окончательно, помните её ложкой или толкушкой для картофеля, чтобы основа для супа была погуще, и разбавьте содержимое кастрюли водой или бульоном примерно вдвое. Картофель нарубите кубиками или соломкой и забросьте в суп вместе с лавровым листом. Колбасу нарежьте кружочками. Добавьте в кастрюлю зажарку и готовьте ещё минут пять. Выправьте суп на соль, положите приправы, мелко нарезанную зелень и колбасу. Проварите ещё 2–3 минуты, выключите огонь, накройте суп крышкой и оставьте настояться.",
-                cookingTime: "60\nмин",
-                calories: "270\nкКал",
+                name: "Bean soup",
+                ingredients: ["Red kidney beans, dry - 1 cup", "Water or broth - 2-3 liters", "Yellow onion - 1 piece", "Carrot - 1 piece", "Vegetable oil for frying", "Potatoes - 1-2 pieces", "Bay leaves - 2-3 pieces", "Sausage or smoked meats - 100-150 g", "Khmeli-suneli (Georgian spice blend) - 2 tsp", "Smoked paprika - 2-3 tsp", "Herbs - 1 bunch", "Salt - to taste", "Ground black pepper - to taste", "Vegetables", "Pork"],
+                instructions: "1. Prepare the ingredients. Soak the beans in cool water for 8-12 hours before cooking.\n\n2. Drain the soaked beans and rinse them. Pour 1-1.5 liters of clean water over the beans. Bring to a boil and simmer over low heat with the lid on until tender. This will take a while. How long exactly depends on the specific beans. Be patient for an hour or two, and replenish the water level if necessary.\n\n3. When the beans are almost done, you can start preparing the sauté. Dice the onion and carrot. Sauté the vegetables in heated vegetable oil until softened.\n\n4. When the beans are fully cooked, mash them slightly with a spoon or potato masher to thicken the soup base, then dilute the contents of the pot with water or broth, roughly doubling the volume. Dice or julienne the potatoes and add them to the soup along with the bay leaves. Slice the sausage into rounds. Add the sauté to the pot and cook for another five minutes. Season the soup with salt, add the spices, finely chopped herbs, and sausage. Simmer for another 2-3 minutes, then turn off the heat, cover the soup with a lid, and let it sit.",
+                cookingTime: "60\nmin",
+                calories: "270\nkcal",
                 photo: "bean_soup",
                 category: category
             )
         } else {
-            print("Категория '\(categorySoupName)' не найдена")
+            print("Category '\(categorySoupName)' not found")
         }
         
-        let categoryHotName = "Горячее"
+        let categoryHotName = "Hot"
         if let category = RecipeManager.shared.getCategoryByName(categoryHotName) {
             RecipeManager.shared.createRecipeIfNeeded(
-                name: "Драники с колбасой",
-                ingredients: ["Картофель - 500 г", "Лук репчатый - 1 штука", "Укроп свежий - ½ пучка",  "Яйцо - 1 штука", "мука - 45 г", "Соль - по вкусу", "Перец чёрный молотый - по вкусу", "Колбаса - 300 г", "Растительное масло - 3 ст. ложки", "Свинина", "Овощи"],
-                instructions: "1. Натрите очищенный картофель. Переложите в марлю, сложенную втрое, и отожмите над миской. Слейте жидкость, сохранив оставшийся на дне крахмал.\n\n2. Добавьте к картофелю крахмал, натёртый лук, нарезанный укроп, яйцо и муку. Посолите и поперчите. Нарежьте колбасу ломтиками.\n\n3. В сковороде на среднем огне разогрейте растительное масло. Выложите немного картофельной массы и разровняйте. Поместите на неё ломтик колбасы, сверху покройте картошкой.\n\n4.Так же сформируйте остальные драники. Обжаривайте по 5 минут с каждой стороны до румяности..",
-                cookingTime: "40\nмин",
-                calories: "465\nкКал",
+                name: "Draniki with sausage",
+                ingredients: ["Potatoes - 500 g", "Yellow onion - 1 piece", "Fresh dill - ½ bunch", "Egg - 1 piece", "Flour - 45 g", "Salt - to taste", "Ground black pepper - to taste", "Sausage - 300 g", "Vegetable oil - 3 tbsp", "Pork", "Vegetables"],
+                instructions: "1. Grate the peeled potatoes. Transfer them to a triple-folded cheesecloth and squeeze over a bowl to drain the liquid, retaining the remaining starch at the bottom.\n\n2. Add the potato starch, grated onion, chopped dill, egg, and flour to the potatoes. Season with salt and pepper. Slice the sausage into pieces.\n\n3. Heat the vegetable oil in a skillet over medium heat. Place a portion of the potato mixture and flatten it out. Place a slice of sausage on top, then cover with more potato mixture.4. Form the remaining potato pancakes in the same way. Fry each side for 5 minutes until golden brown.",
+                cookingTime: "40\nmin",
+                calories: "465\nkcal",
                 photo: "draniki",
                 category: category
             )
         } else {
-            print("Категория '\(categoryHotName)' не найдена")
+            print("Category '\(categorySoupName)' not found")
         }
         
         if let category = RecipeManager.shared.getCategoryByName(categoryHotName) {
             RecipeManager.shared.createRecipeIfNeeded(
-                name: "Мясо с кунжутом",
-                ingredients: ["Мясо (любое!) - 500 г", "Мёд - 2 ст. л. ", "Сок лимона - 1 ст. л. (15-20 г)", "Кунжут - 30-50 г", "Масло растительное - 1-2 ст. л.", "Соль - по вкусу", "Перец - по вкусу", "Овощи", "Свинина"],
-                instructions: "1. Мясо нарезаем брусочками.Перекладываем в глубокую тарелку, солим, перчим, поливаем лимонным соком, добавляем жидкий (растопленный) мёд и тщательно всё перемешиваем. Оставляем пропитываться минут на 40, лучше на часик.\n\n2. Поджариваем кунжут, помешивая, на сухой сковороде до золотистого цвета.Мясо вместе с маринадом отправляем на сковороду и тушим до тех пор, пока оно не перестанет быть розовым. Затем сливаем маринад - его будем использовать в качестве соуса.\n\n3. Добавляем в сковороду немного растительного масла и жарим мясо минут 20-25. В последние 5 минут добавляем кунжут и следим, чтобы жареное мясо с кунжутом не подгорело.",
-                cookingTime: "40\nмин",
-                calories: "480\nкКал",
+                name: "Meat with sesame",
+                ingredients: ["Meat (any!) - 500 g", "Honey - 2 tbsp", "Lemon juice - 1 tbsp (15-20 g)", "Sesame seeds - 30-50 g", "Vegetable oil - 1-2 tbsp", "Salt - to taste", "Pepper - to taste", "Vegetables", "Pork"],
+                instructions: "1. Slice the meat into chunks. Transfer to a deep plate, season with salt and pepper, drizzle with lemon juice, add liquid (melted) honey, and mix everything thoroughly. Let it marinate for about 40 minutes, preferably an hour.\n\n2. Toast the sesame seeds in a dry skillet, stirring, until golden brown. Transfer the meat along with the marinade to the skillet and simmer until it is no longer pink. Then drain the marinade - we will use it as a sauce.\n\n3. Add a little vegetable oil to the skillet and fry the meat for about 20-25 minutes. In the last 5 minutes, add the sesame seeds and make sure the meat with sesame seeds doesn't burn.",
+                cookingTime: "40\nmin",
+                calories: "480\nkcal",
                 photo: "meat_with_sesame_seeds",
                 category: category
             )
         } else {
-            print("Категория '\(categoryHotName)' не найдена")
+            print("Category '\(categorySoupName)' not found")
         }
         
         if let category = RecipeManager.shared.getCategoryByName(categoryHotName) {
             RecipeManager.shared.createRecipeIfNeeded(
-                name: "Гречка в сливках",
-                ingredients: ["Крупа гречневая - 130 г", "Куриное филе - 300 г", "Грибы лесные замороженные - 150 г", "Сыр твёрдый - 50 г", "Чеснок - 1 зубчик", "Сливки 10% - 100 г", "Масло растительное - 2 ст. ложки", "Соль - 1/2 ч. ложки (по вкусу)", "Овощи", "Курица"],
-                instructions: "1.Подготовьте все необходимые ингредиенты. Я использую замороженные лесные грибы, можно взять любые другие, например шампиньоны.Куриное филе промойте, обсушите и нарежьте средними кусочками. Выложите курицу в сковороду с разогретым растительным маслом, обжарьте в течение 7 минут на среднем огне, помешивая.\n\n2. Грибы при необходимости нарежьте средними кусочками, добавьте в сковороду.Посолите и обжарьте ещё 7 минут, перемешивая.Гречневую крупу промойте, дайте воде полностью стечь. Чеснок очистите и измельчите.Крупу и чеснок добавьте в сковороду. Обжарьте всё, перемешивая, 3-5 минут на медленном огне.\n\n3. Затем влейте сливки. Добавьте натёртый на средней тёрке сыр. Перемешайте.Влейте 250 мл воды. Снова перемешайте.4. После закипания готовьте на медленном огне под крышкой 20-25 минут, до готовности.Гречка с курицей, грибами, сыром и сливками (на сковороде) готова.",
-                cookingTime: "50\nмин",
-                calories: "390\nкКал",
+                name: "Buckwheat in cream",
+                ingredients: ["Buckwheat groats - 130 g", "Chicken fillet - 300 g", "Frozen wild mushrooms - 150 g", "Hard cheese - 50 g", "Garlic - 1 clove", "10% cream - 100 g", "Vegetable oil - 2 tbsp", "Salt - 1/2 tsp (to taste)", "Vegetables", "Chicken"],
+                instructions: "1. Prepare all the necessary ingredients. I'm using frozen wild mushrooms, but you can use any other type, such as button mushrooms. Rinse the chicken fillet, pat dry, and cut into medium-sized pieces. Place the chicken in a skillet with heated vegetable oil, and fry for 7 minutes over medium heat, stirring occasionally.\n\n2. If needed, slice the mushrooms into medium-sized pieces and add them to the skillet. Season with salt and continue to cook for another 7 minutes, stirring occasionally. Rinse the buckwheat groats and let the water drain completely. Peel and finely chop the garlic. Add the buckwheat groats and garlic to the skillet. Stir everything together and cook for 3-5 minutes over low heat.\n\n3. Then pour in the cream. Add the grated cheese. Mix well. Pour in 250 ml of water. Mix again.\n\n4. Once it starts boiling, cook over low heat with the lid on for 20-25 minutes until done. Buckwheat with chicken, mushrooms, cheese, and cream (in the skillet) is ready.",
+                cookingTime: "50\nmin",
+                calories: "390\nkcal",
                 photo: "buckwheat_with_meat",
                 category: category
             )
         } else {
-            print("Категория '\(categoryHotName)' не найдена")
+            print("Category '\(categorySoupName)' not found")
         }
         
         if let category = RecipeManager.shared.getCategoryByName(categoryHotName) {
             RecipeManager.shared.createRecipeIfNeeded(
-                name: "Отбивные из свинины",
-                ingredients: ["Свинина - 350 г", "Сыр твёрдый - 100 г", "Лук репчатый - 50 г", "Морковь - 50 г (1 некрупная)", "Чеснок - 1-2 зубчика", "Майонез - 70-80 г", "Масло растительное - 40 мл", "Соль - 0,25 ч. ложки ", "Перец чёрный молотый", "Петрушка свежая (для подачи)", "Овощи", "Свинина"],
-                instructions: "1. Свинину нарежьте пластинами толщиной 1-1,5 см. Отбейте при помощи кулинарного молоточка, мясо посолите и поперчите.Чеснок очистите и пропустите через пресс. Каждую отбивную натрите чесноком и оставьте мариноваться, пока готовятся остальные ингредиенты. Если есть время, отправьте мясо в холодильник на час.\n\n2. Включите духовку для разогрева до 180 градусов.Лук очистите и нарежьте тонкими полукольцами. Очищенную морковь натрите на крупной тёрке.В сковороде разогрейте растительное масло, выложите овощи и обжарьте, помешивая, 3-4 минуты (до мягкости).\n\n3. Форму для запекания слегка смажьте растительным маслом (0,5 ст. ложки), выложите отбивные, смажьте майонезом.Поверх равномерно распределите обжаренные лук с морковью.Отправьте заготовку в разогретую до 180 градусов духовку на 35 минут.\n\n4. Спустя время достаньте форму из духовки. Сыр натрите на мелкой тёрке, распределите поверх отбивных с овощами.Верните форму в духовку и запекайте мясо ещё 10-15 минут при той же температуре.Отбивные из свинины, запечённые с морковью и сыром, сразу подавайте к столу, украсив листиками петрушки.",
-                cookingTime: "70\nмин",
-                calories: "340\nкКал",
+                name: "Pork chops",
+                ingredients: ["Pork - 350 g", "Hard cheese - 100 g", "Yellow onion - 50 g", "Carrot - 50 g (1 small)", "Garlic - 1-2 cloves", "Mayonnaise - 70-80 g", "Vegetable oil - 40 ml", "Salt - 0.25 tsp", "Ground black pepper", "Fresh parsley (for serving)", "Vegetables", "Pork"],
+                instructions: "1. Slice the pork into 1-1.5 cm thick slices. Tenderize the meat using a meat mallet, season with salt and pepper. Peel and press the garlic. Rub each slice with garlic and let it marinate while preparing the other ingredients. If time allows, refrigerate the meat for an hour.\n\n2. Preheat the oven to 180 degrees Celsius. Peel and thinly slice the onion. Grate the peeled carrot using a coarse grater. Heat the vegetable oil in a skillet, add the vegetables, and sauté, stirring, for 3-4 minutes (until softened).\n\n3. Lightly grease a baking dish with vegetable oil (0.5 tbsp), arrange the pork slices, and spread mayonnaise over them. Evenly distribute the sautéed onions and carrots on top. Place the dish in the preheated oven at 180 degrees Celsius for 35 minutes.\n\n4. After the time has elapsed, remove the dish from the oven. Grate the cheese on a fine grater and spread it over the pork and vegetables. Return the dish to the oven and bake the meat for another 10-15 minutes at the same temperature. Serve the pork schnitzels with carrots and cheese immediately, garnished with parsley leaves.",
+                cookingTime: "70\nmin",
+                calories: "340\nkcal",
                 photo: "pork_chops",
                 category: category
             )
         } else {
-            print("Категория '\(categoryHotName)' не найдена")
+            print("Category '\(categorySoupName)' not found")
         }
         
-        let categorySaladName = "Салаты"
+        let categorySaladName = "Salads"
         if let category = RecipeManager.shared.getCategoryByName(categorySaladName) {
             RecipeManager.shared.createRecipeIfNeeded(
-                name: "Тёплый салат",
-                ingredients: ["Филе куриное - 400 г", "Перец болгарский - 1 шт", "Помидоры - 300 г", "Листья салата - 1 пучок", "Кунжут - 1 ст. ложка", "Соус соевый - 50 мл", "Масло оливковое - 3 ст. ложки", "Уксус бальзамический - 1 ст. ложка", "Укроп свежий - 2-3 веточки", "Соль - 1/3 ч. ложки", "Перец чёрный молотый", "Овощи", "Курица", "Грибы"],
-                instructions: "1. Острым ножом нарежьте куриное филе тонкими пластинками толщиной примерно 5-7 мм. Выложите куриное филе в миску. Добавьте соль, чёрный перец и соевый соус. Перемешайте. Оставьте куриное мясо мариноваться на 10-20 минут.\n\n2. Обжарьте замаринованное куриное филе на оливковом масле до румяности с одной стороны, примерно 5-7 минут. Затем переверните кусочки куриного мяса и продолжайте жарить ещё 5 минут.Пока обжаривается куриное филе, сладкий перец нарежьте небольшими кусочками произвольной формы.На оставшемся после обжарки филе масле слегка обжарьте сладкий перец в течение 3 минут, постоянно помешивая.\n\n3. Листья салата вымойте, обсушите, порвите руками на крупные кусочки и выложите на тарелку для подачи. Помидоры нарежьте небольшими дольками. У меня маленькие помидоры сорта сливка, поэтому я нарезала их кружочками.  Сверху выложите кусочки печёного перца.\n\n4.Поверх овощей разложите ещё тёплые кусочки куриного мяса.Украсьте салат зеленью укропа и полейте бальзамическим уксусом.Посыпьте тёплый салат с курицей, печёным болгарским перцем и помидорами кунжутом.",
-                cookingTime: "35\nмин",
-                calories: "1060\nкКал",
+                name: "Warm salad",
+                ingredients: ["Chicken fillet - 400 g", "Bell pepper - 1 piece", "Tomatoes - 300 g", "Lettuce leaves - 1 bunch", "Sesame seeds - 1 tbsp", "Soy sauce - 50 ml", "Olive oil - 3 tbsp", "Balsamic vinegar - 1 tbsp", "Fresh dill - 2-3 sprigs", "Salt - 1/3 tsp", "Ground black pepper", "Vegetables", "Chicken", "Mushrooms"],
+                instructions: "1. Using a sharp knife, slice the chicken fillet into thin slices about 5-7 mm thick. Place the chicken fillet in a bowl. Add salt, black pepper, and soy sauce. Mix well. Let the chicken marinate for 10-20 minutes.\n\n2. Fry the marinated chicken fillet in olive oil until golden brown on one side, about 5-7 minutes. Then flip the chicken pieces and continue to fry for another 5 minutes. While the chicken fillet is frying, cut the bell pepper into small irregular pieces. In the remaining oil after frying the fillet, lightly fry the bell pepper for 3 minutes, stirring constantly.\n\n3. Wash the lettuce leaves, pat them dry, tear them into large pieces by hand, and arrange them on a serving plate. Cut the tomatoes into small wedges. If you have small plum tomatoes, like mine, you can slice them into rounds. Arrange the pieces of roasted bell pepper on top.\n\n4. Arrange the still warm chicken pieces on top of the vegetables. Garnish the salad with dill leaves and drizzle with balsamic vinegar. Sprinkle the warm salad with chicken, roasted bell pepper, and tomatoes with sesame seeds.",
+                cookingTime: "35\nmin",
+                calories: "1060\nkcal",
                 photo: "warm_salad",
                 category: category
             )
         } else {
-            print("Категория '\(categoryHotName)' не найдена")
+            print("Category '\(categorySoupName)' not found")
         }
         
         if let category = RecipeManager.shared.getCategoryByName(categorySaladName) {
             RecipeManager.shared.createRecipeIfNeeded(
-                name: "Салат Мимоза",
-                ingredients: ["Рыба (сайра) конс. - 1-2 банки", "Лук репчатый - 1 шт.", "Яйца куриные - 5-6 шт.", "Сыр твёрдый - 100 г", "Морковь отварная - 3-4 шт.", "Картофель отварной - 4 шт.", "Майонез - по вкусу", "Зелень - по вкусу", "Овощи", "Рыба"],
-                instructions: "1.Нарезать мелко репчатый лук. Сыр, морковь и картофель натереть на крупной терке.\n\n2.Отделить белки от желтков.Желтки измельчить вилкой, а белки натереть на крупной терке.Вилкой растереть консервированную рыбу.Нарезать зелень.\n\n3. Формируем салат. Первый слой - картофель и слой майонеза. Следующие слои - лук, сыр, майонез, натертый белок, рыба, майонез. Затем морковь и майонез.Сверху посыпать зеленью и измельченным желтком.",
-                cookingTime: "30\nмин",
-                calories: "930\nкКал",
+                name: "Mimosa salad",
+                ingredients: ["Сairow fish (canned) - 1-2 cans", "Onion - 1 piece", "Chicken eggs - 5-6 pieces", "Hard cheese - 100 g", "Boiled carrots - 3-4 pieces", "Boiled potatoes - 4 pieces", "Mayonnaise - to taste", "Greens - to taste", "Vegetables", "Fish"],
+                instructions: "1. Finely chop the onion. Grate the cheese, carrots, and potatoes using a coarse grater.\n\n2. Separate the egg whites from the yolks. Mash the yolks with a fork, and grate the whites using a coarse grater. Mash the canned fish with a fork. Chop the greens.\n\n3. Assemble the salad. The first layer is potatoes followed by a layer of mayonnaise. The subsequent layers include onion, cheese, mayonnaise, grated egg whites, fish, and mayonnaise. Then add carrots and mayonnaise. Sprinkle with greens and chopped yolks on top.",
+                cookingTime: "30\nmin",
+                calories: "930\nkcal",
                 photo: "salat_mimoza",
                 category: category
             )
         } else {
-            print("Категория '\(categoryHotName)' не найдена")
+            print("Category '\(categorySoupName)' not found")
         }
         
         if let category = RecipeManager.shared.getCategoryByName(categorySaladName) {
             RecipeManager.shared.createRecipeIfNeeded(
-                name: "Салат Нежность",
-                ingredients: ["Колбаса вареная - 150 г", "Сыр плавленый - 90 г", "Огурец свежий - 1 шт.", "Яйца - 2 шт.", "Горошек - 70-80 г", "Майонез - 80-100 г", "Соль - по вкусу", "Овощи"],
-                instructions: "1. Измельченные компоненты будем сразу соединять в салатнике. Следующий ингредиент - свежий огурчик. Рекомендуем его от кожуры не очищать. Естественно, огурец следует хорошо вымыть. Нарежем огурец соразмерными с колбасой кубиками.Начинаем с вареной колбасы. Нарежем ее в форме небольших по размеру кубиков.\n\n2. Плавленый сырок мы просто натрем на крупной терке. (Чтобы сырок легче было натирать, его можно предварительно подержать в морозильной камере минут 15.)\n\n3. Остывшие вареные яйца очистим от скорлупы и нарежем аналогично колбасе и огурцам. Консервированный горошек - завершающий компонент салата Нежность. Сливаем жидкость, откидывая горошек на дуршлаг, переправляем горошек в салатник.В качестве заправки используем майонез.Салат перемешиваем, добавляем соль, ориентируясь на свой вкус.",
-                cookingTime: "20\nмин",
-                calories: "1230\nкКал",
+                name: "Salad Tenderness",
+                ingredients: ["Sausage (boiled) - 150 g", "Processed cheese - 90 g", "Fresh cucumber - 1 piece", "Eggs - 2 pieces", "Green peas - 70-80 g", "Mayonnaise - 80-100 g", "Salt - to taste", "Vegetables"],
+                instructions: "1. We'll combine the chopped ingredients directly in a salad bowl. The next ingredient is the fresh cucumber. It's recommended not to peel it. Of course, make sure to wash the cucumber well. Cut the cucumber into cubes similar in size to the sausage. Let's start with the boiled sausage. Cut it into small cubes.\n\n2. We'll simply grate the processed cheese on a coarse grater. (To make it easier to grate, you can chill the cheese in the freezer for about 15 minutes.)\n\n3. Peel the cooled boiled eggs and cut them into similar-sized cubes as the sausage and cucumber. The canned green peas are the final component of the salad. Drain the liquid, strain the peas, and transfer them to the salad bowl. We'll use mayonnaise as the dressing. Mix the salad, add salt to taste.",
+                cookingTime: "20\nmin",
+                calories: "1230\nkcal",
                 photo: "salad_ tenderness",
                 category: category
             )
         } else {
-            print("Категория '\(categoryHotName)' не найдена")
+            print("Category '\(categorySoupName)' not found")
         }
         
-        let categorySnacksName = "Закуски"
+        let categorySnacksName = "Snacks"
         if let category = RecipeManager.shared.getCategoryByName(categorySnacksName) {
             RecipeManager.shared.createRecipeIfNeeded(
-                name: "Сырные палочки",
-                ingredients: ["Сыр твердый - 300 г", "Яйцо - 1 шт.", "Мука - 30 г", "Масло растительное - 70 мл"],
-                instructions: "1. Сыр натереть на мелкой терке, добавить муку, яйцо. Перемешать. Сформировать сырные палочки.\n\n2. Обжарить их в растительном масле до золотистого цвета.",
-                cookingTime: "30\nмин",
-                calories: "750\nкКал",
+                name: "Cheese sticks",
+                ingredients: ["Hard cheese - 300 g", "Egg - 1", "Flour - 30 g", "Vegetable oil - 70 ml"],
+                instructions: "1. Grate the cheese finely, add flour, and egg. Mix well. Shape the mixture into cheese sticks.\n\n2. Fry them in vegetable oil until golden brown.",
+                cookingTime: "30\nmin",
+                calories: "750\nkcal",
                 photo: "cheese_snacks",
                 category: category
             )
         } else {
-            print("Категория '\(categoryHotName)' не найдена")
+            print("Category '\(categorySoupName)' not found")
         }
         
         if let category = RecipeManager.shared.getCategoryByName(categorySnacksName) {
             RecipeManager.shared.createRecipeIfNeeded(
-                name: "Закуска из лаваша",
-                ingredients: ["Лаваш тонкий – 2 шт.", "Яйца – 3 шт.", "Крабовые палочки – 200 г", "Сыр российский – 100 г", "Сыр плавленый - 200 г", "Чеснок – 3-4 зубчика", "Укроп", "Перец черный молотый, Майонез", "Овощи", "Рыба"],
-                instructions: "1. Яйца отварить. Сыр и яйца натереть на крупной терке. Чеснок натереть на мелкой терке. Зелень и крабовые палочки мелко порубить.Все перемешать и заправить майонезом.\n\n2. На столе разложить один из пластов лаваша. Тщательно промазать всю его поверхность половиной начинки. Далее укладываете второй лист лаваша.И промазываете второй половиной начинки.Теперь лаваши аккуратно сворачиваете в рулет.Можно обмотать его пищевой пленкой или фольгой.\n\n3. Убрать закуску в холодильник на 2-3 часа. Перед подачей на стол нарезать на кусочки толщиной 3-4 см.",
-                cookingTime: "35\nмин",
-                calories: "490\nкКал",
+                name: "Lavash snack",
+                ingredients: ["Thin lavash - 2 pieces.", "Eggs - 3 pieces.", "Imitation crab sticks - 200 g", "Russian cheese - 100 g", "Processed cheese - 200 g", "Garlic - 3-4 cloves", "Dill", "Ground black pepper, Mayonnaise", "Vegetables", "Fish"],
+                instructions: "1. Boil the eggs. Grate the cheese and eggs using a coarse grater. Grate the garlic using a fine grater. Finely chop the herbs and crab sticks. Mix everything together and dress with mayonnaise.\n\n2. Place one of the lavash sheets on the table. Carefully spread half of the filling over its entire surface. Then lay the second lavash sheet. Spread the second half of the filling. Now carefully roll up the lavash into a roll. You can wrap it in plastic wrap or foil.\n\n3. Put the appetizer in the refrigerator for 2-3 hours. Before serving, slice into pieces about 3-4 cm thick.",
+                cookingTime: "35\nmin",
+                calories: "490\nkcal",
                 photo: "lavash_snack",
                 category: category
             )
         } else {
-            print("Категория '\(categoryHotName)' не найдена")
+            print("Category '\(categorySoupName)' not found")
         }
         
         if let category = RecipeManager.shared.getCategoryByName(categorySnacksName) {
             RecipeManager.shared.createRecipeIfNeeded(
-                name: "Картофель пай",
-                ingredients: ["Картофель - 250 г", "Масло растительное - 150 мл", "Соль - 1/2 ч. ложки", "Овощи"],
-                instructions: "1. Очистите картофель.Натрите его на терке для моркови по-корейски.\n\n2. Выложите натертый картофель в дуршлаг и промойте под краном проточной водой. Дайте стечь лишней жидкости.Затем хорошо посолите картофель.\n\n3. Обжарьте его, выкладывая по чуть-чуть в разогретое растительное масло.Подавайте картофель пай с вашим любимым соусом или просто так.",
-                cookingTime: "30\nмин",
-                calories: "550\nкКал",
+                name: "Potato pie",
+                ingredients: ["Potatoes - 250 grams", "Vegetable oil - 150 milliliters", "Salt - 1/2 teaspoon", "Vegetables"],
+                instructions: "1. Peel the potatoes. Grate them using a Korean carrot grater.\n\n2. Place the grated potatoes in a colander and rinse them under running water. Let excess liquid drain. Then, season the potatoes generously with salt.\n\n3. Fry them.",
+                cookingTime: "30\nmin",
+                calories: "550\nkcal",
                 photo: "fries_pie",
                 category: category
             )
         } else {
-            print("Категория '\(categoryHotName)' не найдена")
+            print("Category '\(categorySoupName)' not found")
         }
         
-        let categoryDessertsName = "Десерты"
+        let categoryDessertsName = "Desserts"
         if let category = RecipeManager.shared.getCategoryByName(categoryDessertsName) {
             RecipeManager.shared.createRecipeIfNeeded(
-                name: "Классик чизкейк",
-                ingredients: ["Крекеры - 200 г", "Масло сливочное  - 100 г", "Сахар - 50 г", "Соль - 1/4 ч. л.", "Сливочный сыр - 1 кг", "Сметана жирная (30%) - 200 г", "Яйца крупные - 4 шт.", "Сахар - 1 стакан или по вкусу", "Лимонная цедра - 1 ч. л.", "Лимонный сок - 1 ст. л.", "Соль - 1/2 ч. л."],
-                instructions: "1. Предварительно разогреть духовку до 180 градусов. Смазать маслом разъемную форму для торта.Блендером хорошо измельчить печенье. Добавить растопленное сливочное масло, сахар и соль, хорошо перемешать. Выложить полученную массу в форму, придавливая пальцами, равномерно распределить по дну и краям. Поместить форму с основой чизкейка в духовку. Температуру уменьшить до 150 градусов. Выпекать 12-15 минут. Затем остудить на решетке.\n\n2. Миксером на средней скорости взбить сливочный сыр (комнатной температуры). Постепенно добавить сахар, лимонную цедру, лимонный сок и соль. Вбить по одному яйца, добавить сметану. Взбить до однородности.\n\n3.Форму с основой из печенья завернуть снизу в фольгу. Вылить на основу приготовленную начинку, слегка стукнуть о стол, чтобы убрать пузырьки воздуха. Поставить форму в глубокий противень. Налить в противень кипяток таким образом, чтобы вода доходила до 1/2 высоты формы. Поместить чизкейк в разогретую до 200 градусов духовку сперва на 10-15 минут. Затем уменьшить температуру до 110-120 градусов и довести чизкейк в духовке до готовности, около 1,5 часа. Вынуть форму из воды, оставить чизкейк в выключенной духовке минут на 20. Затем оставить чизкейк при комнатной температуре до полного остывания. Острием ножа провести по стенкам, отделяя чизкейк от бортиков формы. Поместить чизкейк в форме в холодильник на несколько часов (на ночь). Затем аккуратно снять форму и можно чизкейк подавать.",
-                cookingTime: "440\nмин",
-                calories: "1400\nкКал",
+                name: "Classic cheesecake",
+                ingredients: ["Biscuits - 200 g", "Butter - 100 g", "Sugar - 50 g", "Salt - 1/4 tsp", "Cream cheese - 1 kg", "Heavy cream (30%) - 200 g", "Large eggs - 4", "Sugar - 1 cup or to taste", "Lemon zest - 1 tsp", "Lemon juice - 1 tbsp", "Salt - 1/2 tsp"],
+                instructions: "1. Preheat the oven to 180 degrees Celsius. Grease a springform pan with butter. Using a blender, finely crush the biscuits. Add melted butter, sugar, and salt, mix well. Press the mixture into the pan, evenly distributing it along the bottom and edges. Place the cheesecake crust in the oven. Reduce the temperature to 150 degrees Celsius. Bake for 12-15 minutes. Then cool on a wire rack.\n\n2. Using a mixer on medium speed, beat the cream cheese (at room temperature). Gradually add sugar, lemon zest, lemon juice, and salt. Beat in one egg at a time, then add the heavy cream. Beat until smooth.\n\n3. Wrap the bottom of the pan with foil. Pour the prepared filling over the crust, lightly tap on the table to remove air bubbles. Place the pan in a deep baking dish. Pour boiling water into the baking dish to reach halfway up the sides of the pan. Place the cheesecake in the preheated oven for 10-15 minutes. Then reduce the temperature to 110-120 degrees Celsius and bake the cheesecake until set, about 1.5 hours. Remove the pan from the water, leave the cheesecake in the turned-off oven for 20 minutes. Then let the cheesecake cool completely at room temperature. Run a knife around the edges to separate the cheesecake from the sides of the pan. Place the cheesecake in the pan in the refrigerator for several hours (overnight is best). Then carefully remove the pan and serve the cheesecake.",
+                cookingTime: "440\nmin",
+                calories: "1400\nkcal",
                 photo: "classic_cheescake",
                 category: category
             )
         } else {
-            print("Категория '\(categoryHotName)' не найдена")
+            print("Category '\(categorySoupName)' not found")
         }
         
-        let categoryBeveragesName = "Напитки"
+        let categoryBeveragesName = "Beverages"
         if let category = RecipeManager.shared.getCategoryByName(categoryBeveragesName) {
             RecipeManager.shared.createRecipeIfNeeded(
-                name: "Мохито",
-                ingredients: ["Мята свежая - несколько листьев", "Лимон - 0,5 шт. (или лайм)", "Сахар - 1-2 ч. ложки", "Лед (дробленый или обычный)", "Вода газированная"],
-                instructions: "1. Мяту с сахаром перетираем, чтобы мята пустила сок.\n\n2. Добавляем сок лимона или лайма. И снова перетираем, до полного растворения сахара.\n\n3. Добавляем лед (больше половины стакана) и доливаем минеральную воду.Готовим коктейль в стакане объемом не меньше 300 мл. Подаем мохито с трубочкой.",
-                cookingTime: "10\nмин",
-                calories: "80\nкКал",
+                name: "Mojito",
+                ingredients: ["Fresh mint - several leaves", "Lemon - 0.5 piece (or lime)", "Sugar - 1-2 teaspoons", "Ice (crushed or regular)", "Sparkling water."],
+                instructions: "1. Crush the mint with sugar to release its juice.\n\n2. Add lemon or lime juice. Crush again until the sugar is completely dissolved.\n\n3. Add ice (more than half a glass) and pour in mineral water. Prepare the cocktail in a glass with a volume of at least 300 ml. Serve the mojito with a straw.",
+                cookingTime: "10\nmin",
+                calories: "80\nkcal",
                 photo: "mojito",
                 category: category
             )
         } else {
-            print("Категория '\(categoryHotName)' не найдена")
+            print("Category '\(categorySoupName)' not found")
         }
 
         
@@ -255,44 +255,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
         
         Realm.Configuration.defaultConfiguration = config
-        
-        let realm = try! Realm()
-        let allCategories = realm.objects(RecipeCategory.self)
-        let allPurchase = realm.objects(Purchase.self)
-        
-        for category in allCategories {
-            print(category.categoryName)
-        }
-        
-        for purchase in allPurchase {
-            print(purchase)
-        }
-        
-//        let allRecipes = RecipeManager.shared.getAllRecipes()
-//
-//        for recipe in allRecipes {
-//            RecipeManager.shared.deleteRecipe(recipe)
-//        }
-//        
-//        for category in allCategories {
-//            RecipeManager.shared.deleteCategory(category)
-//        }
-        
-//        for recipe in allRecipes {
-//            print(recipe)
-//        }
-                
-//        if let recipeToDelete = realm.objects(Recipe.self).first {
-//            RecipeManager.shared.deleteRecipe(recipeToDelete)
-//        }
-        
-//        if allRecipes.count >= 2 {
-//            let recipeToDelete = allRecipes[1]
-//            RecipeManager.shared.deleteRecipe(recipeToDelete)
-//        } else {
-//            print("В массиве рецептов отсутствует второй рецепт")
-//        }
-        
+
         return true
     }
 }

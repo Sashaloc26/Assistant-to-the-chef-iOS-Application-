@@ -11,7 +11,7 @@ import RealmSwift
 
 class SoupsViewController: BaseViewController {
     let viewModelSoup = SoupsViewModel()
-
+    
     let gradientLayer = CAGradientLayer()
     
     let searchButton = SearchButton()
@@ -19,7 +19,7 @@ class SoupsViewController: BaseViewController {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Первые блюда"
+        label.text = "Soups"
         label.textColor = .white
         label.textAlignment = .center
         label.font = Fonts.montserratFont(with: 20, weight: .semibold)
@@ -28,7 +28,7 @@ class SoupsViewController: BaseViewController {
     
     let ingredientsLabel: UILabel = {
         let label = UILabel()
-        label.text = "Ингрeдиенты"
+        label.text = "Ingredients"
         label.textColor = .black
         label.textAlignment = .center
         label.font = Fonts.montserratFont(with: 20, weight: .semibold)
@@ -37,7 +37,7 @@ class SoupsViewController: BaseViewController {
     
     let collectionTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Первые блюда"
+        label.text = "Soups"
         label.textColor = .black
         label.textAlignment = .center
         label.font = Fonts.montserratFont(with: 20, weight: .semibold)
@@ -59,7 +59,7 @@ class SoupsViewController: BaseViewController {
     let catalogLayout = UICollectionViewFlowLayout()
     
     var isFiltered = true
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -72,13 +72,12 @@ class SoupsViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModelSoup.getSoupRecipes(categoryName: "Супы") {
+        viewModelSoup.getSoupRecipes(categoryName: "Soups") {
             DispatchQueue.main.async {
                 self.catalogRecipeCollectionView.reloadData()
             }
         }
     }
-
     
     override func setupViews() {
         super.setupViews()
@@ -89,9 +88,11 @@ class SoupsViewController: BaseViewController {
                                 UIColor(red: 247/255, green: 65/255, blue: 114/255, alpha: 1.0).cgColor]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
         gradientLayer.endPoint = CGPoint(x: 0.6, y: 0.6)
-
+        
         
         backButton.addTarget(self, action: #selector(backButtonAction) , for: .touchUpInside)
+        searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
+        
         
         categoryProductsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         categoryProductsCollectionView.register(CategoriesProductsCell.self, forCellWithReuseIdentifier: "CategoriesProductsCell")
@@ -162,9 +163,14 @@ class SoupsViewController: BaseViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-10)
         }
     }
-
+    
     @objc func backButtonAction() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func searchAction() {
+        let searchController = SeacrhViewController()
+        navigationController?.pushViewController(searchController, animated: true)
     }
 }
 
@@ -207,8 +213,8 @@ extension SoupsViewController: UICollectionViewDataSource {
                 fatalError("Unable to dequeue CategoriesProductsCell")
             }
             
-                let recipe = viewModelSoup.soupsRecipes[indexPath.item]
-                if let photoName = recipe.photo, let avatar = UIImage(named: photoName) {
+            let recipe = viewModelSoup.soupsRecipes[indexPath.item]
+            if let photoName = recipe.photo, let avatar = UIImage(named: photoName) {
                 let title = recipe.name
                 let description = recipe.ingredients
                 let calories = recipe.calories
@@ -231,42 +237,42 @@ extension SoupsViewController: UICollectionViewDelegate {
             if indexPath.item == 0 {
                 if isFiltered {
                     isFiltered = false
-                    viewModelSoup.filterRecipesByIngredient("Свинина")
+                    viewModelSoup.filterRecipesByIngredient("Pork")
                 } else {
                     isFiltered = true
-                    viewModelSoup.getSoupRecipes(categoryName: "Супы") {}
+                    viewModelSoup.getSoupRecipes(categoryName: "Soups") {}
                 }
             } else if indexPath.item == 1{
                 if isFiltered {
                     isFiltered = false
-                    viewModelSoup.filterRecipesByIngredient("Рыба")
+                    viewModelSoup.filterRecipesByIngredient("Fish")
                 } else {
                     isFiltered = true
-                    viewModelSoup.getSoupRecipes(categoryName: "Супы") {}
+                    viewModelSoup.getSoupRecipes(categoryName: "Soups") {}
                 }
             } else if indexPath.item == 2 {
                 if isFiltered {
                     isFiltered = false
-                    viewModelSoup.filterRecipesByIngredient("Курица")
+                    viewModelSoup.filterRecipesByIngredient("Chicken")
                 } else {
                     isFiltered = true
-                    viewModelSoup.getSoupRecipes(categoryName: "Супы") {}
+                    viewModelSoup.getSoupRecipes(categoryName: "Soups") {}
                 }
             } else if indexPath.item == 3 {
                 if isFiltered {
                     isFiltered = false
-                    viewModelSoup.filterRecipesByIngredient("Овощи")
+                    viewModelSoup.filterRecipesByIngredient("Vegetables")
                 } else {
                     isFiltered = true
-                    viewModelSoup.getSoupRecipes(categoryName: "Супы") {}
+                    viewModelSoup.getSoupRecipes(categoryName: "Soups") {}
                 }
             } else if indexPath.item == 4 {
                 if isFiltered {
                     isFiltered = false
-                    viewModelSoup.filterRecipesByIngredient("Грибы")
+                    viewModelSoup.filterRecipesByIngredient("Mushrooms")
                 } else {
                     isFiltered = true
-                    viewModelSoup.getSoupRecipes(categoryName: "Супы") {}
+                    viewModelSoup.getSoupRecipes(categoryName: "Soups") {}
                 }
             }
             
@@ -282,9 +288,8 @@ extension SoupsViewController: UICollectionViewDelegate {
 }
 
 extension SoupsViewController: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

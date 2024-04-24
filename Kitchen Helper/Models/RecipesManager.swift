@@ -39,7 +39,7 @@ class RecipeManager {
     }
     
     func addCategoriesIfNeeded() {
-        let categories = ["Супы", "Горячее", "Салаты", "Закуски", "Десерты", "Напитки"]
+        let categories = ["Soups", "Hot", "Salads", "Snacks", "Desserts", "Beverages"]
         
         do {
             try realm.write {
@@ -103,6 +103,18 @@ class RecipeManager {
                 return []
             }
         }
+    
+    func getRecipesForName(_ recipeName: String) -> [Recipe] {
+        do {
+            let realm = try Realm()
+            let recipes = realm.objects(Recipe.self).filter("name BEGINSWITH[c] %@", recipeName.prefix(3))
+            return Array(recipes)
+        } catch {
+            print("Ошибка при получении рецептов: \(error.localizedDescription)")
+            return []
+        }
+    }
+
     
     func deleteRecipe(_ recipe: Recipe) {
         do {

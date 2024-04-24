@@ -39,7 +39,6 @@ class CategoriesDishesCell: UICollectionViewCell {
         contentView.addSubview(categoryImageView)
         
         contentView.backgroundColor = .white
-        
     }
     
     func makeConstraints() {
@@ -55,7 +54,6 @@ class CategoriesDishesCell: UICollectionViewCell {
         }
     }
 
-    
     func configure(title: String, image: UIImage?) {
         categoryNameLabel.text = title
         categoryImageView.image = image

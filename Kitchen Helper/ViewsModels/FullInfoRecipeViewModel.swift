@@ -8,7 +8,6 @@
 import Foundation
 
 class FullInfoRecipeViewModel {
-    
     func addToFavourites(recipe: Recipe?) {
         RecipeManager.shared.toggleFavourite(for: recipe ?? Recipe())
     }

@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 class HomeViewController: BaseViewController {
-    
     let gradientLayer = CAGradientLayer()
     
     let whiteView: UIView = {
@@ -38,7 +37,7 @@ class HomeViewController: BaseViewController {
         SoupsViewController(), HotDishesViewController(),
         SaladsViewController(), SnacksViewController(),
         DessertViewController(), BeveragesViewController()
-        ]
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +70,7 @@ class HomeViewController: BaseViewController {
         whiteView.layer.cornerRadius = 100
         whiteView.layer.maskedCorners = [.layerMinXMinYCorner]
         
+        searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
         
         view.layer.addSublayer(gradientLayer)
         view.addSubview(whiteView)
@@ -104,6 +104,11 @@ class HomeViewController: BaseViewController {
             make.trailing.equalToSuperview().offset(-10)
         }
     }
+    
+    @objc func searchAction() {
+        let searchController = SeacrhViewController()
+        navigationController?.pushViewController(searchController, animated: true)
+    }
 }
 
 extension HomeViewController: UICollectionViewDataSource {
@@ -120,7 +125,7 @@ extension HomeViewController: UICollectionViewDataSource {
         cell.configure(title: content.categoryText, image: content.categoryImage)
         
         let shadowPathRect = CGRect(x: 0, y: 0, width: cell.bounds.width, height: cell.bounds.height)
-
+        
         cell.layer.borderWidth = 0.5
         cell.layer.borderColor = UIColor.lightGray.cgColor
         cell.layer.shadowPath = UIBezierPath(rect: shadowPathRect).cgPath
@@ -140,12 +145,10 @@ extension HomeViewController: UICollectionViewDelegate {
             return
         }
         
-        let selectedViewController = controllersArray[indexPath.item]        
+        let selectedViewController = controllersArray[indexPath.item]
         navigationController?.pushViewController(selectedViewController, animated: true)
     }
 }
-
-
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -153,10 +156,10 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         let cellCount: CGFloat = 6
         let cellSpacing: CGFloat = categoryCollectionView.bounds.width * 0.04
         let collectionViewWidth = categoryCollectionView.bounds.width
-
+        
         let totalCellWidth = cellWidth * cellCount
         let totalSpacingWidth = cellSpacing * (cellCount - 1)
-
+        
         let leftInset = (collectionViewWidth - CGFloat(totalCellWidth + totalSpacingWidth)) / 2
         let rightInset = leftInset
         
@@ -164,8 +167,8 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return 40
-        }
+        return 40
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         categoryCollectionView.superview?.setNeedsLayout()
