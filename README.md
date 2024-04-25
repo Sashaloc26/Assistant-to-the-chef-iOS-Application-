@@ -1,0 +1,1 @@
+An application where the user can view detailed recipes, search for them by name, filter them according to their criteria, add items to the shopping list needed to prepare the dish, and add favorite recipes to favorites
