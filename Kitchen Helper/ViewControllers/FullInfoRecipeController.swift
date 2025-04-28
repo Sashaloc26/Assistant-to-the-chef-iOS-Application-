@@ -94,6 +94,9 @@ class FullInfoRecipeController: BaseViewController, RecipeTableCellDelegate {
         tableView.dataSource = self
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
+        tableView.sectionHeaderHeight = 0.01
+        tableView.sectionFooterHeight = 0.01
+        tableView.contentInsetAdjustmentBehavior = .never
         
         avatarImageView.image = UIImage(named: recipe?.photo ?? "")
         nameReciepLabel.text = recipe?.name
@@ -202,13 +205,7 @@ extension FullInfoRecipeController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 40
-        } else if indexPath.section == 1 {
-            return 3
-        } else {
-            return 500
-        }
+        return indexPath.section == 0 ? 40 : 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -245,3 +242,4 @@ extension FullInfoRecipeController: UITableViewDataSource {
         }
     }
 }
+

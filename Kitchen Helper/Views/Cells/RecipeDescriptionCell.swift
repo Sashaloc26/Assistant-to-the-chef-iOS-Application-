@@ -36,6 +36,7 @@ extension RecipeDescriptionCell {
     func makeConstraints () {
         descriptionRecipeTextView.snp.makeConstraints { make in
             make.trailing.leading.bottom.top.equalToSuperview()
+            make.height.equalTo(250)
         }
     }
     

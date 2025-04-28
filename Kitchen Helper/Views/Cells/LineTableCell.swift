@@ -1,16 +1,28 @@
-//
-//  LineTableCell.swift
-//  Kitchen Helper
-//
-//  Created by Саша Тихонов on 04/03/2024.
-//
-
 import UIKit
-
+import SnapKit
 class LineTableCell: UITableViewCell {
+    
+    private let lineView = UIView()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .lightGray
+        setup()
+        makeConstraints()
+    }
+    
+    func setup() {
+        lineView.backgroundColor = .lightGray
+        contentView.addSubview(lineView)
+        selectionStyle = .none
+        backgroundColor = .clear
+    }
+    
+    func makeConstraints(){
+        lineView.snp.makeConstraints { make in
+            make.top.equalTo(contentView.snp.top).offset(10)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(1)
+        }
     }
     
     required init?(coder: NSCoder) {
