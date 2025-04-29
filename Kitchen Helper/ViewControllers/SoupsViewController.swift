@@ -11,7 +11,6 @@ import RealmSwift
 import Combine
 
 class SoupsViewController: BaseViewController {
-    
     private var cancellables = Set<AnyCancellable>()
 
     let viewModelSoup = SoupsViewModel()

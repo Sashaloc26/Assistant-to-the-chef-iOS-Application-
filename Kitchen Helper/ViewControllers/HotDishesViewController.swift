@@ -8,8 +8,11 @@
 import UIKit
 import SnapKit
 import RealmSwift
+import Combine
 
 class HotDishesViewController: BaseViewController {
+    private var cancellables = Set<AnyCancellable>()
+
     let viewModelHot = HotDishesViewModel()
     
     let gradientLayer = CAGradientLayer()
@@ -67,17 +70,18 @@ class HotDishesViewController: BaseViewController {
         makeConstraints()
         
         categoryProductsCollectionView.reloadData()
-        catalogRecipeCollectionView.reloadData()
+        viewModelHot.$recipesHotDishes
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.catalogRecipeCollectionView.reloadData()
+            }
+            .store(in: &cancellables)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModelHot.getHotDishesRecipes(categoryName: "Hot") {
-            DispatchQueue.main.async {
-                self.catalogRecipeCollectionView.reloadData()
-            }
-        }
+        viewModelHot.getHotDishesRecipes(categoryName: "Hot") {}
     }
     
     override func setupViews() {
@@ -276,9 +280,7 @@ extension HotDishesViewController: UICollectionViewDelegate {
                     viewModelHot.getHotDishesRecipes(categoryName: "Hot"){}
                 }
             }
-            
-            self.catalogRecipeCollectionView.reloadData()
-            
+                        
         } else if collectionView ==  catalogRecipeCollectionView  {
             let soupRecipe = viewModelHot.recipesHotDishes[indexPath.row]
             let nextController = FullInfoRecipeController()
