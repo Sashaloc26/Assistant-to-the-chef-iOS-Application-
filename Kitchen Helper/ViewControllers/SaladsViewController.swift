@@ -12,6 +12,8 @@ import RealmSwift
 class SaladsViewController: BaseViewController {
     let viewModelSalads = SaladsViewModel()
     
+    private var cancellables = Set<AnyCancellable>()
+    
     let gradientLayer = CAGradientLayer()
     
     let searchButton = SearchButton()
@@ -67,17 +69,18 @@ class SaladsViewController: BaseViewController {
         makeConstraints()
         
         categoryProductsCollectionView.reloadData()
-        catalogRecipeCollectionView.reloadData()
+        viewModelSalads.$recipesSalads
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.catalogRecipeCollectionView.reloadData()
+            }
+            .store(in: &cancellables)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModelSalads.getSaladsRecipes(categoryName: "Salads") {
-            DispatchQueue.main.async {
-                self.catalogRecipeCollectionView.reloadData()
-            }
-        }
+        viewModelSalads.getSaladsRecipes(categoryName: "Salads") {}
     }
     
     override func setupViews() {
@@ -275,9 +278,7 @@ extension SaladsViewController: UICollectionViewDelegate {
                     viewModelSalads.getSaladsRecipes(categoryName: "Salads") {}
                 }
             }
-            
-            self.catalogRecipeCollectionView.reloadData()
-            
+                        
         } else if collectionView ==  catalogRecipeCollectionView  {
             let soupRecipe = viewModelSalads.recipesSalads[indexPath.row]
             let nextController = FullInfoRecipeController()
