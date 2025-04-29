@@ -8,10 +8,13 @@
 import UIKit
 import SnapKit
 import RealmSwift
+import Combine
 
 class SnacksViewController: BaseViewController {
     let viewModelSnacks = SnacksViewModel()
     
+    private var cancellables = Set<AnyCancellable>()
+
     let gradientLayer = CAGradientLayer()
     
     let searchButton = SearchButton()
@@ -65,19 +68,20 @@ class SnacksViewController: BaseViewController {
         super.viewDidLoad()
         setupViews()
         makeConstraints()
-        categoryProductsCollectionView.reloadData()
-        catalogRecipeCollectionView.reloadData()
         
+        categoryProductsCollectionView.reloadData()
+        viewModelSnacks.$recipesSnacks
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.catalogRecipeCollectionView.reloadData()
+            }
+            .store(in: &cancellables)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModelSnacks.getSnacksRecipes(categoryName: "Snacks") {
-            DispatchQueue.main.async {
-                self.catalogRecipeCollectionView.reloadData()
-            }
-        }
+        viewModelSnacks.getSnacksRecipes(categoryName: "Snacks") {}
     }
     
     override func setupViews() {
@@ -275,9 +279,7 @@ extension SnacksViewController: UICollectionViewDelegate {
                     viewModelSnacks.getSnacksRecipes(categoryName: "Snacks") {}
                 }
             }
-            
-            self.catalogRecipeCollectionView.reloadData()
-            
+                        
         } else if collectionView ==  catalogRecipeCollectionView  {
             let soupRecipe = viewModelSnacks.recipesSnacks[indexPath.row]
             let nextController = FullInfoRecipeController()

@@ -7,11 +7,12 @@
 
 import Foundation
 import RealmSwift
+import Combine
 
 class SoupsViewModel {
-    var soupsRecipes: [Recipe] = []
-    
+    @Published var soupsRecipes: [Recipe] = []
     var firstFourCharactersArray = [String]()
+    private var cancellables = Set<AnyCancellable>()
     
     func getSoupRecipes(categoryName: String, completion: @escaping () -> Void) {
         self.soupsRecipes = RecipeManager.shared.getRecipesForCategory(categoryName)

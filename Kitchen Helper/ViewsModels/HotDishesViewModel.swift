@@ -7,9 +7,11 @@
 
 import Foundation
 import RealmSwift
+import Combine
 
 class HotDishesViewModel {
-    var recipesHotDishes: [Recipe] = []
+    @Published var recipesHotDishes: [Recipe] = []
+    private var cancellables = Set<AnyCancellable>()
     
     func getHotDishesRecipes(categoryName: String, completion: @escaping () -> Void) {
         self.recipesHotDishes = RecipeManager.shared.getRecipesForCategory(categoryName)

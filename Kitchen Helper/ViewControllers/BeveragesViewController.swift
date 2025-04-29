@@ -12,6 +12,8 @@ import RealmSwift
 class BeveragesViewController: BaseViewController {
     let viewModelBeverage = BeveragesViewModel()
     
+    private var cancellables = Set<AnyCancellable>()
+    
     let gradientLayer = CAGradientLayer()
     
     let searchButton = SearchButton()
@@ -51,18 +53,19 @@ class BeveragesViewController: BaseViewController {
         makeConstraints()
         
         categoryProductsCollectionView.reloadData()
-        catalogRecipeCollectionView.reloadData()
+         viewModelBeverage.$recipesBeverages
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self ] _ in
+                self?.catalogRecipeCollectionView.reloadData()
+            }
+            .store(in: &cancellables)
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModelBeverage.getBeveragesRecipes(categoryName: "Beverages") {
-            DispatchQueue.main.async {
-                self.catalogRecipeCollectionView.reloadData()
-            }
-        }
+        viewModelBeverage.getBeveragesRecipes(categoryName: "Beverages") {}
     }
     
     override func setupViews() {
