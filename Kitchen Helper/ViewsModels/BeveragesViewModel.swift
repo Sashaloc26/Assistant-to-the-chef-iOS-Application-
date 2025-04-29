@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import Combine
 
 class BeveragesViewModel {
-    var recipesBeverages: [Recipe] = []
-    
+    @Published var recipesBeverages: [Recipe] = []
+    private var cancellables = Set<AnyCancellable>()
+
     func getBeveragesRecipes(categoryName: String, completion: @escaping () -> Void) {
         self.recipesBeverages = RecipeManager.shared.getRecipesForCategory(categoryName)
         completion()

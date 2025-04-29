@@ -8,10 +8,13 @@
 import UIKit
 import SnapKit
 import RealmSwift
+import Combine
 
 class DessertViewController: BaseViewController {
     let viewModelDesserts = DessertViewModel()
     
+    private var cancellables = Set<AnyCancellable>()
+
     let gradientLayer = CAGradientLayer()
     
     let searchButton = SearchButton()
@@ -59,18 +62,18 @@ class DessertViewController: BaseViewController {
         makeConstraints()
         
         categoryProductsCollectionView.reloadData()
-        catalogRecipeCollectionView.reloadData()
-        
+        viewModelDesserts.$recipesDesserts
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self ] _ in
+                self?.catalogRecipeCollectionView.reloadData()
+            }
+            .store(in: &cancellables)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModelDesserts.getDessertsRecipes(categoryName: "Desserts") {
-            DispatchQueue.main.async {
-                self.catalogRecipeCollectionView.reloadData()
-            }
-        }
+        viewModelDesserts.getDessertsRecipes(categoryName: "Desserts") {}
     }
     
     override func setupViews() {
