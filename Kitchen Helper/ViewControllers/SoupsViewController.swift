@@ -8,8 +8,12 @@
 import UIKit
 import SnapKit
 import RealmSwift
+import Combine
 
 class SoupsViewController: BaseViewController {
+    
+    private var cancellables = Set<AnyCancellable>()
+
     let viewModelSoup = SoupsViewModel()
     
     let gradientLayer = CAGradientLayer()
@@ -66,17 +70,18 @@ class SoupsViewController: BaseViewController {
         makeConstraints()
         
         categoryProductsCollectionView.reloadData()
-        catalogRecipeCollectionView.reloadData()
+        viewModelSoup.$soupsRecipes
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] _ in
+                self?.catalogRecipeCollectionView.reloadData()
+            }
+            .store(in: &cancellables)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModelSoup.getSoupRecipes(categoryName: "Soups") {
-            DispatchQueue.main.async {
-                self.catalogRecipeCollectionView.reloadData()
-            }
-        }
+        viewModelSoup.getSoupRecipes(categoryName: "Soups") {}
     }
     
     override func setupViews() {
@@ -275,9 +280,7 @@ extension SoupsViewController: UICollectionViewDelegate {
                     viewModelSoup.getSoupRecipes(categoryName: "Soups") {}
                 }
             }
-            
-            self.catalogRecipeCollectionView.reloadData()
-            
+                        
         } else if collectionView ==  catalogRecipeCollectionView  {
             let soupRecipe = viewModelSoup.soupsRecipes[indexPath.row]
             let nextController = FullInfoRecipeController()
