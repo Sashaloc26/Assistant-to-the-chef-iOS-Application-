@@ -18,7 +18,6 @@ class AuthViewController: BaseViewController {
         field.autocapitalizationType = .none
         field.autocorrectionType = .no
         field.textContentType = .emailAddress
-        field.borderStyle = .line
         field.backgroundColor = .clear
         return field
     }()
@@ -30,14 +29,29 @@ class AuthViewController: BaseViewController {
         field.autocapitalizationType = .none
         field.autocorrectionType = .no
         field.textContentType = .password
-        field.borderStyle = .line
         field.backgroundColor = .clear
         return field
     }()
     
+    
+    private let loginButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Log In", for: .normal)
+        button.backgroundColor = UIColor.black
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+    
+    private let registerButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Registration", for: .normal)
+        button.backgroundColor = UIColor.black
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViews()
         makeConstraints()
     }
@@ -45,24 +59,25 @@ class AuthViewController: BaseViewController {
     override func setupViews() {
         super.setupViews()
         
-        view.backgroundColor = .gray
+        view.backgroundColor = .lightGray
         
-        [emailTextField, passwordTextField].forEach {
+        [emailTextField, passwordTextField, loginButton, registerButton].forEach {
             $0.layer.cornerRadius = 15
             $0.clipsToBounds = true
-            $0.backgroundColor = .white
             view.addSubview($0)
         }
+        
+        emailTextField.backgroundColor = .white
+        passwordTextField.backgroundColor = .white
     }
     
     override func makeConstraints() {
         super.makeConstraints()
         
         emailTextField.snp.makeConstraints { make in
-            make.centerY.equalToSuperview().offset(-50)
+            make.centerY.equalToSuperview().offset(-80)
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(50)
-
         }
         
         passwordTextField.snp.makeConstraints { make in
@@ -70,6 +85,17 @@ class AuthViewController: BaseViewController {
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(50)
         }
+        
+        loginButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(50)
+            make.bottom.equalTo(registerButton.snp.top).offset(-10)
+        }
+        
+        registerButton.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(50)
+            make.bottom.equalTo(view.snp.bottom).offset(-50)
+        }
     }
-    
 }

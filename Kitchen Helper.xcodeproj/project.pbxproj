@@ -12,6 +12,7 @@
 		57290A082DBE9CE200599D4F /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 57290A072DBE9CE200599D4F /* Realm */; };
 		57290A0A2DBE9CE200599D4F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57290A092DBE9CE200599D4F /* RealmSwift */; };
 		57290A0C2DC291CA00599D4F /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57290A0B2DC291CA00599D4F /* AuthViewController.swift */; };
+		57290A0E2DC3F4E600599D4F /* RegistrationViewControlller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57290A0D2DC3F4E600599D4F /* RegistrationViewControlller.swift */; };
 		572A28142B5C567D00B99711 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572A28132B5C567D00B99711 /* AppDelegate.swift */; };
 		572A28162B5C567D00B99711 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572A28152B5C567D00B99711 /* SceneDelegate.swift */; };
 		572A281D2B5C567E00B99711 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 572A281C2B5C567E00B99711 /* Assets.xcassets */; };
@@ -61,6 +62,7 @@
 		571023BA2B94CAF000E640B2 /* RecipeDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDescriptionCell.swift; sourceTree = "<group>"; };
 		571023BC2B96489700E640B2 /* LineTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTableCell.swift; sourceTree = "<group>"; };
 		57290A0B2DC291CA00599D4F /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		57290A0D2DC3F4E600599D4F /* RegistrationViewControlller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewControlller.swift; sourceTree = "<group>"; };
 		572A28102B5C567D00B99711 /* Kitchen Helper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kitchen Helper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		572A28132B5C567D00B99711 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		572A28152B5C567D00B99711 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				57A5527B2B69804700FCF08D /* TabBarController.swift */,
 				57FEBF2B2B8BAE490098A10F /* FullInfoRecipeController.swift */,
 				574AED4B2BD04BFA0055C6BA /* SeacrhViewController.swift */,
+				57290A0D2DC3F4E600599D4F /* RegistrationViewControlller.swift */,
 				57290A0B2DC291CA00599D4F /* AuthViewController.swift */,
 			);
 			path = ViewControllers;
@@ -354,6 +357,7 @@
 				57957F0C2B80C3D50027D234 /* RecipesManager.swift in Sources */,
 				57290A0C2DC291CA00599D4F /* AuthViewController.swift in Sources */,
 				57A552742B6832D200FCF08D /* BaseViewController.swift in Sources */,
+				57290A0E2DC3F4E600599D4F /* RegistrationViewControlller.swift in Sources */,
 				573C868B2B72AEF700177AA8 /* BackButton.swift in Sources */,
 				575ACE022BC7080200599576 /* ListVIewModel.swift in Sources */,
 				57957F0A2B80C1710027D234 /* RecipesModel.swift in Sources */,
