@@ -67,6 +67,10 @@ class AuthViewController: BaseViewController {
             view.addSubview($0)
         }
         
+        loginButton.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(regAction), for: .touchUpInside)
+
+        
         emailTextField.backgroundColor = .white
         passwordTextField.backgroundColor = .white
     }
@@ -97,5 +101,24 @@ class AuthViewController: BaseViewController {
             make.height.equalTo(50)
             make.bottom.equalTo(view.snp.bottom).offset(-50)
         }
+    }
+    
+    @objc func loginAction () {
+        let sceneDelegate = UIApplication.shared.connectedScenes
+            .first?.delegate as? SceneDelegate
+        
+        let tabBarController = TabBarController()
+        
+        sceneDelegate?.window?.rootViewController = tabBarController
+        UIView.transition(with: sceneDelegate!.window!,
+                          duration: 0.4,
+                          options: .transitionFlipFromRight,
+                          animations: nil,
+                          completion: nil)
+    }
+    
+    @objc func regAction() {
+        let nextController = RegistrationController()
+        navigationController?.pushViewController(nextController, animated: true)
     }
 }
