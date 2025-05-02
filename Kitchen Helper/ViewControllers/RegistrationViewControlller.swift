@@ -1,16 +1,25 @@
 //
-//  AuthViewController.swift
+//  RegistrationViewControlller.swift
 //  Kitchen Helper
 //
-//  Created by Саша Тихонов on 30/04/2025.
+//  Created by Саша Тихонов on 01/05/2025.
 //
 
 import Foundation
 import UIKit
-import SnapKit
 
 
-class AuthViewController: BaseViewController {
+class RegistrationController: BaseViewController {
+    
+    let mainNameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Registration"
+        label.font = Fonts.montserratFont(with: 30, weight: .semibold)
+        label.textAlignment = .center
+        label.textColor = .black
+        return label
+    }()
+    
     var emailTextField: UITextField = {
         let field = UITextField()
         field.placeholder = "Email"
@@ -33,15 +42,6 @@ class AuthViewController: BaseViewController {
         return field
     }()
     
-    
-    private let loginButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.setTitle("Log In", for: .normal)
-        button.backgroundColor = UIColor.black
-        button.setTitleColor(.white, for: .normal)
-        return button
-    }()
-    
     private let registerButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Registration", for: .normal)
@@ -61,13 +61,13 @@ class AuthViewController: BaseViewController {
         
         view.backgroundColor = .lightGray
         
-        [emailTextField, passwordTextField, loginButton, registerButton].forEach {
+        [emailTextField, passwordTextField, registerButton].forEach {
             $0.layer.cornerRadius = 15
             $0.clipsToBounds = true
             view.addSubview($0)
         }
+        view.addSubview(mainNameLabel)
         
-        loginButton.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
         registerButton.addTarget(self, action: #selector(regAction), for: .touchUpInside)
 
         
@@ -77,6 +77,11 @@ class AuthViewController: BaseViewController {
     
     override func makeConstraints() {
         super.makeConstraints()
+        
+        mainNameLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.trailing.equalTo(view.safeAreaLayoutGuide).offset(20)
+        }
         
         emailTextField.snp.makeConstraints { make in
             make.centerY.equalToSuperview().offset(-80)
@@ -90,12 +95,6 @@ class AuthViewController: BaseViewController {
             make.height.equalTo(50)
         }
         
-        loginButton.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(50)
-            make.bottom.equalTo(registerButton.snp.top).offset(-10)
-        }
-        
         registerButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview().inset(20)
             make.height.equalTo(50)
@@ -103,22 +102,8 @@ class AuthViewController: BaseViewController {
         }
     }
     
-    @objc func loginAction () {
-        let sceneDelegate = UIApplication.shared.connectedScenes
-            .first?.delegate as? SceneDelegate
-        
-        let tabBarController = TabBarController()
-        
-        sceneDelegate?.window?.rootViewController = tabBarController
-        UIView.transition(with: sceneDelegate!.window!,
-                          duration: 0.4,
-                          options: .transitionFlipFromRight,
-                          animations: nil,
-                          completion: nil)
-    }
-    
     @objc func regAction() {
-        let nextController = RegistrationController()
-        navigationController?.pushViewController(nextController, animated: true)
+
     }
+
 }
