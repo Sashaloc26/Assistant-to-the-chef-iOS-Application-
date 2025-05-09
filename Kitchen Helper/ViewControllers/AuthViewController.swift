@@ -11,6 +11,8 @@ import SnapKit
 
 
 class AuthViewController: BaseViewController {
+    let authService = AuthService()
+    
     var emailTextField: UITextField = {
         let field = UITextField()
         field.placeholder = "Email"
@@ -103,18 +105,43 @@ class AuthViewController: BaseViewController {
         }
     }
     
-    @objc func loginAction () {
-        let sceneDelegate = UIApplication.shared.connectedScenes
-            .first?.delegate as? SceneDelegate
+    @objc func loginAction() {
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text,
+              !email.isEmpty, !password.isEmpty else {
+            print("Please enter both email and password.")
+            return
+        }
         
-        let tabBarController = TabBarController()
+        // Создаём объект UserData с email и password
+        let user = UserData()
+        user.email = email
+        user.password = password
         
-        sceneDelegate?.window?.rootViewController = tabBarController
-        UIView.transition(with: sceneDelegate!.window!,
-                          duration: 0.4,
-                          options: .transitionFlipFromRight,
-                          animations: nil,
-                          completion: nil)
+        // Вызов функции для авторизации
+        authService.signIn(user: user) { [weak self] result in
+            guard let self = self else {return}
+            switch result {
+            case .success(let userData):
+                // Успех: авторизация прошла, переходим в TabBarController
+                print("User logged in successfully: \(userData)")
+                
+                // Переход в TabBarController
+                let sceneDelegate = UIApplication.shared.connectedScenes
+                    .first?.delegate as? SceneDelegate
+                let tabBarController = TabBarController()
+                sceneDelegate?.window?.rootViewController = tabBarController
+                UIView.transition(with: sceneDelegate!.window!,
+                                  duration: 0.4,
+                                  options: .transitionFlipFromRight,
+                                  animations: nil,
+                                  completion: nil)
+                
+            case .failure(let error):
+                // Ошибка: выводим информацию о проблеме
+                print("Failed to sign in: \(error.localizedDescription)")
+            }
+        }
     }
     
     @objc func regAction() {
