@@ -10,6 +10,7 @@ import UIKit
 
 
 class RegistrationController: BaseViewController {
+    let authService = AuthService()
     
     let mainNameLabel: UILabel = {
         let label = UILabel()
@@ -69,7 +70,7 @@ class RegistrationController: BaseViewController {
         view.addSubview(mainNameLabel)
         
         registerButton.addTarget(self, action: #selector(regAction), for: .touchUpInside)
-
+        
         
         emailTextField.backgroundColor = .white
         passwordTextField.backgroundColor = .white
@@ -103,7 +104,27 @@ class RegistrationController: BaseViewController {
     }
     
     @objc func regAction() {
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text,
+              !email.isEmpty, !password.isEmpty else {
+            print("Email или пароль пустые")
+            return
+        }
 
-    }
-
-}
+        let user = UserData()
+        user.id = UUID().uuidString 
+        user.email = email
+        user.password = password
+        
+        authService.createNewUser(user: user) { [weak self] result in
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    let nextController = AuthViewController()
+                    self?.navigationController?.pushViewController(nextController, animated: true)
+                }
+            case .failure(let error):
+                print("Ошибка регистрации: \(error.localizedDescription)")
+            }
+        }
+    }}

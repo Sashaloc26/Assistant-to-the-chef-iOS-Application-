@@ -33,6 +33,10 @@
 		574C7BC42BC4388E007B2493 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574C7BC32BC4388E007B2493 /* ListTableViewCell.swift */; };
 		574C7BC62BC486BA007B2493 /* PurchaseListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574C7BC52BC486BA007B2493 /* PurchaseListManager.swift */; };
 		575167CE2DCAA1E000FF36FB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 575167CD2DCAA1E000FF36FB /* SnapKit */; };
+		575167D12DCBDDFC00FF36FB /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575167D02DCBDDFC00FF36FB /* AuthService.swift */; };
+		575167D42DCBDE4E00FF36FB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 575167D32DCBDE4E00FF36FB /* FirebaseAuth */; };
+		575167D62DCBE2D700FF36FB /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575167D52DCBE2D700FF36FB /* UserData.swift */; };
+		575167D82DCBE77700FF36FB /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575167D72DCBE77700FF36FB /* UserDataManager.swift */; };
 		5753E8AF2BBB35E7006AAB18 /* FullInfoRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753E8AE2BBB35E7006AAB18 /* FullInfoRecipeViewModel.swift */; };
 		5753E8B12BBB4E33006AAB18 /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753E8B02BBB4E33006AAB18 /* FavouritesViewModel.swift */; };
 		575ACE022BC7080200599576 /* ListVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575ACE012BC7080200599576 /* ListVIewModel.swift */; };
@@ -84,6 +88,9 @@
 		574AED4B2BD04BFA0055C6BA /* SeacrhViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeacrhViewController.swift; sourceTree = "<group>"; };
 		574C7BC32BC4388E007B2493 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		574C7BC52BC486BA007B2493 /* PurchaseListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseListManager.swift; sourceTree = "<group>"; };
+		575167D02DCBDDFC00FF36FB /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		575167D52DCBE2D700FF36FB /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		575167D72DCBE77700FF36FB /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		5753E8AE2BBB35E7006AAB18 /* FullInfoRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullInfoRecipeViewModel.swift; sourceTree = "<group>"; };
 		5753E8B02BBB4E33006AAB18 /* FavouritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
 		575ACE012BC7080200599576 /* ListVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVIewModel.swift; sourceTree = "<group>"; };
@@ -123,6 +130,7 @@
 				575167CE2DCAA1E000FF36FB /* SnapKit in Frameworks */,
 				57290A0A2DBE9CE200599D4F /* RealmSwift in Frameworks */,
 				57290AD12DC6EE2700599D4F /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				575167D42DCBDE4E00FF36FB /* FirebaseAuth in Frameworks */,
 				57290A082DBE9CE200599D4F /* Realm in Frameworks */,
 				57290AD32DC6EE2700599D4F /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				57290ACF2DC6EE2700599D4F /* FirebaseAnalytics in Frameworks */,
@@ -137,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				572A28122B5C567D00B99711 /* Kitchen Helper */,
+				575167D22DCBDE4E00FF36FB /* Frameworks */,
 				572A28112B5C567D00B99711 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -197,6 +206,13 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		575167D22DCBDE4E00FF36FB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5767259B2B618CFE00C3C30E /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,9 +236,11 @@
 		576725A12B618DB000C3C30E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				575167D52DCBE2D700FF36FB /* UserData.swift */,
 				57957F0B2B80C3D50027D234 /* RecipesManager.swift */,
 				57957F092B80C1710027D234 /* RecipesModel.swift */,
 				574C7BC52BC486BA007B2493 /* PurchaseListManager.swift */,
+				575167D72DCBE77700FF36FB /* UserDataManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -262,6 +280,7 @@
 				5753E8B02BBB4E33006AAB18 /* FavouritesViewModel.swift */,
 				575ACE012BC7080200599576 /* ListVIewModel.swift */,
 				57EC794C2BD179B90097D205 /* SearchViewModel.swift */,
+				575167D02DCBDDFC00FF36FB /* AuthService.swift */,
 			);
 			path = ViewsModels;
 			sourceTree = "<group>";
@@ -300,6 +319,7 @@
 				57290AD42DC6EE2700599D4F /* FirebaseAppCheck */,
 				57290AD62DC6EE2700599D4F /* FirebaseAppDistribution-Beta */,
 				575167CD2DCAA1E000FF36FB /* SnapKit */,
+				575167D32DCBDE4E00FF36FB /* FirebaseAuth */,
 			);
 			productName = "Kitchen Helper";
 			productReference = 572A28102B5C567D00B99711 /* Kitchen Helper.app */;
@@ -365,6 +385,7 @@
 				57FEBF2E2B8BC5130098A10F /* RecipeTableCell.swift in Sources */,
 				57A552702B681C1C00FCF08D /* FavouritesViewController.swift in Sources */,
 				576725AD2B62E7D600C3C30E /* HotDishesViewController.swift in Sources */,
+				575167D62DCBE2D700FF36FB /* UserData.swift in Sources */,
 				576725C12B62E8BF00C3C30E /* DessertViewModel.swift in Sources */,
 				57A5527E2B69887900FCF08D /* CategoriesDishesCell.swift in Sources */,
 				574C7BC42BC4388E007B2493 /* ListTableViewCell.swift in Sources */,
@@ -389,6 +410,7 @@
 				5738637D2B6CFF6100A944C9 /* Categorylabel + image.swift in Sources */,
 				5753E8B12BBB4E33006AAB18 /* FavouritesViewModel.swift in Sources */,
 				574AED4C2BD04BFA0055C6BA /* SeacrhViewController.swift in Sources */,
+				575167D12DCBDDFC00FF36FB /* AuthService.swift in Sources */,
 				57FEBF2C2B8BAE490098A10F /* FullInfoRecipeController.swift in Sources */,
 				576725AF2B62E7F400C3C30E /* SaladsViewController.swift in Sources */,
 				57EC794D2BD179B90097D205 /* SearchViewModel.swift in Sources */,
@@ -402,6 +424,7 @@
 				576725BD2B62E89700C3C30E /* SaladsViewModel.swift in Sources */,
 				57A886182B7A9A1A00F42679 /* CatalogRecipesCollectionCell.swift in Sources */,
 				576725BF2B62E8AD00C3C30E /* SnacksViewModel.swift in Sources */,
+				575167D82DCBE77700FF36FB /* UserDataManager.swift in Sources */,
 				572A28162B5C567D00B99711 /* SceneDelegate.swift in Sources */,
 				573C868F2B72BE9E00177AA8 /* Resources.swift in Sources */,
 				576725B12B62E80A00C3C30E /* SnacksViewController.swift in Sources */,
@@ -694,6 +717,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 575167CC2DCAA1E000FF36FB /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		575167D32DCBDE4E00FF36FB /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57290ACD2DC6EE2700599D4F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
