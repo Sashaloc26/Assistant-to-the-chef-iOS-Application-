@@ -11,6 +11,7 @@ import UIKit
 
 class Recipe: Object {
     @Persisted(primaryKey: true) var id: String = UUID().uuidString
+    @Persisted var ownerId: String = "" // 
     @Persisted var name: String = ""
     @Persisted var ingredients = List<String>()
     @Persisted var instructions: String = ""
