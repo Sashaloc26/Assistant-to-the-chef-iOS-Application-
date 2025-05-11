@@ -37,7 +37,7 @@ class FavouritesViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModel.getFavouritesRecipe() {
+        viewModel.getFavouritesRecipe() { 
             DispatchQueue.main.async {
                 self.catalogRecipeCollectionView.reloadData()
             }

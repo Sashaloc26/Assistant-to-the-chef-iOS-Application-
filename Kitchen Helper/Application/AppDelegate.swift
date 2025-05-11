@@ -8,13 +8,21 @@
 import UIKit
 import RealmSwift
 import Firebase
+import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
         FirebaseApp.configure()
 
+        var userId = ""
+        
+        if let currentUser = Auth.auth().currentUser {
+            userId = currentUser.uid
+        } else {
+            print("User not found ")
+        }
+                
         RecipeManager.shared.addCategoriesIfNeeded()
         
         let categorySoupName = "Soups"
@@ -26,7 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "30\nmin",
                 calories: "190\nkcal",
                 photo: "chicken_soup",
-                category: category
+                category: category,
+                ownerId: userId
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -40,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "50\nmin",
                 calories: "240\nkcal",
                 photo: "borsh",
-                category: category
+                category: category, ownerId: userId
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -54,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "45\nmin",
                 calories: "320\nkcal",
                 photo: "cheese_soup",
-                category: category
+                category: category, ownerId: userId
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -68,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "60\nmin",
                 calories: "270\nkcal",
                 photo: "bean_soup",
-                category: category
+                category: category, ownerId: userId
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -83,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "40\nmin",
                 calories: "465\nkcal",
                 photo: "draniki",
-                category: category
+                category: category, ownerId: userId
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -97,7 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "40\nmin",
                 calories: "480\nkcal",
                 photo: "meat_with_sesame_seeds",
-                category: category
+                category: category, ownerId: userId
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -111,7 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "50\nmin",
                 calories: "390\nkcal",
                 photo: "buckwheat_with_meat",
-                category: category
+                category: category, ownerId: userId
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -125,7 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "70\nmin",
                 calories: "340\nkcal",
                 photo: "pork_chops",
-                category: category
+                category: category, ownerId: userId
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -140,7 +149,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "35\nmin",
                 calories: "1060\nkcal",
                 photo: "warm_salad",
-                category: category
+                category: category, ownerId: userId
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -154,7 +163,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "30\nmin",
                 calories: "930\nkcal",
                 photo: "salat_mimoza",
-                category: category
+                category: category, ownerId: userId
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -168,7 +177,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "20\nmin",
                 calories: "1230\nkcal",
                 photo: "salad_ tenderness",
-                category: category
+                category: category, ownerId: userId
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -183,7 +192,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "30\nmin",
                 calories: "750\nkcal",
                 photo: "cheese_snacks",
-                category: category
+                category: category, ownerId: userId
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -197,7 +206,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "35\nmin",
                 calories: "490\nkcal",
                 photo: "lavash_snack",
-                category: category
+                category: category, ownerId: userId
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -211,7 +220,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "30\nmin",
                 calories: "550\nkcal",
                 photo: "fries_pie",
-                category: category
+                category: category, ownerId: userId
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -226,7 +235,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "440\nmin",
                 calories: "1400\nkcal",
                 photo: "classic_cheescake",
-                category: category
+                category: category, ownerId: userId
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -241,7 +250,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "10\nmin",
                 calories: "80\nkcal",
                 photo: "mojito",
-                category: category
+                category: category, ownerId: userId
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -249,9 +258,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         let config = Realm.Configuration(
-            schemaVersion: 7,
+            schemaVersion: 10,
             migrationBlock: { migration, oldSchemaVersion in
-                if oldSchemaVersion < 7 {
+                if oldSchemaVersion < 10 {
                     
                 }
             }

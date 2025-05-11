@@ -6,9 +6,9 @@ class RecipeManager {
     
     private init() {
         let config = Realm.Configuration(
-            schemaVersion: 6,
+            schemaVersion: 10,
             migrationBlock: { migration, oldSchemaVersion in
-                if oldSchemaVersion < 6 {
+                if oldSchemaVersion < 10 {
                     
                 }
             }
@@ -25,12 +25,12 @@ class RecipeManager {
         }
     }()
     
-    func createRecipeIfNeeded(name: String, ingredients: [String], instructions: String, cookingTime: String, calories: String, photo: String?, category: RecipeCategory?, favourites: Bool = false) {
+    func createRecipeIfNeeded(name: String, ingredients: [String], instructions: String, cookingTime: String, calories: String, photo: String?, category: RecipeCategory?, favourites: Bool = false, ownerId: String) {
         if recipeExists(withName: name) {
             return
         }
         
-        createRecipe(name: name, ingredients: ingredients, instructions: instructions, cookingTime: cookingTime, calories: calories, photo: photo, category: category, favourites: favourites)
+        createRecipe(name: name, ingredients: ingredients, instructions: instructions, cookingTime: cookingTime, calories: calories, photo: photo, category: category, ownerId: ownerId, favourites: favourites)
     }
     
     private func recipeExists(withName name: String) -> Bool {
@@ -62,7 +62,7 @@ class RecipeManager {
     }
 
     
-    func createRecipe(name: String, ingredients: [String], instructions: String, cookingTime: String, calories: String, photo: String?, category: RecipeCategory?, favourites: Bool = false) {
+    func createRecipe(name: String, ingredients: [String], instructions: String, cookingTime: String, calories: String, photo: String?, category: RecipeCategory?, ownerId: String, favourites: Bool = false) {
         let newRecipe = Recipe()
         newRecipe.name = name
         newRecipe.ingredients.append(objectsIn: ingredients)
@@ -72,7 +72,8 @@ class RecipeManager {
         newRecipe.photo = photo
         newRecipe.category = category
         newRecipe.favourites = favourites
-        
+        newRecipe.ownerId = ownerId 
+
         try! realm.write {
             realm.add(newRecipe)
         }
@@ -156,10 +157,15 @@ class RecipeManager {
         }
     }
     
-    func getFavouriteRecipes() -> [Recipe] {
+    func getFavouriteRecipes(ownerId: String) -> [Recipe] {
         do {
             let realm = try Realm()
-            let favouriteRecipes = realm.objects(Recipe.self).filter("favourites == true")
+            
+            // Выводим все рецепты, чтобы проверить, что они есть в базе
+            let allRecipes = realm.objects(Recipe.self)
+            print("All recipes: \(allRecipes)")  // Выводим все рецепты в консоль
+            
+            let favouriteRecipes = realm.objects(Recipe.self).filter("ownerId == %@ AND favourites == true", ownerId)
             return Array(favouriteRecipes)
         } catch {
             print("Ошибка при получении избранных рецептов: \(error.localizedDescription)")

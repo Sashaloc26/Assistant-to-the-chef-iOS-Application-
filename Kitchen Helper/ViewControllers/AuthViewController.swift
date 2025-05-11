@@ -117,7 +117,6 @@ class AuthViewController: BaseViewController {
         user.email = email
         user.password = password
         
-        // Вызов функции для авторизации
         authService.signIn(user: user) { [weak self] result in
             guard self != nil else {return}
             switch result {
