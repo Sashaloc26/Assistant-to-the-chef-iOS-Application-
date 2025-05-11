@@ -113,20 +113,16 @@ class AuthViewController: BaseViewController {
             return
         }
         
-        // Создаём объект UserData с email и password
         let user = UserData()
         user.email = email
         user.password = password
         
-        // Вызов функции для авторизации
         authService.signIn(user: user) { [weak self] result in
-            guard let self = self else {return}
+            guard self != nil else {return}
             switch result {
             case .success(let userData):
-                // Успех: авторизация прошла, переходим в TabBarController
                 print("User logged in successfully: \(userData)")
                 
-                // Переход в TabBarController
                 let sceneDelegate = UIApplication.shared.connectedScenes
                     .first?.delegate as? SceneDelegate
                 let tabBarController = TabBarController()
@@ -138,7 +134,6 @@ class AuthViewController: BaseViewController {
                                   completion: nil)
                 
             case .failure(let error):
-                // Ошибка: выводим информацию о проблеме
                 print("Failed to sign in: \(error.localizedDescription)")
             }
         }

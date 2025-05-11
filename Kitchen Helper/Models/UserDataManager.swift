@@ -12,18 +12,18 @@ import FirebaseAuth
 class UserDataManager {
     static let shared = UserDataManager()
     
-    func saveUserToRealm(user: UserData, withUID uid: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        let realmUser = UserData()
-        realmUser.id = uid
-        realmUser.email = user.email
-        realmUser.password = user.password
+    func saveUserToRealm(user: UserData, completion: @escaping (Result<Bool, Error>) -> Void) {
+        guard !user.id.isEmpty else {
+            completion(.failure(NSError(domain: "UserIDError", code: 0, userInfo: [NSLocalizedDescriptionKey: "User ID is not set."])))
+            return
+        }
         
         do {
             let realm = try Realm()
             try realm.write {
-                realm.add(realmUser, update: .modified)
+                realm.add(user, update: .modified)
             }
-            completion(.success(()))
+            completion(.success(true))
         } catch {
             completion(.failure(error))
         }

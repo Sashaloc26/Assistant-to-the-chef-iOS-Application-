@@ -18,31 +18,32 @@ class AuthService {
     
     let userDataManager = UserDataManager()
     func createNewUser(user: UserData, completion: @escaping (Result<Bool, Error>) -> Void) {
-            Auth.auth().createUser(withEmail: user.email, password: user.password) { [weak self] result, error in
-                guard let self = self else { return }
-
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-
-                guard let firebaseUID = result?.user.uid else {
-                    completion(.failure(NSError(domain: "UIDError", code: 0, userInfo: [NSLocalizedDescriptionKey: "No UID from Firebase"])))
-                    return
-                }
-
-                userDataManager.saveUserToRealm(user: user, withUID: firebaseUID) { saveResult in
-                    switch saveResult {
-                    case .success:
-                        result?.user.sendEmailVerification(completion: nil)
-                        self.signOut()
-                        completion(.success(true))
-                    case .failure(let saveError):
-                        completion(.failure(saveError))
-                    }
+        Auth.auth().createUser(withEmail: user.email, password: user.password) { [weak self] result, error in
+            guard let self = self else { return }
+            
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let firebaseUID = result?.user.uid else {
+                completion(.failure(NSError(domain: "UIDError", code: 0, userInfo: [NSLocalizedDescriptionKey: "No UID from Firebase"])))
+                return
+            }
+            
+            user.id = firebaseUID
+            userDataManager.saveUserToRealm(user: user) { saveResult in
+                switch saveResult {
+                case .success:
+                    result?.user.sendEmailVerification(completion: nil)
+                    self.signOut()
+                    completion(.success(true))
+                case .failure(let saveError):
+                    completion(.failure(saveError))
                 }
             }
         }
+    }
     
     func signIn(user: UserData, completion: @escaping (Result<UserData, Error>) -> Void) {
         Auth.auth().signIn(withEmail: user.email, password: user.password) { result, error in
@@ -63,7 +64,26 @@ class AuthService {
             }
 
             let realmResult = UserDataManager.fetchUserData(by: firebaseUser.uid)
-            completion(realmResult)
+
+            switch realmResult {
+            case .success(let localUser):
+                completion(.success(localUser))
+            case .failure:
+                let recoveredUser = UserData()
+                recoveredUser.id = firebaseUser.uid
+                recoveredUser.email = firebaseUser.email ?? ""
+                recoveredUser.password = ""
+
+                let manager = UserDataManager()
+                manager.saveUserToRealm(user: recoveredUser) { saveResult in
+                    switch saveResult {
+                    case .success:
+                        completion(.success(recoveredUser))
+                    case .failure(let saveError):
+                        completion(.failure(saveError))
+                    }
+                }
+            }
         }
     }
     
