@@ -12,18 +12,31 @@ import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    var currentUserId: String?
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
 
-        var userId = ""
         
-        if let currentUser = Auth.auth().currentUser {
-            userId = currentUser.uid
+//        Auth.auth().addStateDidChangeListener { _, user in
+//            if let user = user {
+//                let newUserId = user.uid
+//                print("User signed in: \(newUserId)")
+//                self.currentUserId = newUserId
+//            } else {
+//                print("User signed out")
+//                self.currentUserId = nil
+//            }
+//        }
+        if let user = Auth.auth().currentUser {
+            currentUserId = user.uid
         } else {
-            print("User not found ")
+            print("Пользователь НЕ залогинен")
         }
+        print("Current User ID \(currentUserId ?? "")")
                 
         RecipeManager.shared.addCategoriesIfNeeded()
+//        RecipeManager.shared.addOwnerIdIfNeed(ownerID: currentUserId ?? "")
         
         let categorySoupName = "Soups"
         if let category = RecipeManager.shared.getCategoryByName(categorySoupName) {
@@ -35,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 calories: "190\nkcal",
                 photo: "chicken_soup",
                 category: category,
-                ownerId: userId
+//                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -49,7 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "50\nmin",
                 calories: "240\nkcal",
                 photo: "borsh",
-                category: category, ownerId: userId
+                category: category,
+//                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -63,7 +77,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "45\nmin",
                 calories: "320\nkcal",
                 photo: "cheese_soup",
-                category: category, ownerId: userId
+                category: category,
+//                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -77,7 +92,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "60\nmin",
                 calories: "270\nkcal",
                 photo: "bean_soup",
-                category: category, ownerId: userId
+                category: category,
+//                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -92,7 +108,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "40\nmin",
                 calories: "465\nkcal",
                 photo: "draniki",
-                category: category, ownerId: userId
+                category: category,
+//                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -106,7 +123,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "40\nmin",
                 calories: "480\nkcal",
                 photo: "meat_with_sesame_seeds",
-                category: category, ownerId: userId
+                category: category,
+//                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -120,7 +138,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "50\nmin",
                 calories: "390\nkcal",
                 photo: "buckwheat_with_meat",
-                category: category, ownerId: userId
+                category: category,
+//                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -134,7 +153,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "70\nmin",
                 calories: "340\nkcal",
                 photo: "pork_chops",
-                category: category, ownerId: userId
+                category: category,
+//                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -149,7 +169,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "35\nmin",
                 calories: "1060\nkcal",
                 photo: "warm_salad",
-                category: category, ownerId: userId
+                category: category,
+//                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -163,7 +184,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "30\nmin",
                 calories: "930\nkcal",
                 photo: "salat_mimoza",
-                category: category, ownerId: userId
+                category: category,
+//                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -177,7 +199,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "20\nmin",
                 calories: "1230\nkcal",
                 photo: "salad_ tenderness",
-                category: category, ownerId: userId
+                category: category,
+//                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -192,7 +215,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "30\nmin",
                 calories: "750\nkcal",
                 photo: "cheese_snacks",
-                category: category, ownerId: userId
+                category: category,
+//                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -206,7 +230,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "35\nmin",
                 calories: "490\nkcal",
                 photo: "lavash_snack",
-                category: category, ownerId: userId
+                category: category,
+//                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -220,7 +245,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "30\nmin",
                 calories: "550\nkcal",
                 photo: "fries_pie",
-                category: category, ownerId: userId
+                category: category,
+//                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -235,7 +261,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "440\nmin",
                 calories: "1400\nkcal",
                 photo: "classic_cheescake",
-                category: category, ownerId: userId
+                category: category,
+//                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -250,7 +277,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 cookingTime: "10\nmin",
                 calories: "80\nkcal",
                 photo: "mojito",
-                category: category, ownerId: userId
+                category: category,
+//                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
