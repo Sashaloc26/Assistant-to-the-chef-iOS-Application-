@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseAuth
+import RealmSwift
 
 enum SignInError: Error {
     case invalidUser
@@ -16,7 +17,10 @@ enum SignInError: Error {
 
 class AuthService {
     
+    static let shared = AuthService()
+
     let userDataManager = UserDataManager()
+    
     func createNewUser(user: UserData, completion: @escaping (Result<Bool, Error>) -> Void) {
         Auth.auth().createUser(withEmail: user.email, password: user.password) { [weak self] result, error in
             guard let self = self else { return }

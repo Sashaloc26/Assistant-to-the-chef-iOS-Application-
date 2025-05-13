@@ -1,5 +1,6 @@
 import Foundation
 import RealmSwift
+import FirebaseAuth
 
 class RecipeManager {
     static let shared = RecipeManager()
@@ -60,7 +61,6 @@ class RecipeManager {
         let existingCategory = realm.objects(RecipeCategory.self).filter("categoryName == %@", name).first
         return existingCategory != nil
     }
-
     
     func createRecipe(name: String, ingredients: [String], instructions: String, cookingTime: String, calories: String, photo: String?, category: RecipeCategory?, ownerId: String, favourites: Bool = false) {
         let newRecipe = Recipe()
@@ -161,9 +161,8 @@ class RecipeManager {
         do {
             let realm = try Realm()
             
-            // Выводим все рецепты, чтобы проверить, что они есть в базе
             let allRecipes = realm.objects(Recipe.self)
-            print("All recipes: \(allRecipes)")  // Выводим все рецепты в консоль
+            print("All recipes: \(allRecipes)")
             
             let favouriteRecipes = realm.objects(Recipe.self).filter("ownerId == %@ AND favourites == true", ownerId)
             return Array(favouriteRecipes)

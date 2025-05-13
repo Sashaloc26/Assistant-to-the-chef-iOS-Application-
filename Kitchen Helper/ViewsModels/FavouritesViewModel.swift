@@ -15,13 +15,13 @@ class FavouritesViewModel {
     func getFavouritesRecipe(completion: @escaping () -> Void) {
         if let currentUser = Auth.auth().currentUser {
             userId = currentUser.uid
-            print("Current user ID: \(userId)") // Проверяем ID пользователя
+            print("Current user ID: \(userId)")
         } else {
-            print("User not found") // Проверяем, что пользователь найден
+            print("User not found")
         }
         
         self.favouritesRecipes = RecipeManager.shared.getFavouriteRecipes(ownerId: userId)
-        print("Fetched favourites: \(self.favouritesRecipes)") // Лог для проверки полученных рецептов
+        print("Fetched favourites: \(self.favouritesRecipes)") 
         completion()
     }
 }

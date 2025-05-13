@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 class HomeViewController: BaseViewController {
+    let authService = AuthService()
+
     let gradientLayer = CAGradientLayer()
     
     let whiteView: UIView = {
@@ -106,7 +108,8 @@ class HomeViewController: BaseViewController {
     }
     
     @objc func searchAction() {
-        let searchController = SeacrhViewController()
+        authService.signOut()
+        let searchController = AuthViewController()
         navigationController?.pushViewController(searchController, animated: true)
     }
 }
