@@ -19,6 +19,13 @@ class HomeViewController: BaseViewController {
         return view
     }()
     
+    let logOutButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "rectangle.portrait.and.arrow.right"), for: .normal)
+        button.tintColor = .white
+        return button
+    }()
+    
     let layout = UICollectionViewFlowLayout()
     var categoryCollectionView: UICollectionView!
     
@@ -73,12 +80,14 @@ class HomeViewController: BaseViewController {
         whiteView.layer.maskedCorners = [.layerMinXMinYCorner]
         
         searchButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
+        logOutButton.addTarget(self, action: #selector(logoutTapped), for: .touchUpInside)
         
         view.layer.addSublayer(gradientLayer)
         view.addSubview(whiteView)
         view.addSubview(categoryCollectionView)
         view.addSubview(mainNameLabel)
         view.addSubview(searchButton)
+        view.addSubview(logOutButton)
     }
     
     override func makeConstraints() {
@@ -105,12 +114,29 @@ class HomeViewController: BaseViewController {
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.trailing.equalToSuperview().offset(-10)
         }
+        
+        logOutButton.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.leading.equalToSuperview().offset(10)
+        }
     }
     
     @objc func searchAction() {
-        authService.signOut()
-        let searchController = AuthViewController()
+        let searchController = SearchViewController()
         navigationController?.pushViewController(searchController, animated: true)
+    }
+    
+    @objc func logoutTapped() {
+        authService.signOut()
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let sceneDelegate = windowScene.delegate as? SceneDelegate else {
+            return
+        }
+
+        let authVC = AuthViewController()
+        let nav = UINavigationController(rootViewController: authVC)
+        sceneDelegate.window?.rootViewController = nav
+        sceneDelegate.window?.makeKeyAndVisible()
     }
 }
 

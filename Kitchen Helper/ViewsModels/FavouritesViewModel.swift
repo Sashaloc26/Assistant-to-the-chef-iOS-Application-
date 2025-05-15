@@ -15,7 +15,6 @@ class FavouritesViewModel {
     func getFavouritesRecipe(completion: @escaping () -> Void) {
         if let currentUser = Auth.auth().currentUser {
             userId = currentUser.uid
-            print("Current user ID: \(userId)")
         } else {
             print("User not found")
         }

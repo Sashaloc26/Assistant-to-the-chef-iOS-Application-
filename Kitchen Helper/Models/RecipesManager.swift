@@ -171,4 +171,20 @@ class RecipeManager {
             return []
         }
     }
+    
+    func updateOwnerIdForAllRecipesIfNeeded(currentUserId: String) {
+        do {
+            let recipes = realm.objects(Recipe.self).filter("ownerId != %@", currentUserId)
+            try realm.write {
+                for recipe in recipes {
+                    recipe.ownerId = currentUserId
+                }
+            }
+            print("Обновлены ownerId для \(recipes.count) рецептов.")
+        } catch {
+            print("Ошибка при обновлении ownerId: \(error.localizedDescription)")
+        }
+    }
 }
+
+
