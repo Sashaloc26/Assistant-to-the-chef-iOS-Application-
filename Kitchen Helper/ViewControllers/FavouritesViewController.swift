@@ -94,7 +94,7 @@ class FavouritesViewController: BaseViewController {
     }
     
     @objc func searchAction() {
-        let searchController = SeacrhViewController()
+        let searchController = SearchViewController()
         navigationController?.pushViewController(searchController, animated: true)
     }
 }

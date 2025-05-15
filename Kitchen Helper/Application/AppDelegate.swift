@@ -17,26 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
 
-        
-//        Auth.auth().addStateDidChangeListener { _, user in
-//            if let user = user {
-//                let newUserId = user.uid
-//                print("User signed in: \(newUserId)")
-//                self.currentUserId = newUserId
-//            } else {
-//                print("User signed out")
-//                self.currentUserId = nil
-//            }
-//        }
         if let user = Auth.auth().currentUser {
             currentUserId = user.uid
         } else {
             print("Пользователь НЕ залогинен")
         }
         print("Current User ID \(currentUserId ?? "")")
+
+        if let currentUserId = currentUserId {
+            RecipeManager.shared.updateOwnerIdForAllRecipesIfNeeded(currentUserId: currentUserId)
+        }
                 
         RecipeManager.shared.addCategoriesIfNeeded()
-//        RecipeManager.shared.addOwnerIdIfNeed(ownerID: currentUserId ?? "")
         
         let categorySoupName = "Soups"
         if let category = RecipeManager.shared.getCategoryByName(categorySoupName) {
@@ -48,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 calories: "190\nkcal",
                 photo: "chicken_soup",
                 category: category,
-//                ownerId: currentUserId ?? ""
+                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -63,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 calories: "240\nkcal",
                 photo: "borsh",
                 category: category,
-//                ownerId: currentUserId ?? ""
+                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -78,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 calories: "320\nkcal",
                 photo: "cheese_soup",
                 category: category,
-//                ownerId: currentUserId ?? ""
+                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -93,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 calories: "270\nkcal",
                 photo: "bean_soup",
                 category: category,
-//                ownerId: currentUserId ?? ""
+                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -109,7 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 calories: "465\nkcal",
                 photo: "draniki",
                 category: category,
-//                ownerId: currentUserId ?? ""
+                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -124,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 calories: "480\nkcal",
                 photo: "meat_with_sesame_seeds",
                 category: category,
-//                ownerId: currentUserId ?? ""
+                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -139,7 +131,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 calories: "390\nkcal",
                 photo: "buckwheat_with_meat",
                 category: category,
-//                ownerId: currentUserId ?? ""
+                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -154,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 calories: "340\nkcal",
                 photo: "pork_chops",
                 category: category,
-//                ownerId: currentUserId ?? ""
+                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -170,7 +162,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 calories: "1060\nkcal",
                 photo: "warm_salad",
                 category: category,
-//                ownerId: currentUserId ?? ""
+                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -185,7 +177,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 calories: "930\nkcal",
                 photo: "salat_mimoza",
                 category: category,
-//                ownerId: currentUserId ?? ""
+                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -200,7 +192,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 calories: "1230\nkcal",
                 photo: "salad_ tenderness",
                 category: category,
-//                ownerId: currentUserId ?? ""
+                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -216,7 +208,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 calories: "750\nkcal",
                 photo: "cheese_snacks",
                 category: category,
-//                ownerId: currentUserId ?? ""
+                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -231,7 +223,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 calories: "490\nkcal",
                 photo: "lavash_snack",
                 category: category,
-//                ownerId: currentUserId ?? ""
+                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -246,7 +238,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 calories: "550\nkcal",
                 photo: "fries_pie",
                 category: category,
-//                ownerId: currentUserId ?? ""
+                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -262,7 +254,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 calories: "1400\nkcal",
                 photo: "classic_cheescake",
                 category: category,
-//                ownerId: currentUserId ?? ""
+                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")
@@ -278,7 +270,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 calories: "80\nkcal",
                 photo: "mojito",
                 category: category,
-//                ownerId: currentUserId ?? ""
+                ownerId: currentUserId ?? ""
             )
         } else {
             print("Category '\(categorySoupName)' not found")

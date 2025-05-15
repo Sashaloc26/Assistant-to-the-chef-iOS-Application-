@@ -180,7 +180,7 @@ class FullInfoRecipeController: BaseViewController, RecipeTableCellDelegate {
     }
     
     @objc func searchAction() {
-        let searchController = SeacrhViewController()
+        let searchController = SearchViewController()
         present(searchController, animated: true)
     }
     
