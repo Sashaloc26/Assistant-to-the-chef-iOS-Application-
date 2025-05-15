@@ -29,7 +29,7 @@
 		573C868F2B72BE9E00177AA8 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573C868E2B72BE9E00177AA8 /* Resources.swift */; };
 		573C86912B74018400177AA8 /* CategoriesProductsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573C86902B74018400177AA8 /* CategoriesProductsCell.swift */; };
 		573C86932B7566B000177AA8 /* CategoryProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573C86922B7566B000177AA8 /* CategoryProducts.swift */; };
-		574AED4C2BD04BFA0055C6BA /* SeacrhViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AED4B2BD04BFA0055C6BA /* SeacrhViewController.swift */; };
+		574AED4C2BD04BFA0055C6BA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574AED4B2BD04BFA0055C6BA /* SearchViewController.swift */; };
 		574C7BC42BC4388E007B2493 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574C7BC32BC4388E007B2493 /* ListTableViewCell.swift */; };
 		574C7BC62BC486BA007B2493 /* PurchaseListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574C7BC52BC486BA007B2493 /* PurchaseListManager.swift */; };
 		575167CE2DCAA1E000FF36FB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 575167CD2DCAA1E000FF36FB /* SnapKit */; };
@@ -37,6 +37,7 @@
 		575167D42DCBDE4E00FF36FB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 575167D32DCBDE4E00FF36FB /* FirebaseAuth */; };
 		575167D62DCBE2D700FF36FB /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575167D52DCBE2D700FF36FB /* UserData.swift */; };
 		575167D82DCBE77700FF36FB /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575167D72DCBE77700FF36FB /* UserDataManager.swift */; };
+		575167E22DD674D000FF36FB /* RecipesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575167E12DD674D000FF36FB /* RecipesData.swift */; };
 		5753E8AF2BBB35E7006AAB18 /* FullInfoRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753E8AE2BBB35E7006AAB18 /* FullInfoRecipeViewModel.swift */; };
 		5753E8B12BBB4E33006AAB18 /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5753E8B02BBB4E33006AAB18 /* FavouritesViewModel.swift */; };
 		575ACE022BC7080200599576 /* ListVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 575ACE012BC7080200599576 /* ListVIewModel.swift */; };
@@ -85,12 +86,13 @@
 		573C868E2B72BE9E00177AA8 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		573C86902B74018400177AA8 /* CategoriesProductsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesProductsCell.swift; sourceTree = "<group>"; };
 		573C86922B7566B000177AA8 /* CategoryProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryProducts.swift; sourceTree = "<group>"; };
-		574AED4B2BD04BFA0055C6BA /* SeacrhViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeacrhViewController.swift; sourceTree = "<group>"; };
+		574AED4B2BD04BFA0055C6BA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		574C7BC32BC4388E007B2493 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		574C7BC52BC486BA007B2493 /* PurchaseListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseListManager.swift; sourceTree = "<group>"; };
 		575167D02DCBDDFC00FF36FB /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		575167D52DCBE2D700FF36FB /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		575167D72DCBE77700FF36FB /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		575167E12DD674D000FF36FB /* RecipesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesData.swift; sourceTree = "<group>"; };
 		5753E8AE2BBB35E7006AAB18 /* FullInfoRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullInfoRecipeViewModel.swift; sourceTree = "<group>"; };
 		5753E8B02BBB4E33006AAB18 /* FavouritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
 		575ACE012BC7080200599576 /* ListVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVIewModel.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				57957F092B80C1710027D234 /* RecipesModel.swift */,
 				574C7BC52BC486BA007B2493 /* PurchaseListManager.swift */,
 				575167D72DCBE77700FF36FB /* UserDataManager.swift */,
+				575167E12DD674D000FF36FB /* RecipesData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -260,7 +263,7 @@
 				57A552732B6832D200FCF08D /* BaseViewController.swift */,
 				57A5527B2B69804700FCF08D /* TabBarController.swift */,
 				57FEBF2B2B8BAE490098A10F /* FullInfoRecipeController.swift */,
-				574AED4B2BD04BFA0055C6BA /* SeacrhViewController.swift */,
+				574AED4B2BD04BFA0055C6BA /* SearchViewController.swift */,
 				57290A0D2DC3F4E600599D4F /* RegistrationViewControlller.swift */,
 				57290A0B2DC291CA00599D4F /* AuthViewController.swift */,
 			);
@@ -409,9 +412,10 @@
 				57EC794F2BD17B290097D205 /* SearchTableViewCell.swift in Sources */,
 				5738637D2B6CFF6100A944C9 /* Categorylabel + image.swift in Sources */,
 				5753E8B12BBB4E33006AAB18 /* FavouritesViewModel.swift in Sources */,
-				574AED4C2BD04BFA0055C6BA /* SeacrhViewController.swift in Sources */,
+				574AED4C2BD04BFA0055C6BA /* SearchViewController.swift in Sources */,
 				575167D12DCBDDFC00FF36FB /* AuthService.swift in Sources */,
 				57FEBF2C2B8BAE490098A10F /* FullInfoRecipeController.swift in Sources */,
+				575167E22DD674D000FF36FB /* RecipesData.swift in Sources */,
 				576725AF2B62E7F400C3C30E /* SaladsViewController.swift in Sources */,
 				57EC794D2BD179B90097D205 /* SearchViewModel.swift in Sources */,
 				572A28142B5C567D00B99711 /* AppDelegate.swift in Sources */,
