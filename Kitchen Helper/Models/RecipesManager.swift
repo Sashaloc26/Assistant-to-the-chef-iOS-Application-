@@ -185,6 +185,29 @@ class RecipeManager {
             print("Ошибка при обновлении ownerId: \(error.localizedDescription)")
         }
     }
+    
+    func initializeDefaultData(for userId: String) {
+        addCategoriesIfNeeded()
+
+        for defaultRecipe in defaultRecipes {
+            guard let category = getCategoryByName(defaultRecipe.categoryName) else {
+                print("Category not found: \(defaultRecipe.categoryName)")
+                continue
+            }
+
+            createRecipeIfNeeded(
+                name: defaultRecipe.name,
+                ingredients: defaultRecipe.ingredients,
+                instructions: defaultRecipe.instructions,
+                cookingTime: defaultRecipe.cookingTime,
+                calories: defaultRecipe.calories,
+                photo: defaultRecipe.photo,
+                category: category,
+                favourites: defaultRecipe.favourites,
+                ownerId: userId
+            )
+        }
+    }
 }
 
 
